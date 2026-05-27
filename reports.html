@@ -113,23 +113,8 @@
 
         <div class="stats">
             <div class="stat-card">
-                <div class="stat-value" id="dailyCount">-</div>
-                <div class="stat-label">每日总结</div>
-            </div>
-            <div class="stat-card">
                 <div class="stat-value" id="analysisCount">-</div>
-                <div class="stat-label">交易分析</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="totalReports">-</div>
-                <div class="stat-label">总报告数</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>📋 每日交易总结</h2>
-            <div class="report-list" id="dailyReports">
-                <!-- 动态生成 -->
+                <div class="stat-label">交易分析报告</div>
             </div>
         </div>
 
@@ -142,18 +127,9 @@
     </div>
 
     <script>
-        // 报告列表数据
-        const dailyReports = [
-            { name: '2026-05-27 每日总结', date: '2026-05-27', file: 'daily_summary_20260527.html' },
-            { name: '2026-05-26 每日总结', date: '2026-05-26', file: 'daily_summary_20260526.html' },
-            { name: '2026-05-22 每日总结', date: '2026-05-22', file: 'daily_summary_20260522.html' },
-            { name: '2026-05-21 每日总结', date: '2026-05-21', file: 'daily_summary_20260521.html' },
-            { name: '2026-05-20 每日总结', date: '2026-05-20', file: 'daily_summary_20260520.html' },
-            { name: '2026-05-19 每日总结', date: '2026-05-19', file: 'daily_summary_20260519.html' },
-            { name: '2026-05-18 每日总结', date: '2026-05-18', file: 'daily_summary_20260518.html' },
-        ];
-
+        // 交易分析报告列表
         const analysisReports = [
+            { name: '2026-05-27 交易分析', date: '2026-05-27', file: 'trade_analysis_20260527.html' },
             { name: '2026-05-26 交易分析', date: '2026-05-26', file: 'trade_analysis_20260526.html' },
             { name: '2026-05-25 交易分析', date: '2026-05-25', file: 'trade_analysis_20260525.html' },
             { name: '2026-05-22 交易分析', date: '2026-05-22', file: 'trade_analysis_20260522.html' },
@@ -179,12 +155,9 @@
         }
 
         // 更新统计
-        document.getElementById('dailyCount').textContent = dailyReports.length;
         document.getElementById('analysisCount').textContent = analysisReports.length;
-        document.getElementById('totalReports').textContent = dailyReports.length + analysisReports.length;
 
         // 渲染列表
-        renderReports('dailyReports', dailyReports);
         renderReports('analysisReports', analysisReports);
     </script>
 </body>
