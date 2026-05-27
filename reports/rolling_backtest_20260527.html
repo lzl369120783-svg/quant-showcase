@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动回测报告 V2.1 - A股超短线分析</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            color: #e8e8e8;
+            font-family: 'Noto Sans', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .header {
+            text-align: center; padding: 30px 0 20px;
+            border-bottom: 2px solid #0f3460;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 28px; font-weight: 700;
+            background: linear-gradient(135deg, #ff4757, #3742fa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header .meta { color: #a0a0b0; font-size: 14px; margin-top: 8px; }
+        .section {
+            background: #16213e;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #2a2a4a;
+        }
+        .section-title {
+            font-size: 20px; font-weight: 700;
+            color: #e8e8e8;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #2a2a4a;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: #0f3460;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .footer {
+            text-align: center; padding: 30px 0;
+            color: #a0a0b0; font-size: 12px;
+            border-top: 1px solid #2a2a4a; margin-top: 30px;
+        }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 滚动回测报告 V2.1</h1>
+            <div class="meta">
+                回测区间: 2026-05-13 ~
+                2026-05-27 |
+                真实策略修正 + 情绪校准 + 冰点策略完整化 |
+                共11天 | 生成时间: 2026-05-27 22:39
+            </div>
+        </div>
+
+        <!-- 核心结论 -->
+        <div class="section">
+            <div class="section-title">🎯 核心结论</div>
+            <div class="stats-grid">
+                <div class="stat-card" style="border:1px solid #3742fa33;">
+                    <div style="color:#a0a0b0;font-size:12px;">复盘TOP5命中率</div>
+                    <div style="color:#00d4aa;font-size:28px;font-weight:700;">58.0%</div>
+                    <div style="color:#a0a0b0;font-size:11px;margin-top:4px;">29/50 命中</div>
+                </div>
+                <div class="stat-card" style="border:1px solid #ff475733;">
+                    <div style="color:#a0a0b0;font-size:12px;">复盘TOP5平均涨幅</div>
+                    <div style="color:#ff4757;font-size:28px;font-weight:700;">+2.23%</div>
+                    <div style="color:#a0a0b0;font-size:11px;margin-top:4px;">涨停率36.0%</div>
+                </div>
+                <div class="stat-card" style="border:1px solid #ffa50233;">
+                    <div style="color:#a0a0b0;font-size:12px;">竞价TOP5命中率</div>
+                    <div style="color:#ff4757;font-size:28px;font-weight:700;">62.2%</div>
+                    <div style="color:#a0a0b0;font-size:11px;margin-top:4px;">28/45 命中</div>
+                </div>
+                <div class="stat-card" style="border:1px solid #00d4aa33;">
+                    <div style="color:#a0a0b0;font-size:12px;">策略累计收益(理想)</div>
+                    <div style="color:#ff4757;font-size:28px;font-weight:700;">+23.99%</div>
+                    <div style="color:#a0a0b0;font-size:11px;margin-top:4px;">最大回撤4.53%</div>
+                </div>
+            </div>
+
+            <!-- V1.5: 真实策略 vs 理想策略对比 -->
+            <div style="margin-top:16px;padding:16px;background:#0f3460;border-radius:12px;border-left:4px solid #ffa502;">
+                <div style="font-size:14px;font-weight:700;color:#ffa502;margin-bottom:10px;">⚠️ V1.5 真实策略修正（含成交概率+交易成本+次日开盘买入）</div>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">真实累计收益</div>
+                        <div style="color:#00d4aa;font-size:22px;font-weight:700;">-8.23%</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">真实最大回撤</div>
+                        <div style="color:#00d4aa;font-size:22px;font-weight:700;">-8.23%</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">真实Sharpe比率</div>
+                        <div style="color:#ffa502;font-size:22px;font-weight:700;">-9.51</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">平均成交概率</div>
+                        <div style="color:#ffa502;font-size:22px;font-weight:700;">30.0%</div>
+                    </div>
+                </div>
+                <div style="margin-top:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font-size:11px;color:#a0a0b0;">
+                    <div>强封板(秒板):55只(10%成交)</div>
+                    <div>中封板:0只(30-60%)</div>
+                    <div>弱封板:0只(85%)</div>
+                    <div>非涨停:0只(95%)</div>
+                </div>
+            </div>
+
+            <!-- 二级统计 -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+                <div style="background:#0f3460;border-radius:10px;padding:12px;text-align:center;">
+                    <div style="color:#a0a0b0;font-size:11px;">复盘BOTTOM5规避率</div>
+                    <div style="color:#ff4757;font-size:20px;font-weight:700;">62.0%</div>
+                </div>
+                <div style="background:#0f3460;border-radius:10px;padding:12px;text-align:center;">
+                    <div style="color:#a0a0b0;font-size:11px;">竞价BOTTOM5规避率</div>
+                    <div style="color:#ff4757;font-size:20px;font-weight:700;">64.4%</div>
+                </div>
+                <div style="background:#0f3460;border-radius:10px;padding:12px;text-align:center;">
+                    <div style="color:#a0a0b0;font-size:11px;">Sharpe比率</div>
+                    <div style="color:#ff4757;font-size:20px;font-weight:700;">8.99</div>
+                </div>
+                <div style="background:#0f3460;border-radius:10px;padding:12px;text-align:center;">
+                    <div style="color:#a0a0b0;font-size:11px;">最大回撤</div>
+                    <div style="color:#00d4aa;font-size:20px;font-weight:700;">-4.53%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 收益曲线（V1.5: 双线对比） -->
+        <div class="section">
+            <div class="section-title">📈 策略收益曲线（理想 vs 真实）</div>
+            <div id="equity-curve"></div>
+        </div>
+
+        <!-- 每日命中率趋势 -->
+        <div class="section">
+            <div class="section-title">📉 每日命中率/平均涨幅趋势</div>
+            <div id="hit-rate-trend"></div>
+        </div>
+
+        <!-- V1.8: 回撤曲线 -->
+        <div class="section">
+            <div class="section-title">📉 策略回撤曲线</div>
+            <div id="drawdown-curve"></div>
+        </div>
+
+        <!-- V1.8: 月度收益热力图 -->
+        <div class="section">
+            <div class="section-title">🗓️ 月度收益热力图</div>
+            <div id="monthly-heatmap"></div>
+        </div>
+
+        <!-- V1.8: 涨跌幅分布直方图 -->
+        <div class="section">
+            <div class="section-title">📊 TOP5次日涨跌幅分布</div>
+            <div id="pct-dist-hist"></div>
+        </div>
+
+        <!-- V1.8: 情绪分层雷达图 -->
+        <div class="section">
+            <div class="section-title">🎯 情绪分层评分雷达图</div>
+            <div id="emotion-radar"></div>
+        </div>
+
+        <!-- 情绪分层统计 -->
+        <div class="section">
+            <div class="section-title">🌊 按市场情绪分层统计</div>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr style="background:#0f3460;border-bottom:2px solid #3742fa;">
+                            <th style="padding:10px 12px;text-align:left;">情绪级别</th>
+                            <th style="padding:10px 12px;text-align:left;">天数</th>
+                            <th style="padding:10px 12px;text-align:left;">样本数</th>
+                            <th style="padding:10px 12px;text-align:left;">TOP5命中率</th>
+                            <th style="padding:10px 12px;text-align:left;">平均涨幅</th>
+                            <th style="padding:10px 12px;text-align:left;">胜率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">Level 2 - 偏弱</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">3天</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">10只</td>
+            <td style="padding:8px 12px;color:#00d4aa;font-weight:700;">50.0%</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:600;">+0.91%</td>
+            <td style="padding:8px 12px;color:#ff4757;">50.0%</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">Level 3 - 中性</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">5天</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">25只</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">60.0%</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:600;">+2.76%</td>
+            <td style="padding:8px 12px;color:#ff4757;">60.0%</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">Level 4 - 偏强</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">3天</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">15只</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">60.0%</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:600;">+2.24%</td>
+            <td style="padding:8px 12px;color:#ff4757;">60.0%</td>
+        </tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 竞价分类回测 -->
+        <div class='section'><div class='section-title' style='color:#3742fa;'>🎯 竞价分类回测</div><div style='display:grid;grid-template-columns:repeat(4,1fr);gap:16px;'>
+        <div style="background:#0f3460;border-radius:12px;padding:16px;text-align:center;border:1px solid #ff475733;">
+            <div style="color:#a0a0b0;font-size:12px;margin-bottom:4px;">强势确认</div>
+            <div style="color:#ff4757;font-size:22px;font-weight:700;">+2.95%</div>
+            <div style="color:#a0a0b0;font-size:11px;margin-top:4px;">
+                胜率61.9% | 样本103
+            </div>
+        </div>
+        <div style="background:#0f3460;border-radius:12px;padding:16px;text-align:center;border:1px solid #ffa50233;">
+            <div style="color:#a0a0b0;font-size:12px;margin-bottom:4px;">可能转强</div>
+            <div style="color:#ffa502;font-size:22px;font-weight:700;">+1.02%</div>
+            <div style="color:#a0a0b0;font-size:11px;margin-top:4px;">
+                胜率56.7% | 样本258
+            </div>
+        </div>
+        <div style="background:#0f3460;border-radius:12px;padding:16px;text-align:center;border:1px solid #00d4aa33;">
+            <div style="color:#a0a0b0;font-size:12px;margin-bottom:4px;">转弱预警</div>
+            <div style="color:#00d4aa;font-size:22px;font-weight:700;">-0.15%</div>
+            <div style="color:#a0a0b0;font-size:11px;margin-top:4px;">
+                胜率37.6% | 样本91
+            </div>
+        </div>
+        <div style="background:#0f3460;border-radius:12px;padding:16px;text-align:center;border:1px solid #3742fa33;">
+            <div style="color:#a0a0b0;font-size:12px;margin-bottom:4px;">新热点</div>
+            <div style="color:#3742fa;font-size:22px;font-weight:700;">+1.27%</div>
+            <div style="color:#a0a0b0;font-size:11px;margin-top:4px;">
+                胜率55.1% | 样本118
+            </div>
+        </div></div></div>
+
+        <!-- V1.6: 冰点策略完整回测 -->
+        <div class="section">
+            <div class="section-title" style="color:#3742fa;">❄️ 冰点策略完整回测（V1.6：选股+买卖规则+策略对比）</div>
+            <div style="background:#0f3460;border-radius:12px;padding:16px;border-left:4px solid #3742fa;">
+                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;">
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">冰点天数</div>
+                        <div style="color:#3742fa;font-size:22px;font-weight:700;">0天</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">冰点TOP5命中率</div>
+                        <div style="color:#ff4757;font-size:22px;font-weight:700;">0%</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">冰点TOP5平均涨幅</div>
+                        <div style="color:#00d4aa;font-size:22px;font-weight:700;">+0.00%</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">平均涨停数</div>
+                        <div style="color:#ffa502;font-size:22px;font-weight:700;">0</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="color:#a0a0b0;font-size:11px;">平均跌停数</div>
+                        <div style="color:#00d4aa;font-size:22px;font-weight:700;">0</div>
+                    </div>
+                </div>
+                
+                
+                
+                <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);">
+                    <div style="color:#a0a0b0;font-size:12px;margin-bottom:8px;">冰点日明细（含可买入池和成交概率）：</div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- 每日明细 -->
+        <div class="section">
+            <div class="section-title">📋 每日回测明细</div>
+            <div style="overflow-x:auto;">
+                <table>
+                    <thead>
+                        <tr style="background:#0f3460;border-bottom:2px solid #3742fa;">
+                            <th style="padding:10px 12px;text-align:left;">日期</th>
+                            <th style="padding:10px 12px;text-align:left;">涨停数</th>
+                            <th style="padding:10px 12px;text-align:left;">情绪</th>
+                            <th style="padding:10px 12px;text-align:left;">TOP5平均涨幅</th>
+                            <th style="padding:10px 12px;text-align:left;">命中率</th>
+                            <th style="padding:10px 12px;text-align:left;">命中/总数</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-13</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">113</td>
+            <td style="padding:8px 12px;color:#ff8c00;font-weight:600;">L4</td>
+            <td style="padding:8px 12px;color:#00d4aa;font-weight:700;">-0.71%</td>
+            <td style="padding:8px 12px;color:#00d4aa;">40.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">2/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-14</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">55</td>
+            <td style="padding:8px 12px;color:#ffa502;font-weight:600;">L3</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">+2.11%</td>
+            <td style="padding:8px 12px;color:#ff4757;">60.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">3/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-15</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">54</td>
+            <td style="padding:8px 12px;color:#ffa502;font-weight:600;">L3</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">+4.72%</td>
+            <td style="padding:8px 12px;color:#ff4757;">80.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">4/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-18</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">82</td>
+            <td style="padding:8px 12px;color:#ffa502;font-weight:600;">L3</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">+9.49%</td>
+            <td style="padding:8px 12px;color:#ff4757;">80.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">4/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-19</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">90</td>
+            <td style="padding:8px 12px;color:#ff8c00;font-weight:600;">L4</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">+4.57%</td>
+            <td style="padding:8px 12px;color:#ff4757;">80.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">4/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-20</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">61</td>
+            <td style="padding:8px 12px;color:#ffa502;font-weight:600;">L3</td>
+            <td style="padding:8px 12px;color:#00d4aa;font-weight:700;">-4.53%</td>
+            <td style="padding:8px 12px;color:#00d4aa;">0.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">0/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-21</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">34</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:600;">L2</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">+0.97%</td>
+            <td style="padding:8px 12px;color:#ff4757;">60.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">3/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-22</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">115</td>
+            <td style="padding:8px 12px;color:#ff8c00;font-weight:600;">L4</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">+2.85%</td>
+            <td style="padding:8px 12px;color:#ff4757;">60.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">3/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-25</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">103</td>
+            <td style="padding:8px 12px;color:#ffa502;font-weight:600;">L3</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">+2.02%</td>
+            <td style="padding:8px 12px;color:#ff4757;">80.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">4/5</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-26</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">46</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:600;">L2</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:700;">+0.85%</td>
+            <td style="padding:8px 12px;color:#00d4aa;">40.0%</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">2/5</td>
+        </tr>
+        <tr style="background:rgba(255,165,2,0.08);">
+            <td style="padding:8px 12px;color:#e8e8e8;font-weight:600;">2026-05-27 (待验证)</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">47</td>
+            <td style="padding:8px 12px;color:#ff4757;font-weight:600;">L2</td>
+            <td style="padding:8px 12px;color:#ffa502;font-weight:700;">--</td>
+            <td style="padding:8px 12px;color:#ffa502;">待验证</td>
+            <td style="padding:8px 12px;color:#a0a0b0;">--/5</td>
+        </tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            ⚠️ 本报告基于历史数据滚动回测，过往表现不代表未来收益。市场有风险，投资需谨慎。<br>
+            数据来源：Tushare | 报告生成：A股超短线分析工具 V2.0 - 滚动回测模块
+        </div>
+    </div>
+
+    <script>
+        // 收益曲线（V1.5: 双线对比）
+        var realCumData = [0.0, -3.18, -4.21, -4.16, -3.65, -3.74, -6.82, -6.35, -6.94, -7.34, -8.23, -8.23];
+        Plotly.newPlot('equity-curve', {
+            data: [
+            {
+                type: 'scatter', mode: 'lines+markers', name: '理想收益(收盘价买入)',
+                x: ["2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27"], y: [-0.71, 1.38, 6.17, 16.24, 21.55, 16.05, 17.17, 20.52, 22.95, 23.99, 23.99],
+                line: {color: '#ff4757', width: 2, dash: 'dash'},
+                marker: {size: 4},
+                fill: 'tozeroy',
+                fillcolor: 'rgba(255,71,87,0.05)'
+            },
+            {
+                type: 'scatter', mode: 'lines+markers', name: '真实收益(开盘买入+成本)',
+                x: ["2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27"], y: realCumData,
+                line: {color: '#ffa502', width: 2},
+                marker: {size: 4},
+                fill: 'tozeroy',
+                fillcolor: 'rgba(255,165,2,0.1)'
+            }],
+            layout: {
+                title: {text: '策略累计收益曲线（理想 vs 真实修正）', font: {color: '#e8e8e8'}},
+                paper_bgcolor: '#1a1a2e', plot_bgcolor: '#12122a',
+                font: {color: '#e8e8e8'}, height: 400,
+                margin: {l: 60, r: 30, t: 50, b: 60},
+                xaxis: {gridcolor: '#2a2a4a', tickangle: -30},
+                yaxis: {gridcolor: '#2a2a4a', title: '累计收益(%)'},
+                showlegend: true,
+                legend: {x: 0.01, y: 0.99, bgcolor: 'rgba(0,0,0,0.3)'},
+                shapes: [{
+                    type: 'line', x0: ["2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27"][0], x1: ["2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27"][["2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27"].length-1],
+                    y0: 0, y1: 0, line: {color: '#666', width: 1, dash: 'dash'}
+                }]
+            }
+        });
+
+        // 每日命中率趋势
+        Plotly.newPlot('hit-rate-trend', {
+            data: [
+                {
+                    type: 'scatter', mode: 'lines+markers', name: '命中率',
+                    x: ["2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27"], y: [40.0, 60.0, 80.0, 80.0, 80.0, 0.0, 60.0, 60.0, 80.0, 40.0, 0],
+                    line: {color: '#00d4aa', width: 2},
+                    marker: {size: 4}, yaxis: 'y'
+                },
+                {
+                    type: 'bar', name: '平均涨幅',
+                    x: ["2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27"], y: [-0.71, 2.11, 4.72, 9.49, 4.57, -4.53, 0.97, 2.85, 2.02, 0.85, 0],
+                    marker: {color: [-0.71, 2.11, 4.72, 9.49, 4.57, -4.53, 0.97, 2.85, 2.02, 0.85, 0].map(v => v >= 0 ? 'rgba(255,71,87,0.6)' : 'rgba(0,212,170,0.6)')},
+                    yaxis: 'y2'
+                }
+            ],
+            layout: {
+                title: {text: '每日复盘TOP5命中率 & 平均涨幅', font: {color: '#e8e8e8'}},
+                paper_bgcolor: '#1a1a2e', plot_bgcolor: '#12122a',
+                font: {color: '#e8e8e8'}, height: 400,
+                margin: {l: 60, r: 60, t: 50, b: 60},
+                xaxis: {gridcolor: '#2a2a4a', tickangle: -30},
+                yaxis: {gridcolor: '#2a2a4a', title: '命中率(%)', side: 'left'},
+                yaxis2: {gridcolor: '#2a2a4a', title: '平均涨幅(%)', side: 'right', overlaying: 'y'},
+                legend: {font: {color: '#e8e8e8'}},
+                barmode: 'group'
+            }
+        });
+
+        // V1.8: 策略回撤曲线
+        (function() {
+            var ddData = [-3.18, -4.21, -4.16, -3.65, -3.74, -6.82, -6.35, -6.94, -7.34, -8.23, -8.23];
+            var ddDates = ["2026-05-13", "2026-05-14", "2026-05-15", "2026-05-18", "2026-05-19", "2026-05-20", "2026-05-21", "2026-05-22", "2026-05-25", "2026-05-26", "2026-05-27"];
+            // 填充回撤区域
+            Plotly.newPlot('drawdown-curve', [{
+                type: 'scatter', mode: 'lines', name: '回撤',
+                x: ddDates, y: ddData,
+                fill: 'tozeroy',
+                fillcolor: 'rgba(255,71,87,0.25)',
+                line: {color: '#ff4757', width: 2}
+            }], {
+                title: {text: '真实策略回撤曲线 (买入费+滑点)', font: {color: '#e8e8e8'}},
+                paper_bgcolor: '#1a1a2e', plot_bgcolor: '#12122a',
+                font: {color: '#e8e8e8'}, height: 350,
+                margin: {l: 60, r: 30, t: 50, b: 60},
+                xaxis: {gridcolor: '#2a2a4a', tickangle: -30},
+                yaxis: {gridcolor: '#2a2a4a', title: '回撤(%)'},
+                shapes: [{
+                    type: 'line', x0: ddDates[0], x1: ddDates[ddDates.length-1],
+                    y0: 0, y1: 0, line: {color: '#666', width: 1, dash: 'dash'}
+                }]
+            });
+        })();
+
+        // V1.8: 月度收益热力图
+        (function() {
+            var mData = {"2026-05": {"13": -0.71, "14": 2.11, "15": 4.72, "18": 9.49, "19": 4.57, "20": -4.53, "21": 0.97, "22": 2.85, "25": 2.02, "26": 0.85, "27": 0}};
+            var years = [...new Set(Object.keys(mData).map(k => k.split('-')[0]))].sort();
+            var months = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+            var zData = [];
+            var yLabels = [];
+            var cellColors = [];
+            for (var yi = 0; yi < years.length; yi++) {
+                var row = [];
+                var rowColors = [];
+                for (var mi = 0; mi < 12; mi++) {
+                    var ym = years[yi] + '-' + months[mi];
+                    var days = mData[ym] || {};
+                    var vals = Object.values(days);
+                    var avg = vals.length > 0 ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+                    row.push(avg);
+                    if (avg === null) {
+                        rowColors.push('rgba(40,40,60,0.3)');
+                    } else if (avg >= 3) {
+                        rowColors.push('rgba(255,71,87,0.9)');
+                    } else if (avg >= 1) {
+                        rowColors.push('rgba(255,165,2,0.7)');
+                    } else if (avg >= 0) {
+                        rowColors.push('rgba(0,212,170,0.4)');
+                    } else if (avg >= -2) {
+                        rowColors.push('rgba(0,184,148,0.6)');
+                    } else {
+                        rowColors.push('rgba(0,100,80,0.9)');
+                    }
+                }
+                zData.push(row);
+                cellColors.push(rowColors);
+                yLabels.push(years[yi]);
+            }
+            // 转换为plotly heatmap格式
+            var textData = zData.map(row => row.map(v => v === null ? '' : v.toFixed(2) + '%'));
+            Plotly.newPlot('monthly-heatmap', [{
+                type: 'heatmap',
+                z: zData, x: months, y: yLabels,
+                text: textData, texttemplate: '%{text}', textfont: {color: '#e8e8e8', size: 11},
+                colorscale: [
+                    [0, '#006450'], [0.25, '#00b894'], [0.45, '#00d4aa'],
+                    [0.55, '#ffa502'], [0.75, '#ff6b81'], [1, '#ff4757']
+                ],
+                zmid: 0,
+                hovertemplate: '%{y}年%{x}月: %{z:.2f}%<extra></extra>',
+                showscale: true,
+                colorbar: {title: '平均涨幅%', tickfont: {color: '#e8e8e8'}}
+            }], {
+                title: {text: '月度平均涨幅热力图 (红=涨, 绿=跌)', font: {color: '#e8e8e8'}},
+                paper_bgcolor: '#1a1a2e', plot_bgcolor: '#12122a',
+                font: {color: '#e8e8e8'}, height: 300,
+                margin: {l: 50, r: 80, t: 50, b: 40},
+                xaxis: {side: 'bottom'},
+                yaxis: {autorange: 'reversed'}
+            });
+        })();
+
+        // V1.8: TOP5次日涨跌幅分布直方图
+        (function() {
+            var pcts = [9.98, -7.53, -7.81, 10.0, -8.2, -9.61, 7.89, 9.98, -7.68, 9.98, 10.0, 9.98, -9.98, 3.62, 9.98, 10.01, 9.99, -2.56, 20.0, 9.99, 10.01, 10.05, 3.03, -1.69, 1.44, -9.98, -2.46, -1.96, -5.92, -2.31, -9.99, 10.02, 6.88, 10.05, -12.11, 0.16, 9.93, -3.21, -2.61, 9.99, 4.72, 0.77, 1.47, 4.23, -1.1, 7.93, -8.23, 9.99, -1.1, -4.35];
+            var bins = [];
+            var labels = [];
+            for (var b = -10; b <= 15; b += 2) {
+                bins.push(pcts.filter(v => v >= b && v < b+2).length);
+                labels.push(b + '%~' + (b+2) + '%');
+            }
+            var colors = bins.map((v, i) => {
+                var mid = -10 + i * 2 + 1;
+                return mid >= 0 ? 'rgba(255,71,87,0.7)' : 'rgba(0,212,170,0.7)';
+            });
+            Plotly.newPlot('pct-dist-hist', [{
+                type: 'bar', x: labels, y: bins,
+                marker: {color: colors},
+                text: bins.map(String), textposition: 'outside',
+                textfont: {color: '#e8e8e8', size: 10}
+            }], {
+                title: {text: 'TOP5次日涨跌幅分布 (红=正, 绿=负)', font: {color: '#e8e8e8'}},
+                paper_bgcolor: '#1a1a2e', plot_bgcolor: '#12122a',
+                font: {color: '#e8e8e8'}, height: 350,
+                margin: {l: 50, r: 30, t: 50, b: 80},
+                xaxis: {gridcolor: '#2a2a4a', tickangle: -30, title: '涨跌幅区间'},
+                yaxis: {gridcolor: '#2a2a4a', title: '次数'},
+                bargap: 0.1
+            });
+        })();
+
+        // V1.8: 情绪分层雷达图
+        (function() {
+            var dims = ["\u547d\u4e2d\u7387", "\u80dc\u7387", "\u5e73\u5747\u6da8\u5e45", "\u6da8\u505c\u7387", "\u6837\u672c\u5360\u6bd4"];
+            var radarData = {"L1": [0, 0, 0, 0, 0], "L2": [2.5, 2.5, 1.4775, 0.0, 1.36], "L3": [3.0, 3.0, 1.94, 0.0, 2.27], "L4": [3.0, 3.0, 1.81, 0.0, 1.36], "L5": [0, 0, 0, 0, 0]};
+            var colors = ['#ff4757', '#ff6b81', '#ffa502', '#00d4aa', '#2ed573'];
+            var traces = Object.keys(radarData).map((k, i) => ({
+                type: 'scatterpolar',
+                r: radarData[k], theta: dims,
+                fill: 'toself', fillcolor: colors[i].replace(')', ',0.15)').replace('rgb', 'rgba'),
+                line: {color: colors[i], width: 2},
+                name: k
+            }));
+            Plotly.newPlot('emotion-radar', traces, {
+                title: {text: '情绪分层评分雷达图 (5分制)', font: {color: '#e8e8e8'}},
+                paper_bgcolor: '#1a1a2e', plot_bgcolor: '#12122a',
+                font: {color: '#e8e8e8'}, height: 450,
+                margin: {l: 60, r: 60, t: 50, b: 60},
+                polar: {
+                    radialaxis: {visible: true, range: [0, 5], gridcolor: '#2a2a4a',
+                        tickfont: {color: '#e8e8e8'}, linecolor: '#2a2a4a'},
+                    angularaxis: {gridcolor: '#2a2a4a', tickfont: {color: '#e8e8e8', size: 11},
+                        linecolor: '#2a2a4a'}
+                },
+                legend: {font: {color: '#e8e8e8'}, orientation: 'h', y: -0.15},
+                showlegend: true
+            });
+        })();
+    </script>
+</body>
+</html>

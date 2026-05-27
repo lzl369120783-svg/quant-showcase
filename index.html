@@ -19,10 +19,10 @@
         }
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             background: linear-gradient(90deg, #00d4ff, #00ff88);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -30,25 +30,30 @@
         }
         .subtitle {
             color: #888;
-            font-size: 1.1rem;
+            font-size: 1rem;
+        }
+        .date-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.2);
+            color: #00d4ff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-top: 8px;
         }
         .modules {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 48px;
+            gap: 16px;
+            margin-bottom: 40px;
         }
-        @media (max-width: 900px) {
-            .modules { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .modules { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 900px) { .modules { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .modules { grid-template-columns: 1fr; } }
         .module {
             background: rgba(22, 33, 62, 0.8);
             border: 1px solid #333;
-            border-radius: 16px;
-            padding: 32px 24px;
+            border-radius: 12px;
+            padding: 24px 20px;
             text-align: center;
             transition: all 0.3s;
             cursor: pointer;
@@ -57,47 +62,28 @@
             display: block;
         }
         .module:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0, 212, 255, 0.12);
             border-color: #00d4ff;
         }
-        .module-icon {
-            font-size: 3rem;
-            margin-bottom: 16px;
-        }
-        .module h3 {
-            color: #00d4ff;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-        .module p {
-            color: #999;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        .date-badge {
-            display: inline-block;
-            background: rgba(0, 212, 255, 0.2);
-            color: #00d4ff;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-top: 12px;
-        }
+        .module-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .module h3 { color: #00d4ff; font-size: 1.1rem; margin-bottom: 8px; }
+        .module p { color: #999; font-size: 0.85rem; line-height: 1.4; }
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 32px 0;
             color: #666;
             border-top: 1px solid #333;
-            margin-top: 60px;
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
         .disclaimer {
             background: rgba(255, 200, 0, 0.1);
             border: 1px solid rgba(255, 200, 0, 0.3);
             border-radius: 8px;
-            padding: 16px;
-            margin-top: 32px;
-            font-size: 0.9rem;
+            padding: 14px;
+            margin-top: 24px;
+            font-size: 0.85rem;
             color: #ffa500;
         }
     </style>
@@ -106,7 +92,8 @@
     <div class="container">
         <header>
             <h1>📊 A股超短线量化交易系统</h1>
-            <p class="subtitle">V3.0 · 实盘5万资金账户 · 每日更新</p>
+            <p class="subtitle">V3.0 · 实盘5万资金账户</p>
+            <div class="date-badge">📅 2026-05-27</div>
         </header>
 
         <div class="modules">
@@ -114,61 +101,61 @@
             <a href="pnl_report.html" class="module">
                 <div class="module-icon">📈</div>
                 <h3>实时交易报告</h3>
-                <p>查看今日交易记录、持仓明细、盈亏分析和风险指标</p>
-                <div class="date-badge">2026-05-27</div>
+                <p>总资产、盈亏、持仓、风险指标</p>
             </a>
 
-            <!-- 2. 自动化策略 -->
-            <a href="pnl_report.html#strategy" class="module">
-                <div class="module-icon">🤖</div>
-                <h3>自动化策略</h3>
-                <p>竞价选股、智能卖出、风控执行全自动运行</p>
-                <div class="date-badge">策略运行中</div>
-            </a>
-
-            <!-- 3. 数据驱动 -->
-            <a href="pnl_report.html#positions" class="module">
-                <div class="module-icon">📊</div>
-                <h3>数据驱动</h3>
-                <p>基于6维评分体系，量化筛选强势股</p>
-                <div class="date-badge">2只持仓</div>
-            </a>
-
-            <!-- 4. 超短线策略 -->
-            <a href="pnl_report.html#trades" class="module">
-                <div class="module-icon">⚡</div>
-                <h3>超短线策略</h3>
-                <p>专注龙头战法、涨停板、题材炒作</p>
-                <div class="date-badge">今日3笔交易</div>
-            </a>
-
-            <!-- 5. 严格风控 -->
-            <a href="pnl_report.html#risk" class="module">
-                <div class="module-icon">🛡️</div>
-                <h3>严格风控</h3>
-                <p>单票止损-6%，同题材≤2只</p>
-                <div class="date-badge">风控正常</div>
-            </a>
-
-            <!-- 6. 实时监控 -->
-            <a href="pnl_report.html" class="module">
-                <div class="module-icon">📱</div>
-                <h3>实时监控</h3>
-                <p>盘中自动监控，及时预警</p>
-                <div class="date-badge">3分钟刷新</div>
-            </a>
-
-            <!-- 7. 复盘分析 -->
+            <!-- 2. 交易分析 -->
             <a href="reports/trade_analysis_20260527.html" class="module">
                 <div class="module-icon">📋</div>
-                <h3>复盘分析</h3>
-                <p>每日自动生成交易报告</p>
-                <div class="date-badge">查看完整报告</div>
+                <h3>交易分析报告</h3>
+                <p>今日交易复盘、持仓分析、盈亏统计</p>
+            </a>
+
+            <!-- 3. 选股报告 -->
+            <a href="reports/screen_20260527.html" class="module">
+                <div class="module-icon">🔍</div>
+                <h3>选股报告</h3>
+                <p>竞价选股结果、可买池、评分排名</p>
+            </a>
+
+            <!-- 4. 复盘报告 -->
+            <a href="reports/review_20260527.html" class="module">
+                <div class="module-icon">🧠</div>
+                <h3>复盘报告</h3>
+                <p>市场复盘、情绪分析、主线题材</p>
+            </a>
+
+            <!-- 5. 监控报告 -->
+            <a href="reports/monitor_20260527.html" class="module">
+                <div class="module-icon">📱</div>
+                <h3>监控报告</h3>
+                <p>盘中监控记录、异动预警</p>
+            </a>
+
+            <!-- 6. 每日总结 -->
+            <a href="reports/daily_summary_20260527.html" class="module">
+                <div class="module-icon">📊</div>
+                <h3>每日总结</h3>
+                <p>9大板块综合分析</p>
+            </a>
+
+            <!-- 7. 回测报告 -->
+            <a href="reports/rolling_backtest_20260527.html" class="module">
+                <div class="module-icon">📉</div>
+                <h3>回测报告</h3>
+                <p>滚动回测结果、策略验证</p>
+            </a>
+
+            <!-- 8. 历史回测 -->
+            <a href="reports/backtest_20260527.html" class="module">
+                <div class="module-icon">🔬</div>
+                <h3>历史回测</h3>
+                <p>策略回测、收益曲线</p>
             </a>
         </div>
 
         <footer>
-            <p>数据每3分钟自动更新 | 仅供学习交流，不构成投资建议</p>
+            <p>数据每日自动更新 | 仅供学习交流，不构成投资建议</p>
             <div class="disclaimer">
                 ⚠️ 免责声明：本系统所有交易记录和分析报告仅供学习研究使用，不构成任何投资建议。股市有风险，投资需谨慎。
             </div>
