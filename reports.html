@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>交易报告列表 - A股超短线量化交易系统</title>
+    <title>交易报告 - A股超短线量化交易系统</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -13,152 +13,160 @@
             min-height: 100vh;
             padding: 40px 20px;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-size: 2rem;
-            color: #00d4ff;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            color: #888;
-            margin-bottom: 32px;
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 2rem; color: #00d4ff; margin-bottom: 10px; }
+        .subtitle { color: #888; margin-bottom: 32px; }
         .back-link {
-            display: inline-block;
-            color: #00d4ff;
-            text-decoration: none;
-            margin-bottom: 24px;
+            display: inline-block; color: #00d4ff; text-decoration: none;
+            margin-bottom: 24px; font-size: 0.9rem;
         }
         .back-link:hover { text-decoration: underline; }
-        .section {
-            margin-bottom: 40px;
+        .section { margin-bottom: 40px; }
+        .section-header {
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 20px; padding-bottom: 12px;
+            border-bottom: 2px solid #00d4ff;
         }
-        .section h2 {
-            color: #00d4ff;
-            font-size: 1.3rem;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #333;
+        .section-icon { font-size: 1.5rem; }
+        .section-title { font-size: 1.4rem; color: #00d4ff; font-weight: 600; }
+        .section-count {
+            background: #00d4ff; color: #0a0a1a;
+            padding: 2px 10px; border-radius: 12px;
+            font-size: 0.85rem; font-weight: 600;
         }
-        .report-list {
-            display: grid;
-            gap: 12px;
-        }
-        .report-item {
+        .report-grid { display: grid; gap: 16px; }
+        .report-card {
             background: rgba(22, 33, 62, 0.8);
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.2s;
+            border: 1px solid #333; border-radius: 12px;
+            padding: 24px; transition: all 0.3s;
         }
-        .report-item:hover {
+        .report-card:hover {
             background: rgba(22, 33, 62, 1);
             border-color: #00d4ff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.1);
         }
-        .report-name {
-            font-weight: 500;
+        .report-info { margin-bottom: 16px; }
+        .report-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+        .report-meta { color: #888; font-size: 0.9rem; }
+        .report-actions { display: flex; gap: 12px; }
+        .btn {
+            display: inline-block; padding: 10px 24px;
+            border-radius: 8px; text-decoration: none;
+            font-weight: 500; font-size: 0.9rem;
+            transition: all 0.2s;
         }
-        .report-date {
-            color: #888;
-            font-size: 0.9rem;
+        .btn-primary {
+            background: #00d4ff; color: #0a0a1a;
         }
-        .report-link {
-            color: #00d4ff;
-            text-decoration: none;
-            padding: 6px 16px;
+        .btn-primary:hover { background: #00b8d9; }
+        .btn-outline {
+            background: transparent; color: #00d4ff;
             border: 1px solid #00d4ff;
-            border-radius: 4px;
-            font-size: 0.9rem;
         }
-        .report-link:hover {
-            background: #00d4ff;
-            color: #0a0a1a;
-        }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-        .stat-card {
-            background: rgba(22, 33, 62, 0.8);
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #00d4ff;
-        }
-        .stat-label {
+        .btn-outline:hover { background: rgba(0, 212, 255, 0.1); }
+        .empty-state {
+            text-align: center; padding: 60px 20px;
             color: #888;
-            font-size: 0.9rem;
-            margin-top: 4px;
+        }
+        .empty-state-icon { font-size: 3rem; margin-bottom: 16px; }
+        .update-note {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px; padding: 16px;
+            margin-top: 32px; font-size: 0.9rem;
+            color: #00d4ff;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <a href="index.html" class="back-link">← 返回首页</a>
-        <h1>📊 交易报告列表</h1>
-        <p class="subtitle">A股超短线量化交易系统 · 实盘5万资金账户</p>
+        <h1>📊 交易报告</h1>
+        <p class="subtitle">A股超短线量化交易系统 · 实盘5万资金账户 · 从2026-05-27开始</p>
 
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-value" id="analysisCount">-</div>
-                <div class="stat-label">交易分析报告</div>
+        <!-- 交易分析报告 -->
+        <div class="section">
+            <div class="section-header">
+                <span class="section-icon">📈</span>
+                <span class="section-title">交易分析报告</span>
+                <span class="section-count" id="analysisCount">0</span>
+            </div>
+            <div class="report-grid" id="analysisReports">
+                <!-- 动态生成 -->
             </div>
         </div>
 
+        <!-- 核心指标报告 -->
         <div class="section">
-            <h2>📈 交易分析报告</h2>
-            <div class="report-list" id="analysisReports">
+            <div class="section-header">
+                <span class="section-icon">🎯</span>
+                <span class="section-title">核心指标报告</span>
+                <span class="section-count" id="pnlCount">0</span>
+            </div>
+            <div class="report-grid" id="pnlReports">
                 <!-- 动态生成 -->
             </div>
+        </div>
+
+        <div class="update-note">
+            💡 报告每日自动更新，数据从2026-05-27开始展示
         </div>
     </div>
 
     <script>
-        // 交易分析报告列表
+        // 交易分析报告
         const analysisReports = [
-            { name: '2026-05-27 交易分析', date: '2026-05-27', file: 'trade_analysis_20260527.html' },
-            { name: '2026-05-26 交易分析', date: '2026-05-26', file: 'trade_analysis_20260526.html' },
-            { name: '2026-05-25 交易分析', date: '2026-05-25', file: 'trade_analysis_20260525.html' },
-            { name: '2026-05-22 交易分析', date: '2026-05-22', file: 'trade_analysis_20260522.html' },
-            { name: '2026-05-21 交易分析', date: '2026-05-21', file: 'trade_analysis_20260521.html' },
-            { name: '2026-05-20 交易分析', date: '2026-05-20', file: 'trade_analysis_20260520.html' },
-            { name: '2026-05-19 交易分析', date: '2026-05-19', file: 'trade_analysis_20260519.html' },
-            { name: '2026-05-18 交易分析', date: '2026-05-18', file: 'trade_analysis_20260518.html' },
-            { name: '2026-05-15 交易分析', date: '2026-05-15', file: 'trade_analysis_20260515.html' },
+            {
+                name: '2026-05-27 交易分析报告',
+                date: '2026-05-27',
+                file: 'reports/trade_analysis_20260527.html',
+                desc: '今日交易复盘、持仓分析、盈亏统计'
+            }
         ];
 
-        // 渲染报告列表
+        // 核心指标报告
+        const pnlReports = [
+            {
+                name: '5万账户实时状态',
+                date: '实时更新',
+                file: 'pnl_report.html',
+                desc: '总资产、盈亏、持仓、风险指标'
+            }
+        ];
+
+        // 渲染报告卡片
         function renderReports(containerId, reports) {
             const container = document.getElementById(containerId);
-            container.innerHTML = reports.map(r => `
-                <div class="report-item">
-                    <div>
-                        <div class="report-name">${r.name}</div>
-                        <div class="report-date">${r.date}</div>
+            if (reports.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📭</div>
+                        <p>暂无报告</p>
                     </div>
-                    <a href="reports/${r.file}" class="report-link" target="_blank">查看报告</a>
+                `;
+                return;
+            }
+            container.innerHTML = reports.map(r => `
+                <div class="report-card">
+                    <div class="report-info">
+                        <div class="report-name">${r.name}</div>
+                        <div class="report-meta">${r.date} · ${r.desc}</div>
+                    </div>
+                    <div class="report-actions">
+                        <a href="${r.file}" class="btn btn-primary" target="_blank">查看报告</a>
+                    </div>
                 </div>
             `).join('');
         }
 
         // 更新统计
         document.getElementById('analysisCount').textContent = analysisReports.length;
+        document.getElementById('pnlCount').textContent = pnlReports.length;
 
         // 渲染列表
         renderReports('analysisReports', analysisReports);
+        renderReports('pnlReports', pnlReports);
     </script>
 </body>
 </html>
