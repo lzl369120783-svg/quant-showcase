@@ -25,20 +25,6 @@
             overflow-x: hidden;
         }
         
-        /* 动态背景 */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
-        }
-        
         /* 粒子背景 */
         #particles {
             position: fixed;
@@ -49,23 +35,24 @@
             z-index: -1;
         }
         
-        /* 股票走势图背景 */
-        .stock-chart-bg {
+        /* 动态背景 */
+        .bg-animation {
             position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 200px;
-            opacity: 0.15;
+            height: 100%;
             z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(255, 215, 0, 0.06) 0%, transparent 50%);
         }
         
         /* 主容器 */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
-            position: relative;
+            padding: 15px 20px;
         }
         
         /* 顶部导航 */
@@ -73,30 +60,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-            margin-bottom: 30px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+            margin-bottom: 20px;
         }
         
         .logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 900;
             background: linear-gradient(90deg, var(--gold), var(--cyan));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
         }
         
         .status-indicator {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         
         .live-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             background: var(--green);
             border-radius: 50%;
             animation: pulse 1.5s infinite;
@@ -110,27 +96,25 @@
         
         .status-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--green);
             letter-spacing: 2px;
         }
         
-        /* 主标题区域 */
+        /* 主标题 */
         .hero {
             text-align: center;
-            padding: 60px 20px;
-            position: relative;
+            padding: 30px 0 20px;
         }
         
         .hero-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 900;
             background: linear-gradient(135deg, var(--gold) 0%, var(--cyan) 50%, var(--green) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+            margin-bottom: 10px;
             animation: glow 3s ease-in-out infinite;
         }
         
@@ -140,9 +124,9 @@
         }
         
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 0.95rem;
             color: #888;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
         
@@ -150,8 +134,8 @@
         .realtime-panel {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin: 40px 0;
+            gap: 16px;
+            margin: 20px 0;
         }
         
         @media (max-width: 900px) {
@@ -160,9 +144,9 @@
         
         .data-card {
             background: linear-gradient(135deg, rgba(22, 33, 62, 0.9) 0%, rgba(10, 10, 26, 0.9) 100%);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 16px;
-            padding: 24px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 18px;
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
@@ -185,21 +169,21 @@
         }
         
         .data-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: var(--gold);
-            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.15);
         }
         
         .data-label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: #888;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             letter-spacing: 1px;
         }
         
         .data-value {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--gold);
         }
@@ -208,34 +192,79 @@
         .data-value.negative { color: var(--red); }
         
         .data-change {
-            font-size: 0.9rem;
-            margin-top: 8px;
+            font-size: 0.8rem;
+            margin-top: 6px;
         }
         
         .data-change.up { color: var(--green); }
         .data-change.down { color: var(--red); }
         
-        /* 模块网格 */
-        .modules-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin: 40px 0;
+        /* 股票代码滚动 */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px 0;
+            margin: 15px 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
         }
         
-        @media (max-width: 1100px) { .modules-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 768px) { .modules-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 480px) { .modules-grid { grid-template-columns: 1fr; } }
+        .ticker {
+            display: flex;
+            animation: ticker 30s linear infinite;
+        }
+        
+        .ticker-item {
+            flex-shrink: 0;
+            padding: 0 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        
+        .ticker-item.up { color: var(--green); }
+        .ticker-item.down { color: var(--red); }
+        .ticker-item.flat { color: #888; }
+        
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* 主内容区域 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 16px;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content { grid-template-columns: 1fr; }
+            .sidebar { display: grid; grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 600px) {
+            .sidebar { grid-template-columns: 1fr; }
+        }
+        
+        /* 左侧模块 */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
         
         .module-card {
             background: linear-gradient(145deg, rgba(22, 33, 62, 0.8) 0%, rgba(10, 10, 26, 0.9) 100%);
             border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 12px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 14px 12px;
             text-align: center;
             text-decoration: none;
             color: inherit;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
         }
@@ -250,111 +279,98 @@
             background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            transition: width 0.4s, height 0.4s;
         }
         
         .module-card:hover::after {
-            width: 300px;
-            height: 300px;
+            width: 200px;
+            height: 200px;
         }
         
         .module-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateX(5px);
             border-color: var(--cyan);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2);
         }
         
         .module-icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
             position: relative;
             z-index: 1;
         }
         
         .module-title {
-            font-size: 1rem;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--cyan);
-            margin-bottom: 8px;
             position: relative;
             z-index: 1;
         }
         
-        .module-desc {
-            font-size: 0.8rem;
-            color: #888;
-            line-height: 1.4;
+        /* 中心监控区域 */
+        .monitor-area {
+            background: rgba(10, 10, 26, 0.95);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
             position: relative;
-            z-index: 1;
         }
         
-        /* 底部信息 */
+        .monitor-header {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .monitor-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--cyan);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .monitor-badge {
+            background: var(--green);
+            color: var(--dark);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .monitor-iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+        
+        /* 底部 */
         .footer {
             text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid rgba(255, 215, 0, 0.2);
-            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            margin-top: 20px;
         }
         
         .footer-text {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #666;
         }
         
         .disclaimer {
-            background: rgba(255, 200, 0, 0.08);
-            border: 1px solid rgba(255, 200, 0, 0.2);
-            border-radius: 8px;
-            padding: 16px;
-            margin-top: 20px;
-            font-size: 0.8rem;
-            color: rgba(255, 215, 0, 0.8);
-        }
-        
-        /* 动态数字效果 */
-        .typing-effect {
-            display: inline-block;
-            overflow: hidden;
-            border-right: 2px solid var(--gold);
-            animation: blink 0.7s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 100% { border-color: var(--gold); }
-            50% { border-color: transparent; }
-        }
-        
-        /* 股票代码滚动 */
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px 0;
-            margin: 30px 0;
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        }
-        
-        .ticker {
-            display: flex;
-            animation: ticker 30s linear infinite;
-        }
-        
-        .ticker-item {
-            flex-shrink: 0;
-            padding: 0 30px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-        
-        .ticker-item.up { color: var(--green); }
-        .ticker-item.down { color: var(--red); }
-        .ticker-item.flat { color: #888; }
-        
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            background: rgba(255, 200, 0, 0.06);
+            border: 1px solid rgba(255, 200, 0, 0.15);
+            border-radius: 6px;
+            padding: 12px;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: rgba(255, 215, 0, 0.7);
         }
         
         /* 加载动画 */
@@ -379,13 +395,13 @@
         }
         
         .loading-ring {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             border: 3px solid transparent;
             border-top-color: var(--gold);
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         
         @keyframes spin {
@@ -395,7 +411,7 @@
         
         .loading-text {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--gold);
             letter-spacing: 3px;
         }
@@ -413,22 +429,6 @@
     
     <!-- 动态背景 -->
     <div class="bg-animation"></div>
-    
-    <!-- 股票走势图背景 -->
-    <svg class="stock-chart-bg" viewBox="0 0 1200 200" preserveAspectRatio="none">
-        <path fill="none" stroke="rgba(0,212,255,0.3)" stroke-width="2" d="M0,100 Q150,50 300,100 T600,100 T900,100 T1200,100">
-            <animate attributeName="d" dur="10s" repeatCount="indefinite"
-                values="M0,100 Q150,50 300,100 T600,100 T900,100 T1200,100;
-                        M0,100 Q150,150 300,100 T600,100 T900,100 T1200,100;
-                        M0,100 Q150,50 300,100 T600,100 T900,100 T1200,100"/>
-        </path>
-        <path fill="none" stroke="rgba(255,215,0,0.2)" stroke-width="1.5" d="M0,120 Q200,80 400,120 T800,120 T1200,120">
-            <animate attributeName="d" dur="8s" repeatCount="indefinite"
-                values="M0,120 Q200,80 400,120 T800,120 T1200,120;
-                        M0,120 Q200,160 400,120 T800,120 T1200,120;
-                        M0,120 Q200,80 400,120 T800,120 T1200,120"/>
-        </path>
-    </svg>
     
     <div class="container">
         <!-- 顶部导航 -->
@@ -493,48 +493,39 @@
             </div>
         </div>
         
-        <!-- 模块网格 -->
-        <div class="modules-grid">
-            <a href="pnl_report.html" class="module-card">
-                <div class="module-icon">📈</div>
-                <div class="module-title">实时交易报告</div>
-                <div class="module-desc">总资产、盈亏、持仓、风险指标</div>
-            </a>
-            <a href="reports/trade_analysis_20260527.html" class="module-card">
-                <div class="module-icon">📋</div>
-                <div class="module-title">交易分析</div>
-                <div class="module-desc">今日交易复盘、盈亏统计</div>
-            </a>
-            <a href="reports/screen_20260527.html" class="module-card">
-                <div class="module-icon">🔍</div>
-                <div class="module-title">选股报告</div>
-                <div class="module-desc">竞价选股、评分排名</div>
-            </a>
-            <a href="reports/review_20260527.html" class="module-card">
-                <div class="module-icon">🧠</div>
-                <div class="module-title">复盘分析</div>
-                <div class="module-desc">市场情绪、主线题材</div>
-            </a>
-            <a href="reports/monitor_20260527.html" class="module-card">
-                <div class="module-icon">📱</div>
-                <div class="module-title">盘中监控</div>
-                <div class="module-desc">异动预警、实时追踪</div>
-            </a>
-            <a href="reports/trade_analysis_20260527.html" class="module-card">
-                <div class="module-icon">⚡</div>
-                <div class="module-title">超短线策略</div>
-                <div class="module-desc">龙头战法、涨停板</div>
-            </a>
-            <a href="pnl_report.html" class="module-card">
-                <div class="module-icon">🛡️</div>
-                <div class="module-title">风控中心</div>
-                <div class="module-desc">止损预警、仓位管理</div>
-            </a>
-            <a href="reports/trade_analysis_20260527.html" class="module-card">
-                <div class="module-icon">📊</div>
-                <div class="module-title">数据分析</div>
-                <div class="module-desc">6维评分、量化筛选</div>
-            </a>
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <!-- 左侧模块 -->
+            <div class="sidebar">
+                <a href="pnl_report.html" class="module-card">
+                    <div class="module-icon">📊</div>
+                    <div class="module-title">账户展示</div>
+                </a>
+                <a href="reports/trade_analysis_20260527.html" class="module-card">
+                    <div class="module-icon">📋</div>
+                    <div class="module-title">交易分析</div>
+                </a>
+                <a href="reports/screen_20260527.html" class="module-card">
+                    <div class="module-icon">🔍</div>
+                    <div class="module-title">选股报告</div>
+                </a>
+                <a href="reports/review_20260527.html" class="module-card">
+                    <div class="module-icon">🧠</div>
+                    <div class="module-title">复盘分析</div>
+                </a>
+            </div>
+            
+            <!-- 中心监控区域 -->
+            <div class="monitor-area">
+                <div class="monitor-header">
+                    <div class="monitor-title">
+                        <span>📈 REAL-TIME MONITOR</span>
+                        <span class="monitor-badge">LIVE</span>
+                    </div>
+                    <span style="font-size: 0.75rem; color: #888;">Auto Refresh: 3min</span>
+                </div>
+                <iframe src="pnl_report.html" class="monitor-iframe" id="monitorFrame"></iframe>
+            </div>
         </div>
         
         <!-- 底部 -->
@@ -551,7 +542,7 @@
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loadingScreen').classList.add('hidden');
-            }, 1500);
+            }, 1200);
         });
         
         // 粒子效果
@@ -577,7 +568,7 @@
         
         function initParticles() {
             particles = [];
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 40; i++) {
                 particles.push(createParticle());
             }
         }
@@ -591,27 +582,24 @@
                 ctx.fillStyle = `rgba(255, 215, 0, ${p.opacity})`;
                 ctx.fill();
                 
-                // 连线
                 particles.forEach((p2, j) => {
                     if (i === j) return;
                     const dx = p.x - p2.x;
                     const dy = p.y - p2.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     
-                    if (dist < 150) {
+                    if (dist < 120) {
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.1 * (1 - dist / 150)})`;
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.08 * (1 - dist / 120)})`;
                         ctx.stroke();
                     }
                 });
                 
-                // 移动
                 p.x += p.speedX;
                 p.y += p.speedY;
                 
-                // 边界检测
                 if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
             });
@@ -627,29 +615,9 @@
             initParticles();
         });
         
-        // 数字动画效果
-        function animateValue(element, start, end, duration) {
-            const range = end - start;
-            const startTime = performance.now();
-            
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const value = start + (range * progress);
-                element.textContent = '¥' + Math.round(value).toLocaleString();
-                
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                }
-            }
-            
-            requestAnimationFrame(update);
-        }
-        
         // 模拟实时数据更新
         setInterval(() => {
             const assets = document.getElementById('totalAssets');
-            const pnl = document.getElementById('todayPnl');
             const currentAssets = parseInt(assets.textContent.replace(/[¥,]/g, ''));
             const change = Math.floor(Math.random() * 200) - 100;
             const newAssets = currentAssets + change;
@@ -661,6 +629,11 @@
                 assets.style.color = '#FF4D4D';
             }
         }, 3000);
+        
+        // 自动刷新iframe（每3分钟）
+        setInterval(() => {
+            document.getElementById('monitorFrame').src = 'pnl_report.html?' + new Date().getTime();
+        }, 180000);
     </script>
 </body>
 </html>
