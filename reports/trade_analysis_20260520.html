@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交易分析总结 · 2026-05-20</title>
+<style>
+@charset "utf-8";
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --green: #3fb950;
+  --red: #f85149;
+  --yellow: #d29922;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --cyan: #39d353;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 20px;
+  color: var(--blue);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 16px;
+  color: var(--cyan);
+  margin: 24px 0 12px;
+  padding-left: 8px;
+  border-left: 3px solid var(--cyan);
+}
+h3 {
+  font-size: 14px;
+  color: var(--purple);
+  margin: 16px 0 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 16px;
+  font-size: 13px;
+}
+th {
+  background: var(--surface);
+  color: var(--text2);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+}
+tr:hover td {
+  background: rgba(88, 166, 255, 0.05);
+}
+.positive { color: var(--red); font-weight: 600; }
+.negative { color: var(--green); font-weight: 600; }
+.warn { color: var(--yellow); }
+.ok { color: var(--green); }
+.info { color: var(--blue); }
+.highlight { background: rgba(248, 81, 73, 0.1); }
+.summary-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.summary-box .big {
+  font-size: 28px;
+  font-weight: 700;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+.metric .label {
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+.metric .value {
+  font-size: 18px;
+  font-weight: 700;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.tag-red { background: rgba(248, 81, 73, 0.15); color: var(--red); }
+.tag-green { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+.tag-yellow { background: rgba(210, 153, 34, 0.15); color: var(--yellow); }
+.tag-blue { background: rgba(88, 166, 255, 0.15); color: var(--blue); }
+.tag-purple { background: rgba(188, 140, 255, 0.15); color: var(--purple); }
+.score {
+  display: inline-block;
+  min-width: 36px;
+  text-align: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+}
+.score-high { background: rgba(63, 185, 80, 0.2); color: var(--green); }
+.score-mid { background: rgba(210, 153, 34, 0.2); color: var(--yellow); }
+.score-low { background: rgba(248, 81, 73, 0.2); color: var(--red); }
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  margin-top: 4px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+.finding {
+  background: var(--surface);
+  border-left: 3px solid var(--yellow);
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+}
+.finding.positive-finding { border-left-color: var(--green); }
+.finding.negative-finding { border-left-color: var(--red); }
+.finding strong { color: var(--text); }
+.footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  color: var(--text3);
+  font-size: 12px;
+  text-align: center;
+}
+.section { break-inside: avoid; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 4px 0; }
+.checklist li::before { content: "▸ "; color: var(--text3); }
+blockquote {
+  border-left: 3px solid var(--blue);
+  padding: 10px 16px;
+  margin: 12px 0;
+  background: rgba(88, 166, 255, 0.05);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  body { padding: 12px; font-size: 13px; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+  table { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<h1>📊 交易分析总结 · 2026-05-20（周三）</h1>
+
+<!-- ===== 核心指标 ===== -->
+<div class="metrics">
+  <div class="metric">
+    <div class="label">今日已实现盈亏</div>
+    <div class="value positive">+¥936</div>
+  </div>
+  <div class="metric">
+    <div class="label">卖出笔数</div>
+    <div class="value">6只(9笔)</div>
+  </div>
+  <div class="metric">
+    <div class="label">买入笔数</div>
+    <div class="value">4笔(成交3只)</div>
+  </div>
+  <div class="metric">
+    <div class="label">竞价即时成交率</div>
+    <div class="value warn">0%</div>
+    <div class="bar"><div class="bar-fill" style="width:0%;background:var(--red)"></div></div>
+  </div>
+</div>
+
+<!-- ===== Section 1: 已实现盈亏 ===== -->
+<div class="section">
+<h2>一、今日已实现盈亏</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>方向</th><th>数量</th><th>成交价</th><th>成本</th><th>盈亏</th><th>盈亏%</th><th>原因</th></tr>
+    <tr>
+      <td>华致酒行(300755)</td><td>半仓卖</td><td>100股</td><td>¥17.95</td><td>¥17.00</td>
+      <td class="positive">+¥95</td><td class="positive">+5.6%</td><td><span class="tag tag-green">分批止盈首档</span></td>
+    </tr>
+    <tr>
+      <td>华致酒行(300755)</td><td>清仓</td><td>100股</td><td>¥17.72</td><td>¥17.00</td>
+      <td class="positive">+¥72</td><td class="positive">+4.2%</td><td><span class="tag tag-yellow">冲高回落</span></td>
+    </tr>
+    <tr>
+      <td>首开股份(600376)</td><td>清仓</td><td>1000股</td><td>¥4.38</td><td>¥4.60</td>
+      <td class="negative">-¥220</td><td class="negative">-4.8%</td><td><span class="tag tag-red">硬止损</span></td>
+    </tr>
+    <tr>
+      <td>华安证券(600909)</td><td>半仓卖</td><td>1100股</td><td>¥6.65</td><td>¥6.27</td>
+      <td class="positive">+¥418</td><td class="positive">+6.1%</td><td><span class="tag tag-green">分批止盈首档</span></td>
+    </tr>
+    <tr>
+      <td>华安证券(600909)</td><td>清仓</td><td>1200股</td><td>¥6.80</td><td>¥6.27</td>
+      <td class="positive">+¥636</td><td class="positive">+8.5%</td><td><span class="tag tag-green">分批止盈二档</span></td>
+    </tr>
+    <tr>
+      <td>合力科技(603917)</td><td>半仓卖</td><td>100股</td><td>¥13.71</td><td>¥13.02</td>
+      <td class="positive">+¥69</td><td class="positive">+5.3%</td><td><span class="tag tag-green">分批止盈首档</span></td>
+    </tr>
+    <tr>
+      <td>合力科技(603917)</td><td>清仓</td><td>200股</td><td>¥13.92</td><td>¥13.02</td>
+      <td class="positive">+¥180</td><td class="positive">+6.9%</td><td><span class="tag tag-green">分批止盈二档</span></td>
+    </tr>
+    <tr>
+      <td>国贸股份(603915)</td><td>清仓</td><td>400股</td><td>¥17.79</td><td>¥18.01</td>
+      <td class="negative">-¥88</td><td class="negative">-1.2%</td><td><span class="tag tag-yellow">超时清仓</span></td>
+    </tr>
+    <tr>
+      <td>怡达股份(300721)</td><td>清仓</td><td>200股</td><td>¥32.86</td><td>¥33.99</td>
+      <td class="negative">-¥226</td><td class="negative">-3.3%</td><td><span class="tag tag-yellow">超时清仓</span></td>
+    </tr>
+  </tbody>
+</table>
+<p style="color:var(--text3);font-size:12px;">*今日卖出手续费合计约¥55.70（佣金¥40 + 印花税¥10.20 + 其他），净 realized 约+¥880</p>
+</div>
+
+<!-- ===== Section 2: 买入复盘 ===== -->
+<div class="section">
+<h2>二、买入复盘</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>数量</th><th>买入价</th><th>评分</th><th>策略</th><th>盘中表现</th><th>当前状态</th></tr>
+    <tr>
+      <td>合百集团(000417)</td><td>500股</td><td>—</td>
+      <td><span class="score score-mid">74</span></td><td>竞价打板</td>
+      <td>竞价0成交，10:28撤单</td>
+      <td><span class="tag tag-red">❌ 未成交</span></td>
+    </tr>
+    <tr>
+      <td>利和兴(301013)</td><td>100股</td><td>¥35.80</td>
+      <td><span class="score score-high">80</span></td><td>竞价打板</td>
+      <td>延迟成交(10:18)，收盘<span class="positive">涨停20%</span></td>
+      <td><span class="tag tag-yellow">⏳ T+1待卖50%（弱势信号）</span></td>
+    </tr>
+    <tr>
+      <td>万润科技(002654)</td><td>500股</td><td>¥18.41</td>
+      <td><span class="score score-high">90</span></td><td>午后补仓</td>
+      <td>冲高4.3%后回落，尾盘拉升<span class="positive">+9.98%</span></td>
+      <td><span class="tag tag-yellow">⏳ T+1待卖50%（弱势信号）</span></td>
+    </tr>
+    <tr>
+      <td>养元饮品(603156)</td><td>200股</td><td>¥50.02</td>
+      <td><span class="score score-mid">68</span></td><td>午后补仓</td>
+      <td>冲高6.0%(53.0元)后回落至-0.3%</td>
+      <td><span class="tag tag-yellow">⏳ T+1待卖50%（弱势信号）</span></td>
+    </tr>
+  </tbody>
+</table>
+<div class="finding negative-finding">
+  <strong>关键问题：</strong>3只成交标的中，<span class="negative">3只全部触发T+1弱卖信号</span>。利和兴和万润科技收盘分别涨停20%/涨9.98%，但因盘中回调触发了弱势信号，与昨日华致酒行/怡达股份踏空情况<strong>如出一辙</strong>。
+</div>
+</div>
+
+<!-- ===== Section 3: 盘中风控 ===== -->
+<div class="section">
+<h2>三、盘中风控执行</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>触发信号</th><th>风控动作</th><th>执行时间</th><th>结果</th></tr>
+    <tr>
+      <td>华致酒行(300755)</td><td>分批止盈首档(5.8%)</td><td>半仓卖出</td><td>09:35</td>
+      <td><span class="tag tag-green">✅ 成交@17.95</span></td>
+    </tr>
+    <tr>
+      <td>首开股份(600376)</td><td>硬止损(-4.9%)</td><td>全仓卖出</td><td>09:40</td>
+      <td><span class="tag tag-green">✅ 成交@4.38</span></td>
+    </tr>
+    <tr>
+      <td>华安证券(600909)</td><td>分批止盈首档(6.1%)</td><td>半仓卖出</td><td>09:45</td>
+      <td><span class="tag tag-green">✅ 成交@6.65</span></td>
+    </tr>
+    <tr>
+      <td>华致酒行(300755)</td><td>冲高回落(8.4%回撤3.7%)</td><td>剩余清仓</td><td>09:45</td>
+      <td><span class="tag tag-green">✅ 成交@17.72</span></td>
+    </tr>
+    <tr>
+      <td>华安证券(600909)</td><td>分批止盈二档(8.8%)</td><td>剩余清仓</td><td>10:00</td>
+      <td><span class="tag tag-green">✅ 成交@6.80</span></td>
+    </tr>
+    <tr>
+      <td>合力科技(603917)</td><td>分批止盈首档(5.3%)</td><td>半仓卖出</td><td>10:20</td>
+      <td><span class="tag tag-green">✅ 成交@13.71</span></td>
+    </tr>
+    <tr>
+      <td>合力科技(603917)</td><td>分批止盈二档(7.0%)</td><td>剩余清仓</td><td>14:35</td>
+      <td><span class="tag tag-green">✅ 成交@13.92</span></td>
+    </tr>
+    <tr>
+      <td>国贸股份(603915)</td><td>超时清仓(2天, -1.2%)</td><td>强制清仓</td><td>14:50</td>
+      <td><span class="tag tag-green">✅ 成交@17.79</span></td>
+    </tr>
+    <tr>
+      <td>怡达股份(300721)</td><td>超时清仓(2天, -3.4%)</td><td>强制清仓</td><td>14:50</td>
+      <td><span class="tag tag-green">✅ 成交@32.86</span></td>
+    </tr>
+    <tr>
+      <td>利和兴(301013)</td><td>弱势信号(盘中曾涨1.6%现亏-1.5%)</td><td>待卖50%</td><td>盘中</td>
+      <td><span class="tag tag-blue">⏳ T+1执行（收盘涨停20%，信号误判）</span></td>
+    </tr>
+    <tr>
+      <td>万润科技(002654)</td><td>弱势信号(冲高4.3%回落至-0.1%)</td><td>待卖50%</td><td>盘中</td>
+      <td><span class="tag tag-blue">⏳ T+1执行（收盘涨9.98%，信号误判）</span></td>
+    </tr>
+    <tr>
+      <td>养元饮品(603156)</td><td>弱势信号(冲高6.0%回落至-0.3%)</td><td>待卖50%</td><td>盘中</td>
+      <td><span class="tag tag-blue">⏳ T+1执行</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== Section 4: 纪律评估 ===== -->
+<div class="section">
+<h2>四、纪律执行评估</h2>
+<table>
+  <tbody>
+    <tr><th>维度</th><th>评分</th><th>说明</th></tr>
+    <tr><td>止损执行</td><td><span class="tag tag-green">✅ 优秀</span></td><td>首开股份触发硬止损(-4.9%)，09:40果断执行，止损价4.38精准命中</td></tr>
+    <tr><td>止盈执行</td><td><span class="tag tag-green">✅ 优秀</span></td><td>华安证券2档止盈(+418/+636)、合力科技2档止盈(+69/+180)、华致酒行1档止盈+冲高回落(+95/+72)，<strong>7次止盈全部成功</strong></td></tr>
+    <tr><td>超时清仓</td><td><span class="tag tag-green">✅ 执行</span></td><td>国贸股份(-1.2%)和怡达股份(-3.4%)持仓2天强制清仓，纪律到位</td></tr>
+    <tr><td>仓位控制</td><td><span class="tag tag-yellow">⚠️ 一般</span></td><td>竞价0成交后午后补仓2只(万润/养元)，持仓3只，仓位控制合理但选股评分偏低(养元68分)</td></tr>
+    <tr><td>竞价选股</td><td><span class="tag tag-red">❌ 差</span></td><td>竞价下单2只，<strong>0只即时成交</strong>，合百集团0成交被撤单，利和兴延迟18分钟才成交</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== Section 5: 核心发现 ===== -->
+<div class="section">
+<h2>五、核心发现</h2>
+
+<div class="finding positive-finding">
+  <strong>1. 华安证券分批止盈是今日最大亮点</strong><br>
+  两档止盈共锁定<span class="positive">+¥1,054</span>利润（首档6.1%卖出1100股@6.65，二档8.8%清仓1200股@6.80），是今日盈利的核心来源。分批止盈策略在趋势股上表现卓越。
+</div>
+
+<div class="finding positive-finding">
+  <strong>2. 利和兴/万润科技收盘涨停/大涨，选股眼光仍然精准</strong><br>
+  利和兴<span class="positive">涨停20%</span>（成本35.80，收36.36），万润科技<span class="positive">涨9.98%</span>（成本18.41，收19.28），竞价评分80/90分的高分股表现强势，浮盈合计+¥479。
+</div>
+
+<div class="finding negative-finding">
+  <strong>3. T+1弱卖信号连续两天误判，需紧急优化</strong><br>
+  利和兴涨停20%和万润科技涨9.98%均触发弱卖信号（待卖50%），<span class="negative">与昨日华致酒行/怡达股份踏空情况完全一致</span>。连续两天弱卖信号在强势股上频繁误判，<strong>弱卖阈值必须调整</strong>，否则将反复踏空大肉。
+</div>
+
+<div class="finding negative-finding">
+  <strong>4. 竞价成交率持续低迷</strong><br>
+  竞价下单2只（合百集团+利和兴），<span class="negative">0只即时成交</span>。合百集团500股0成交被撤单，利和兴延迟18分钟才成交。竞价下单时机或委托方式需要排查优化。
+</div>
+</div>
+
+<!-- ===== Section 6: 明日策略 ===== -->
+<div class="section">
+<h2>六、明日策略提示</h2>
+<ul class="checklist">
+  <li><strong>利和兴(301013)</strong>：T+1待卖50%挂单，但收盘涨停20%——<span class="warn">⚠️ 弱卖信号极可能误判</span>，建议明日观察竞价强度再决定</li>
+  <li><strong>万润科技(002654)</strong>：T+1待卖50%挂单，收盘涨9.98%——同上，观察次日竞价</li>
+  <li><strong>养元饮品(603156)</strong>：T+1待卖50%挂单，冲高6%后回落至-0.3%，需关注是否企稳</li>
+  <li><strong>弱卖信号优化</strong>：连续2天误判，建议将"弱势信号"阈值从-1.5%调整为-3%，或增加"涨停/大涨股豁免"逻辑</li>
+  <li><strong>late_decision建议</strong>：次日方向<strong>空仓</strong>，建议仓位≤0%</li>
+  <li><strong>竞价成交率</strong>：排查合百集团0成交原因，检查竞价委托价格是否偏离</li>
+</ul>
+</div>
+
+<!-- ===== 总结 ===== -->
+<div class="section">
+<h2>七、一句话总结</h2>
+<blockquote>
+今日靠华安证券分批止盈锁定+1,054元，合力科技/华致酒行止盈合计+416元，总已实现+¥936。<strong>止盈纪律堪称完美</strong>。但T+1弱卖信号连续2天误判（利和兴涨停20%/万润科技涨9.98%均触发弱卖），竞价成交率0%亟待排查。<strong>弱卖阈值必须紧急优化，否则强势股反复被震出</strong>。
+</blockquote>
+</div>
+
+<!-- ===== 持仓快照 ===== -->
+<div class="section">
+<h2>附：当前持仓快照</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>数量</th><th>成本</th><th>现价</th><th>浮盈/浮亏</th><th>涨跌幅</th><th>T+1待卖</th></tr>
+    <tr>
+      <td>利和兴(301013)</td><td>100股</td><td>¥35.86</td><td>¥36.36</td>
+      <td class="positive">+¥50</td><td class="positive">+20.0%🔴</td><td>50%</td>
+    </tr>
+    <tr>
+      <td>万润科技(002654)</td><td>500股</td><td>¥18.42</td><td>¥19.28</td>
+      <td class="positive">+¥429</td><td class="positive">+9.98%</td><td>50%</td>
+    </tr>
+    <tr>
+      <td>养元饮品(603156)</td><td>200股</td><td>¥50.05</td><td>¥49.08</td>
+      <td class="negative">-¥194</td><td class="positive">+1.49%</td><td>50%</td>
+    </tr>
+  </tbody>
+</table>
+<p style="color:var(--text3);font-size:12px;">浮盈浮亏合计: +¥285 | 涨跌幅为当日涨跌(非成本基准)</p>
+</div>
+
+<div class="footer">
+  生成时间: 2026-05-20 15:10 · 由 GLM 5.1 生成 · A股超短线量化交易系统 V3.0.17
+</div>
+
+</body>
+</html>

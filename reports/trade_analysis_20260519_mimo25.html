@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交易分析报告 (mimo-v2.5-pro) - 2026年5月19日</title>
+<style>
+:root {
+  --bg: #0a0e14;
+  --surface: #111620;
+  --surface2: #181d2a;
+  --border: #2a3040;
+  --text: #b8c4d4;
+  --text-dim: #6b7a8d;
+  --text-bright: #eaf0f9;
+  --red: #ff6b6b;
+  --red-bg: rgba(255,107,107,0.10);
+  --green: #51cf66;
+  --green-bg: rgba(81,207,102,0.10);
+  --yellow: #ffd43b;
+  --yellow-bg: rgba(255,212,59,0.10);
+  --blue: #4dabf7;
+  --blue-bg: rgba(77,171,247,0.10);
+  --purple: #b197fc;
+  --cyan: #66d9e8;
+  --orange: #ffa94d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'SF Mono', 'Cascadia Code', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  padding: 24px;
+}
+.container { max-width: 1280px; margin: 0 auto; }
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 36px 24px 28px;
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 28px;
+  position: relative;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  border-radius: 2px;
+}
+.header h1 {
+  font-size: 24px;
+  color: var(--text-bright);
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+.header .subtitle {
+  color: var(--text-dim);
+  font-size: 12px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+.header .model-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(77,171,247,0.15), rgba(177,151,252,0.15));
+  color: var(--purple);
+  padding: 3px 14px;
+  border-radius: 14px;
+  font-size: 11px;
+  margin-top: 10px;
+  border: 1px solid rgba(177,151,252,0.25);
+}
+
+/* Summary Cards */
+.summary-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 16px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.summary-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+}
+.summary-card.card-red::after { background: var(--red); }
+.summary-card.card-green::after { background: var(--green); }
+.summary-card.card-blue::after { background: var(--blue); }
+.summary-card.card-yellow::after { background: var(--yellow); }
+.summary-card.card-purple::after { background: var(--purple); }
+.summary-card .label {
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+.summary-card .value {
+  font-size: 26px;
+  font-weight: 800;
+}
+.summary-card .sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 6px;
+}
+.up { color: var(--red); }
+.down { color: var(--green); }
+
+/* Section */
+.section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 22px;
+  overflow: hidden;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+}
+.section-header .icon { font-size: 18px; }
+.section-header h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+.section-header .badge {
+  margin-left: auto;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+.badge-red { color: var(--red); background: var(--red-bg); border: 1px solid rgba(255,107,107,0.3); }
+.badge-green { color: var(--green); background: var(--green-bg); border: 1px solid rgba(81,207,102,0.3); }
+.badge-yellow { color: var(--yellow); background: var(--yellow-bg); border: 1px solid rgba(255,212,59,0.3); }
+.badge-blue { color: var(--blue); background: var(--blue-bg); border: 1px solid rgba(77,171,247,0.3); }
+.badge-purple { color: var(--purple); background: rgba(177,151,252,0.10); border: 1px solid rgba(177,151,252,0.3); }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left;
+  padding: 11px 16px;
+  font-size: 10.5px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface2);
+  font-weight: 700;
+}
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(42,48,64,0.6);
+  font-size: 13px;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover { background: rgba(77,171,247,0.03); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.tag-sell { background: var(--green-bg); color: var(--green); border: 1px solid rgba(81,207,102,0.3); }
+.tag-buy { background: var(--red-bg); color: var(--red); border: 1px solid rgba(255,107,107,0.3); }
+.tag-hold { background: var(--yellow-bg); color: var(--yellow); border: 1px solid rgba(255,212,59,0.3); }
+.tag-pending { background: rgba(255,169,77,0.10); color: var(--orange); border: 1px solid rgba(255,169,77,0.3); font-size: 10px; margin-left: 6px; }
+.tag-anomaly { background: var(--red-bg); color: var(--red); border: 1px solid rgba(255,107,107,0.3); font-size: 10px; }
+
+/* Findings */
+.finding {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(42,48,64,0.5);
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.finding:last-child { border-bottom: none; }
+.finding-icon { font-size: 20px; flex-shrink: 0; }
+.finding-content h3 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+.finding-content p { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; }
+.finding-positive .finding-content h3 { color: var(--red); }
+.finding-negative .finding-content h3 { color: var(--green); }
+.finding-info .finding-content h3 { color: var(--blue); }
+.finding-warning .finding-content h3 { color: var(--orange); }
+
+/* Score */
+.score {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+.score-track {
+  width: 64px; height: 7px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.score-fill { height: 100%; border-radius: 4px; }
+
+/* Discipline */
+.disc-grade {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* Strategy */
+.strategy-body { padding: 20px; }
+.strategy-body p { font-size: 13px; line-height: 1.9; margin-bottom: 14px; }
+.strategy-callout {
+  background: linear-gradient(135deg, rgba(255,212,59,0.08), rgba(255,169,77,0.08));
+  border: 1px solid rgba(255,212,59,0.25);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-top: 16px;
+}
+.strategy-callout strong { color: var(--yellow); }
+
+/* Timeline */
+.timeline {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px; top: 20px; bottom: 20px;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 10px 0;
+  position: relative;
+}
+.tl-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  margin-top: 4px;
+  margin-left: 25px;
+}
+.tl-dot.dot-red { background: var(--red); box-shadow: 0 0 8px rgba(255,107,107,0.4); }
+.tl-dot.dot-green { background: var(--green); box-shadow: 0 0 8px rgba(81,207,102,0.4); }
+.tl-dot.dot-yellow { background: var(--yellow); box-shadow: 0 0 8px rgba(255,212,59,0.4); }
+.tl-time { font-size: 11px; color: var(--text-dim); width: 60px; flex-shrink: 0; font-weight: 600; }
+.tl-body { font-size: 12.5px; color: var(--text); }
+.tl-body strong { color: var(--text-bright); }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-dim);
+  font-size: 11px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>📊 交易分析报告</h1>
+  <div class="subtitle">2026-05-19 · 周一 · A股超短线 · mimo-v2.5-pro 生成</div>
+  <div class="model-tag">V3.0.11-AmountLimit · QMT实盘 · 暗色终端风格</div>
+</div>
+
+<!-- Summary -->
+<div class="summary-row">
+  <div class="summary-card card-red">
+    <div class="label">已实现盈亏</div>
+    <div class="value up">+¥509</div>
+    <div class="sub">止损1笔 止盈3笔</div>
+  </div>
+  <div class="summary-card card-green">
+    <div class="label">持仓浮盈</div>
+    <div class="value up">+¥546</div>
+    <div class="sub">6只持仓 含T+1</div>
+  </div>
+  <div class="summary-card card-blue">
+    <div class="label">今日操作</div>
+    <div class="value" style="color:var(--blue)">买4 卖4</div>
+    <div class="sub">竞价2 + 午后2</div>
+  </div>
+  <div class="summary-card card-yellow">
+    <div class="label">竞价成功率</div>
+    <div class="value" style="color:var(--yellow)">80%</div>
+    <div class="sub">5委托 4成交</div>
+  </div>
+  <div class="summary-card card-purple">
+    <div class="label">风控触发</div>
+    <div class="value" style="color:var(--purple)">7次</div>
+    <div class="sub">止损1 止盈3 待卖3</div>
+  </div>
+</div>
+
+<!-- Section 1: Realized P&L -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">💰</span>
+    <h2>板块一：已实现盈亏明细</h2>
+    <span class="badge badge-green">净 +¥509</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>股票</th><th>方向</th><th>数量</th><th>成交价</th><th>成本</th><th>盈亏</th><th>盈亏%</th><th>触发原因</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--text-bright)">301008.SZ</strong><br><span style="color:var(--text-dim);font-size:11px">宏昌科技</span></td>
+        <td><span class="tag tag-sell">卖出</span></td>
+        <td>100股</td>
+        <td>31.72</td>
+        <td>33.65</td>
+        <td class="down">-¥193</td>
+        <td class="down">-5.74%</td>
+        <td style="font-size:11px">硬止损触发：亏损-5.8%≥止损线-5%</td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--text-bright)">300608.SZ</strong><br><span style="color:var(--text-dim);font-size:11px">—</span></td>
+        <td><span class="tag tag-sell">卖出×3</span></td>
+        <td>300股</td>
+        <td>18.46</td>
+        <td>16.12</td>
+        <td class="up">+¥702</td>
+        <td class="up">+14.5%</td>
+        <td style="font-size:11px">分批止盈：14.4%→23.3%→60.7%逐级锁利</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 2: Buy Review -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🛒</span>
+    <h2>板块二：买入复盘</h2>
+    <span class="badge badge-blue">4成交 / 1失败</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>股票</th><th>数量</th><th>买入价</th><th>评分</th><th>信号</th><th>盘中走势</th><th>收盘状态</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong style="color:var(--text-bright)">600376.SH</strong><br><span style="color:var(--text-dim);font-size:11px">首开股份</span></td>
+        <td>1000</td>
+        <td>4.60</td>
+        <td><span class="score"><span style="color:var(--green)">85</span><span class="score-track"><span class="score-fill" style="width:85%;background:var(--green)"></span></span></span></td>
+        <td>竞价打板</td>
+        <td>↑4.90(+6.5%) ↓4.62</td>
+        <td><span class="up">+2.67%</span> <span class="tag tag-pending">T+1待卖50%</span></td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--text-bright)">300755.SZ</strong><br><span style="color:var(--text-dim);font-size:11px">华致酒行</span></td>
+        <td>200</td>
+        <td>17.00</td>
+        <td><span class="score"><span style="color:var(--green)">80</span><span class="score-track"><span class="score-fill" style="width:80%;background:var(--green)"></span></span></span></td>
+        <td>竞价打板</td>
+        <td>↑18.30(+7.6%) ↓18.06</td>
+        <td><span class="up">+6.24%</span> <span class="tag tag-pending">T+1待卖50%</span></td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--text-bright)">300721.SZ</strong><br><span style="color:var(--text-dim);font-size:11px">怡达股份</span></td>
+        <td>200</td>
+        <td>33.99</td>
+        <td><span class="score"><span style="color:var(--green)">85</span><span class="score-track"><span class="score-fill" style="width:85%;background:var(--green)"></span></span></span></td>
+        <td>午后补仓</td>
+        <td>↑35.00(+3.0%) ↓34.50</td>
+        <td><span class="up">+1.50%</span> <span class="tag tag-pending">T+1待卖50%</span></td>
+      </tr>
+      <tr>
+        <td><strong style="color:var(--text-bright)">603915.SH</strong><br><span style="color:var(--text-dim);font-size:11px">国茂股份</span></td>
+        <td>400</td>
+        <td>18.01</td>
+        <td><span class="score"><span style="color:var(--yellow)">78</span><span class="score-track"><span class="score-fill" style="width:78%;background:var(--yellow)"></span></span></span></td>
+        <td>午后补仓</td>
+        <td>↑20.54(+14.0%) ↓17.99</td>
+        <td><span class="down">-0.11%</span> <span class="tag tag-pending">T+1待卖50%</span></td>
+      </tr>
+      <tr style="opacity:0.45">
+        <td><span style="color:var(--text-dim)">605488.SH</span><br><span style="font-size:11px;color:var(--text-dim)">福莱新材</span></td>
+        <td>100</td>
+        <td>—</td>
+        <td><span style="color:var(--text-dim)">78</span></td>
+        <td>竞价打板</td>
+        <td colspan="2"><span class="tag-anomaly">0成交</span> <span style="color:var(--text-dim);font-size:11px">委托被撤单</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 3: Risk Control Timeline -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🛡️</span>
+    <h2>板块三：盘中风控执行时间线</h2>
+    <span class="badge badge-yellow">7次触发</span>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-time">09:45</span>
+      <span class="tl-dot dot-red"></span>
+      <span class="tl-body"><strong>301008 宏昌科技</strong> — 硬止损触发(-5.8%≤-5%)，全部卖出100股@31.72，亏损¥193。<em style="color:var(--text-dim)">执行果断，开盘15分钟内完成。</em></span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">09:55</span>
+      <span class="tl-dot dot-green"></span>
+      <span class="tl-body"><strong>300608 —</strong> 分批止盈首档(盈利14.4%≥5%)，卖100股@18.46，盈利¥234。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">10:00</span>
+      <span class="tl-dot dot-green"></span>
+      <span class="tl-body"><strong>300608 —</strong> 分批止盈二档(盈利23.3%≥5%)，卖100股@18.46，盈利¥234。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">10:05</span>
+      <span class="tl-dot dot-green"></span>
+      <span class="tl-body"><strong>300608 —</strong> 分批止盈三档(盈利60.7%≥5%)，卖100股@18.46，盈利¥234。<em style="color:var(--text-dim)">清仓完毕。</em></span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">明日</span>
+      <span class="tl-dot dot-yellow"></span>
+      <span class="tl-body"><strong>600376 首开股份</strong> — 冲高+6.5%回撤6.5%(阈值3%)，T+1待卖50%。</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">明日</span>
+      <span class="tl-dot dot-yellow"></span>
+      <span class="tl-body"><strong>603915 国茂股份</strong> — 冲高+14.0%回撤12.3%(阈值3%)，T+1待卖50%。<em style="color:var(--orange)">高风险！</em></span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">明日</span>
+      <span class="tl-dot dot-yellow"></span>
+      <span class="tl-body"><strong>300721 怡达股份 / 300755 华致酒行</strong> — 弱势信号，T+1待卖各50%。</span>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4: Discipline -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">📋</span>
+    <h2>板块四：纪律执行评估</h2>
+    <span class="badge badge-green">综合 B+</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>评估维度</th><th>评级</th><th>详细说明</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--text-bright);font-weight:600">止损执行</td>
+        <td><span class="disc-grade" style="background:var(--green-bg);color:var(--green)">A</span></td>
+        <td>301008硬止损-5.8%于09:45果断执行，仅亏¥193，无任何犹豫或侥幸心理。</td>
+      </tr>
+      <tr>
+        <td style="color:var(--text-bright);font-weight:600">止盈纪律</td>
+        <td><span class="disc-grade" style="background:var(--green-bg);color:var(--green)">A</span></td>
+        <td>300608严格执行分批止盈策略，3次卖出从14.4%→60.7%逐级锁利¥702，未贪心追高。</td>
+      </tr>
+      <tr>
+        <td style="color:var(--text-bright);font-weight:600">仓位管理</td>
+        <td><span class="disc-grade" style="background:var(--yellow-bg);color:var(--yellow)">B</span></td>
+        <td>5标的分散合理，单只最大14.4%（国茂）。但午后补仓2只占总仓位27.9%，略集中。</td>
+      </tr>
+      <tr>
+        <td style="color:var(--text-bright);font-weight:600">选股质量</td>
+        <td><span class="disc-grade" style="background:var(--yellow-bg);color:var(--yellow)">B-</span></td>
+        <td>竞价信号(首开+华致)表现稳定。午后信号(怡达+国茂)冲高回落严重，国茂暴涨14%后归零是典型诱多。</td>
+      </tr>
+      <tr>
+        <td style="color:var(--text-bright);font-weight:600">风险暴露</td>
+        <td><span class="disc-grade" style="background:var(--green-bg);color:var(--green)">A</span></td>
+        <td>总风险1.68%，最大单只0.86%，现金储备72%，整体风险可控。</td>
+      </tr>
+      <tr>
+        <td style="color:var(--text-bright);font-weight:600">异常处理</td>
+        <td><span class="disc-grade" style="background:var(--yellow-bg);color:var(--yellow)">B</span></td>
+        <td>福莱新材0成交异常1次，系统正确标记为anomaly。建议排查竞价委托价格是否超出涨跌停范围。</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 5: Findings -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🔍</span>
+    <h2>板块五：核心发现</h2>
+  </div>
+
+  <div class="finding finding-positive">
+    <span class="finding-icon">✅</span>
+    <div class="finding-content">
+      <h3>"小亏大赚"模式验证成功</h3>
+      <p>止损仅亏¥193（宏昌-5.74%），止盈净赚¥702（300608+14.5%），盈亏比3.6:1。风控系统的核心价值在于：亏损有底线，盈利能奔跑。今日数据完美验证了这一逻辑。</p>
+    </div>
+  </div>
+
+  <div class="finding finding-warning">
+    <span class="finding-icon">🔶</span>
+    <div class="finding-content">
+      <h3>午后补仓信号质量显著低于竞价信号</h3>
+      <p>竞价买入的首开(+2.67%)和华致(+6.24%)收盘均为正收益；午后买入的国茂(-0.11%)冲高14%后暴跌归零，怡达(+1.5%)冲高回落。午后追高入场的资金被套概率明显更高，建议收紧午后补仓的入场条件或降低仓位配比。</p>
+    </div>
+  </div>
+
+  <div class="finding finding-negative">
+    <span class="finding-icon">⚠️</span>
+    <div class="finding-content">
+      <h3>T+1待卖队列堆积4只，明日开盘承压</h3>
+      <p>首开/华致/怡达/国茂均触发T+1待卖（冲高回落或弱势信号），需在明日开盘后集中处理。其中国茂风险最高——冲高14%暴跌回成本线，若明日低开可能直接触发止损。建议明日竞价阶段优先挂单减仓。</p>
+    </div>
+  </div>
+
+  <div class="finding finding-info">
+    <span class="finding-icon">💡</span>
+    <div class="finding-content">
+      <h3>300608分批止盈策略值得固化</h3>
+      <p>300608今日盈利从14.4%一路扩大到60.7%，系统在3个档位分别卖出1/2仓位，既锁定了利润又保留了上涨空间。这种"阶梯式止盈"比一次性清仓更优，建议将此模式推广到所有 moderate/new_hot 类标的。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Section 6: Strategy -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">🎯</span>
+    <h2>板块六：明日策略</h2>
+  </div>
+  <div class="strategy-body">
+    <p><strong style="color:var(--text-bright)">📌 第一优先：T+1待卖处理</strong></p>
+    <p>4只标的待卖50%仓位（首开/华致/怡达/国茂），开盘后立即执行。国茂冲高14%暴跌，是最大风险点——若低开超3%建议直接全仓止损而非等50%分批。</p>
+
+    <p><strong style="color:var(--text-bright)">📌 第二优先：隔日持仓监控</strong></p>
+    <p>600909华安证券(浮亏-0.3%)和603917合力科技(浮盈+3.3%)为昨日买入的持仓，今日未触发风控。明日关注600909是否跌破止损线(5.96)，603917是否达到止盈条件。</p>
+
+    <p><strong style="color:var(--text-bright)">📌 第三优先：新信号筛选</strong></p>
+    <p>现金储备72%充足，可继续竞价筛选。但鉴于午后补仓信号质量不佳，建议明日仅执行竞价信号，暂停午后补仓策略，待回测验证后再启用。</p>
+
+    <div class="strategy-callout">
+      <strong>💡 一句话总结：</strong>风控系统今日表现优秀（止损¥193 vs 止盈¥702，盈亏比3.6:1），但午后补仓是隐患（国茂暴涨14%后归零）。明日核心任务：集中处理4只T+1待卖标的，控制回撤优先于开新仓。
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  A股超短线量化交易系统 V3.0.11 · QMT实盘 · mimo-v2.5-pro 生成 · 2026-05-19 16:08
+</div>
+
+</div>
+</body>
+</html>

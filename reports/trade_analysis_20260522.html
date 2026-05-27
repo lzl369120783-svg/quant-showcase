@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交易分析总结 · 2026-05-22</title>
+<style>
+@charset "utf-8";
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --green: #3fb950;
+  --red: #f85149;
+  --yellow: #d29922;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --cyan: #39d353;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 20px;
+  color: var(--blue);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 16px;
+  color: var(--cyan);
+  margin: 24px 0 12px;
+  padding-left: 8px;
+  border-left: 3px solid var(--cyan);
+}
+h3 {
+  font-size: 14px;
+  color: var(--purple);
+  margin: 16px 0 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 16px;
+  font-size: 13px;
+}
+th {
+  background: var(--surface);
+  color: var(--text2);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+}
+tr:hover td {
+  background: rgba(88, 166, 255, 0.05);
+}
+.positive { color: var(--red); font-weight: 600; }
+.negative { color: var(--green); font-weight: 600; }
+.warn { color: var(--yellow); }
+.ok { color: var(--green); }
+.info { color: var(--blue); }
+.highlight { background: rgba(248, 81, 73, 0.1); }
+.summary-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.summary-box .big {
+  font-size: 28px;
+  font-weight: 700;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+.metric .label {
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+.metric .value {
+  font-size: 18px;
+  font-weight: 700;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.tag-red { background: rgba(248, 81, 73, 0.15); color: var(--red); }
+.tag-green { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+.tag-yellow { background: rgba(210, 153, 34, 0.15); color: var(--yellow); }
+.tag-blue { background: rgba(88, 166, 255, 0.15); color: var(--blue); }
+.tag-purple { background: rgba(188, 140, 255, 0.15); color: var(--purple); }
+.score {
+  display: inline-block;
+  min-width: 36px;
+  text-align: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+}
+.score-high { background: rgba(63, 185, 80, 0.2); color: var(--green); }
+.score-mid { background: rgba(210, 153, 34, 0.2); color: var(--yellow); }
+.score-low { background: rgba(248, 81, 73, 0.2); color: var(--red); }
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  margin-top: 4px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+.finding {
+  background: var(--surface);
+  border-left: 3px solid var(--yellow);
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+}
+.finding.positive-finding { border-left-color: var(--green); }
+.finding.negative-finding { border-left-color: var(--red); }
+.finding strong { color: var(--text); }
+.footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  color: var(--text3);
+  font-size: 12px;
+  text-align: center;
+}
+.section { break-inside: avoid; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 4px 0; }
+.checklist li::before { content: "▸ "; color: var(--text3); }
+blockquote {
+  border-left: 3px solid var(--blue);
+  padding: 10px 16px;
+  margin: 12px 0;
+  background: rgba(88, 166, 255, 0.05);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+}
+.discipline-table td:nth-child(2) {
+  text-align: center;
+  font-weight: 700;
+}
+</style>
+</head>
+<body>
+
+<h1>📊 交易分析总结 · 2026-05-22（周五）</h1>
+
+<!-- ===== 核心指标卡 ===== -->
+<div class="metrics">
+  <div class="metric">
+    <div class="label">今日已实现盈亏</div>
+    <div class="value negative">-¥1,586</div>
+  </div>
+  <div class="metric">
+    <div class="label">卖出笔数</div>
+    <div class="value">4笔 <span class="tag tag-red">全止损</span></div>
+  </div>
+  <div class="metric">
+    <div class="label">买入笔数</div>
+    <div class="value">4/6成交</div>
+  </div>
+  <div class="metric">
+    <div class="label">竞价成功率</div>
+    <div class="value" style="color:var(--green)">50%</div>
+    <div class="bar"><div class="bar-fill" style="width:50%;background:var(--yellow)"></div></div>
+  </div>
+</div>
+
+<div class="metrics">
+  <div class="metric">
+    <div class="label">浮盈（持仓）</div>
+    <div class="value positive">+¥680</div>
+  </div>
+  <div class="metric">
+    <div class="label">持仓市值</div>
+    <div class="value">¥17,619</div>
+  </div>
+  <div class="metric">
+    <div class="label">现金储备</div>
+    <div class="value" style="color:var(--green)">85.8%</div>
+  </div>
+  <div class="metric">
+    <div class="label">风险等级</div>
+    <div class="value ok">LOW</div>
+  </div>
+</div>
+
+<!-- ===== Section 1: 已实现盈亏 ===== -->
+<div class="section">
+<h2>一、今日已实现盈亏</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>方向</th><th>数量</th><th>成交价</th><th>成本</th><th>盈亏</th><th>盈亏%</th><th>原因</th></tr>
+    <tr>
+      <td>TCL科技(000100)</td><td>卖</td><td>1000股</td><td>¥4.21</td><td>¥4.64</td>
+      <td class="negative">-¥432</td><td class="negative">-9.3%</td><td><span class="tag tag-red">硬止损</span> 现价≤止损价4.41</td>
+    </tr>
+    <tr class="highlight">
+      <td>德展健康(000813)</td><td>卖</td><td>1200股</td><td>¥3.50</td><td>¥3.93</td>
+      <td class="negative">-¥514</td><td class="negative">-10.9%</td><td><span class="tag tag-red">硬止损</span> 现价≤止损价3.76</td>
+    </tr>
+    <tr>
+      <td>瑞丰高材(300241)</td><td>卖</td><td>600股</td><td>¥6.87</td><td>¥7.38</td>
+      <td class="negative">-¥306</td><td class="negative">-6.9%</td><td><span class="tag tag-red">硬止损</span> 现价≤止损价7.01</td>
+    </tr>
+    <tr>
+      <td>聚飞光电(300303)</td><td>卖</td><td>400股</td><td>¥9.91</td><td>¥10.75</td>
+      <td class="negative">-¥335</td><td class="negative">-7.8%</td><td><span class="tag tag-red">硬止损</span> 现价≤止损价10.24</td>
+    </tr>
+  </tbody>
+</table>
+<div class="summary-box">
+  已实现合计: <span class="negative big">-¥1,586</span> &nbsp;|&nbsp; 4笔全部硬止损，0笔主动止盈
+</div>
+</div>
+
+<!-- ===== Section 2: 买入复盘 ===== -->
+<div class="section">
+<h2>二、买入复盘</h2>
+<h3>竞价买入（10:00）</h3>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>数量</th><th>买入价</th><th>评分</th><th>信号</th><th>成交</th><th>当前价</th><th>盘中表现</th><th>状态</th></tr>
+    <tr>
+      <td>四环生物(000518)</td><td>1200股</td><td>-</td><td><span class="score score-mid">60.4</span></td><td>竞价</td>
+      <td><span class="tag tag-red">0成交</span></td><td>-</td><td>委托被撤</td><td>未成交</td>
+    </tr>
+    <tr>
+      <td>联创电子(002036)</td><td>500股</td><td>¥9.72</td><td><span class="score score-mid">58.2</span></td><td>竞价</td>
+      <td><span class="tag tag-green">成交</span></td><td>¥10.30</td><td>冲高3.8%→回落→涨停</td><td><span class="positive">+5.85%</span></td>
+    </tr>
+    <tr>
+      <td>合百集团(000417)</td><td>500股</td><td>¥9.91</td><td><span class="score score-high">81.0</span></td><td>竞价</td>
+      <td><span class="tag tag-green">成交</span></td><td>¥10.24</td><td>冲高3.3%→涨停封板</td><td><span class="positive">+3.22%</span></td>
+    </tr>
+    <tr>
+      <td>曙光股份(600303)</td><td>1300股</td><td>-</td><td><span class="score score-low">54.5</span></td><td>竞价</td>
+      <td><span class="tag tag-red">0成交</span></td><td>-</td><td>委托被撤</td><td>未成交</td>
+    </tr>
+  </tbody>
+</table>
+<h3>午后补仓（10:30）</h3>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>数量</th><th>买入价</th><th>评分</th><th>信号</th><th>成交</th><th>当前价</th><th>盘中表现</th><th>状态</th></tr>
+    <tr>
+      <td>福莱蒽特(605566)</td><td>100股</td><td>¥34.26</td><td><span class="score score-high">93.0</span></td><td>午后补仓</td>
+      <td><span class="tag tag-green">成交</span></td><td>¥36.50</td><td>冲高20.7%→大幅回落至+6.4%</td><td><span class="positive">+6.37%</span></td>
+    </tr>
+    <tr>
+      <td>科大国创(300520)</td><td>100股</td><td>¥36.76</td><td><span class="score score-high">90.0</span></td><td>午后补仓</td>
+      <td><span class="tag tag-green">成交</span></td><td>¥36.99</td><td>冲高8.1%→回落至+0.5%</td><td><span class="positive">+0.48%</span></td>
+    </tr>
+  </tbody>
+</table>
+<div class="summary-box">
+  竞价4只→成交2只(50%)，午后补仓2只→成交2只(100%) | 竞价0成交问题持续（连续3天）
+</div>
+</div>
+
+<!-- ===== Section 3: 盘中风控执行 ===== -->
+<div class="section">
+<h2>三、盘中风控执行</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>触发信号</th><th>风控动作</th><th>执行时间</th><th>结果</th></tr>
+    <tr>
+      <td>TCL科技(000100)</td><td>硬止损: 现价4.21≤止损4.41 (-9.3%)</td>
+      <td><span class="tag tag-red">全仓卖出</span></td><td>09:30</td><td>1000股成交@4.21</td>
+    </tr>
+    <tr class="highlight">
+      <td>德展健康(000813)</td><td>硬止损: 现价3.53≤止损3.76 (-10.9%)</td>
+      <td><span class="tag tag-red">全仓卖出</span></td><td>09:31</td><td>1200股成交@3.50</td>
+    </tr>
+    <tr>
+      <td>瑞丰高材(300241)</td><td>硬止损: 现价6.87≤止损7.01 (-6.9%)</td>
+      <td><span class="tag tag-red">全仓卖出</span></td><td>09:31</td><td>600股成交@6.87</td>
+    </tr>
+    <tr>
+      <td>聚飞光电(300303)</td><td>硬止损: 现价9.94≤止损10.24 (-7.8%)</td>
+      <td><span class="tag tag-red">全仓卖出</span></td><td>09:31</td><td>400股成交@9.91</td>
+    </tr>
+    <tr>
+      <td>联创电子(002036)</td><td>弱势信号: 冲高3.8%回落至-0.1%</td>
+      <td><span class="tag tag-yellow">T+1全卖挂单</span></td><td>10:00</td><td>500股挂卖</td>
+    </tr>
+    <tr>
+      <td>合百集团(000417)</td><td>弱势信号: 冲高3.3%回落至0.0%</td>
+      <td><span class="tag tag-yellow">T+1半仓挂卖</span></td><td>10:00</td><td>250股挂卖</td>
+    </tr>
+    <tr>
+      <td>福莱蒽特(605566)</td><td>冲高回落: 冲高20.7%回撤17.3%</td>
+      <td><span class="tag tag-yellow">T+1半仓挂卖</span></td><td>10:31</td><td>50股挂卖</td>
+    </tr>
+    <tr>
+      <td>科大国创(300520)</td><td>冲高回落: 冲高8.1%回撤7.6%</td>
+      <td><span class="tag tag-yellow">T+1半仓挂卖</span></td><td>10:31</td><td>50股挂卖</td>
+    </tr>
+  </tbody>
+</table>
+<div class="summary-box">
+  硬止损4只全部开盘即触发（昨收已跌破止损价），执行迅速 | T+1弱卖信号再次触发2只强势股(联创电子涨停/合百集团涨停)
+</div>
+</div>
+
+<!-- ===== Section 4: T+1待卖挂单 ===== -->
+<div class="section">
+<h2>四、T+1待卖挂单</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>数量</th><th>成本</th><th>卖出比例</th><th>原因</th><th>当前状态</th></tr>
+    <tr>
+      <td>联创电子(002036)</td><td>500股</td><td>¥9.72</td><td>100%</td>
+      <td>弱势信号: 冲高3.8%回落至-0.1%</td>
+      <td><span class="warn">⚠ 涨停股触发弱卖，疑似误判</span></td>
+    </tr>
+    <tr>
+      <td>合百集团(000417)</td><td>250股</td><td>¥9.91</td><td>50%</td>
+      <td>弱势信号: 冲高3.3%回落至0.0%</td>
+      <td><span class="warn">⚠ 涨停股触发弱卖，疑似误判</span></td>
+    </tr>
+    <tr>
+      <td>福莱蒽特(605566)</td><td>50股</td><td>¥34.26</td><td>50%</td>
+      <td>冲高回落: 冲高20.7%回撤17.3%</td>
+      <td>正常</td>
+    </tr>
+    <tr>
+      <td>科大国创(300520)</td><td>50股</td><td>¥36.76</td><td>50%</td>
+      <td>冲高回落: 冲高8.1%回撤7.6%</td>
+      <td>正常</td>
+    </tr>
+  </tbody>
+</table>
+<blockquote>
+⚠️ 连续3天T+1弱卖信号在涨停/大涨股上误判！联创电子收盘涨停10.04%、合百集团收盘涨停9.99%，均触发弱势信号。阈值-1.5%需调整为-3%或增加涨停豁免。
+</blockquote>
+</div>
+
+<!-- ===== Section 5: 纪律执行评估 ===== -->
+<div class="section">
+<h2>五、纪律执行评估</h2>
+<table class="discipline-table">
+  <tbody>
+    <tr><th>维度</th><th>评分</th><th>说明</th></tr>
+    <tr>
+      <td>止损纪律</td>
+      <td><span class="ok">A</span></td>
+      <td>4只硬止损开盘即执行，无犹豫，执行果断</td>
+    </tr>
+    <tr>
+      <td>止盈纪律</td>
+      <td><span class="warn">C</span></td>
+      <td>0笔主动止盈，福莱蒽特冲高20.7%未锁利，回落至+6.4%</td>
+    </tr>
+    <tr>
+      <td>超时清仓</td>
+      <td><span class="ok">B</span></td>
+      <td>T+1待卖挂单及时，但弱卖阈值误判导致涨停股被挂卖</td>
+    </tr>
+    <tr>
+      <td>仓位控制</td>
+      <td><span class="ok">A</span></td>
+      <td>持仓4只，现金储备85.8%，风险LOW，符合规则</td>
+    </tr>
+    <tr>
+      <td>竞价选股</td>
+      <td><span class="warn">D</span></td>
+      <td>竞价成交50%(2/4)，连续3天0_fill问题未解决；<span class="negative">再次违背late_decision空仓建议(should_stop=true)</span></td>
+    </tr>
+  </tbody>
+</table>
+<div class="summary-box">
+  综合评分: <span class="warn">B-</span> | 止损和仓位控制优秀，但止盈/竞价/纪律服从度堪忧
+</div>
+</div>
+
+<!-- ===== Section 6: 核心发现 ===== -->
+<div class="section">
+<h2>六、核心发现</h2>
+
+<div class="finding negative-finding">
+  <strong>🔴 连续2天严重违背空仓建议</strong><br>
+  late_decision连续2天建议空仓(should_stop=true)，但系统仍买入4只。昨日(05-21)已因违背建议导致4只全军覆没，今日再次重复。需在竞价系统加入should_stop自动拦截，否则规则形同虚设。
+</div>
+
+<div class="finding negative-finding">
+  <strong>🔴 4只前日持仓全部硬止损，亏损-¥1,586</strong><br>
+  TCL科技(-9.3%)、德展健康(-10.9%)、瑞丰高材(-6.9%)、聚飞光电(-7.8%)，均为昨日新买入的new_hot/strong类，今日开盘即跌破止损价。说明昨日选股质量极差，竞价评分体系在高波动市下失效。
+</div>
+
+<div class="finding negative-finding">
+  <strong>🔴 T+1弱卖信号连续3天误判涨停股</strong><br>
+  联创电子涨停10.04%、合百集团涨停9.99%均触发弱势信号挂卖。阈值-1.5%对强势股过于敏感，需立即优化（涨停豁免+阈值调至-3%）。
+</div>
+
+<div class="finding positive-finding">
+  <strong>🟢 今日新买4只浮盈+¥680，质量优于昨日</strong><br>
+  午后补仓2只(福莱蒽特93分/科大国创90分)质量较高；竞价2只(联创电子58分/合百集团81分)虽分数中等但已涨停。浮盈对冲部分止损亏损，净亏收窄至-¥906。
+</div>
+
+</div>
+
+<!-- ===== Section 7: 明日策略 ===== -->
+<div class="section">
+<h2>七、明日策略</h2>
+
+<div class="summary-box">
+  <h3 style="margin:0 0 8px;color:var(--orange)">⚠️ late_decision建议：空仓观望</h3>
+  <p>连续多日命中率<30%，should_stop=true。但当前持仓4只浮盈+¥680，建议：</p>
+</div>
+
+<table>
+  <tbody>
+    <tr><th>持仓</th><th>明日操作</th><th>理由</th></tr>
+    <tr>
+      <td>联创电子(002036)</td>
+      <td><span class="tag tag-yellow">关注开板</span> 涨停可持，开板减半</td>
+      <td>涨停封板+10%，但T+1全卖挂单需取消</td>
+    </tr>
+    <tr>
+      <td>合百集团(000417)</td>
+      <td><span class="tag tag-yellow">关注开板</span> 涨停可持，开板减半</td>
+      <td>涨停封板+10%，T+1半卖挂单需取消</td>
+    </tr>
+    <tr>
+      <td>福莱蒽特(605566)</td>
+      <td><span class="tag tag-blue">冲高止盈</span> 回落至止损线(32.55)则清仓</td>
+      <td>冲高20.7%后大幅回落，风险较高</td>
+    </tr>
+    <tr>
+      <td>科大国创(300520)</td>
+      <td><span class="tag tag-blue">轻仓持有</span> 止损34.92</td>
+      <td>微利+0.48%，防守为主</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+<strong>一句话总结：</strong>4只硬止损亏-¥1,586创近期最大单日亏损，但新买4只浮盈+¥680挽回部分；连续2天违背空仓建议是最大纪律问题，必须修复should_stop拦截机制；T+1弱卖阈值需紧急优化。
+</blockquote>
+</div>
+
+<!-- ===== Footer ===== -->
+<div class="footer">
+  生成时间: 2026-05-22 15:10 · 由 GLM-5.1 生成 · A股超短线量化交易系统 V3.0.17
+</div>
+
+</body>
+</html>
