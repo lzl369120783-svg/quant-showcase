@@ -57,19 +57,13 @@ if %errorlevel%==0 (
 )
 
 echo.
-echo [5/5] 推送到GitHub并部署Netlify...
+echo [5/5] 推送到GitHub（Cloudflare Pages自动部署）...
 git push origin main 2>nul
 if %errorlevel%==0 (
     echo   ✓ GitHub推送成功
+    echo   ✓ Cloudflare Pages会自动部署（1-2分钟）
 ) else (
     echo   ✗ GitHub推送失败
-)
-
-call netlify deploy --dir . --prod 2>nul
-if %errorlevel%==0 (
-    echo   ✓ Netlify部署成功
-) else (
-    echo   ✗ Netlify部署失败
 )
 
 echo.
@@ -78,7 +72,9 @@ echo   更新完成！
 echo ========================================
 echo.
 echo 访问链接：
-echo   Netlify:    https://quant-showcase-lzl.netlify.app
+echo   Cloudflare: https://quant-showcase.pages.dev
 echo   GitHub:     https://lzl369120783-svg.github.io/quant-showcase/
+echo.
+echo 注意：推送后Cloudflare Pages会自动部署，约1-2分钟生效
 echo.
 pause
