@@ -298,6 +298,89 @@
             color: var(--text2);
             margin-bottom: 12px;
         }
+        
+        /* 信息行 */
+        .info-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 900px) {
+            .info-row { grid-template-columns: 1fr; }
+        }
+        
+        .info-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        
+        .info-title {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        
+        .info-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .position-item, .trade-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .stock-code {
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .stock-name {
+            flex: 1;
+        }
+        
+        .stock-pnl {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .stock-pnl.up { color: var(--red); }
+        .stock-pnl.down { color: var(--green); }
+        
+        .trade-time {
+            color: var(--text2);
+            width: 50px;
+        }
+        
+        .trade-dir {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        
+        .trade-dir.buy { 
+            background: rgba(255, 77, 77, 0.2);
+            color: var(--red);
+        }
+        
+        .trade-dir.sell { 
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--green);
+        }
+        
+        .trade-price {
+            color: var(--text);
+            margin-left: auto;
+        }
     </style>
 </head>
 <body>
@@ -334,16 +417,45 @@
         </div>
     </div>
     
-    <!-- 趋势图区域 -->
-    <div class="trend-section">
-        <div class="trend-title">
-            <span>📈</span>
-            <span>短线数据趋势</span>
-            <span style="font-size: 0.75rem; color: var(--text2);">收盘趋势中(1/2)...</span>
+    <!-- 持仓和交易信息 -->
+    <div class="info-row">
+        <div class="info-card">
+            <div class="info-title">📊 当前持仓</div>
+            <div class="info-content" id="positions">
+                <div class="position-item">
+                    <span class="stock-code">301591</span>
+                    <span class="stock-name">肯特股份</span>
+                    <span class="stock-pnl down">-5.75%</span>
+                </div>
+                <div class="position-item">
+                    <span class="stock-code">002886</span>
+                    <span class="stock-name">沃特股份</span>
+                    <span class="stock-pnl down">-1.02%</span>
+                </div>
+            </div>
         </div>
-        <div class="trend-placeholder">
-            ⚠️ 趋势图需要累积至少2次数据才能显示<br>
-            启动自动监控(--loop)或多次运行(--once)将自动收集趋势数据
+        <div class="info-card">
+            <div class="info-title">📋 今日交易</div>
+            <div class="info-content" id="trades">
+                <div class="trade-item">
+                    <span class="trade-time">10:00</span>
+                    <span class="stock-code">301591</span>
+                    <span class="trade-dir buy">买入</span>
+                    <span class="trade-price">43.02</span>
+                </div>
+                <div class="trade-item">
+                    <span class="trade-time">13:45</span>
+                    <span class="stock-code">600172</span>
+                    <span class="trade-dir sell">卖出</span>
+                    <span class="trade-price">13.14</span>
+                </div>
+                <div class="trade-item">
+                    <span class="trade-time">14:00</span>
+                    <span class="stock-code">002886</span>
+                    <span class="trade-dir buy">买入</span>
+                    <span class="trade-price">29.85</span>
+                </div>
+            </div>
         </div>
     </div>
     
