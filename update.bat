@@ -32,14 +32,21 @@ if exist "%SOURCE%\monitor_%DATE%.html" (
 )
 
 echo.
-echo [2/4] 更新账户报告...
+echo [2/5] 更新账户报告...
 if exist "C:\Users\Administrator\WorkBuddy\20260410111908\astock_analyzer\_pnl_report.html" (
     copy "C:\Users\Administrator\WorkBuddy\20260410111908\astock_analyzer\_pnl_report.html" "%TARGET%\pnl_report.html" >nul
     echo   ✓ 账户报告已更新
 )
 
 echo.
-echo [3/4] 提交到Git...
+echo [3/5] 更新主页链接到今天的报告...
+cd /d "%TARGET%"
+powershell -Command "(Get-Content index.html) -replace 'trade_analysis_\d{8}', 'trade_analysis_%DATE%' -replace 'screen_\d{8}', 'screen_%DATE%' | Set-Content index.html"
+powershell -Command "(Get-Content index.html) -replace 'review_\d{8}', 'review_%DATE%' -replace 'monitor_\d{8}', 'monitor_%DATE%' | Set-Content index.html"
+echo   ✓ 主页链接已更新为 %DATE%
+
+echo.
+echo [4/5] 提交到Git...
 cd /d "%TARGET%"
 git add -A
 git commit -m "Auto update: %DATE%" 2>nul
@@ -50,16 +57,14 @@ if %errorlevel%==0 (
 )
 
 echo.
-echo [4/4] 推送到GitHub...
+echo [5/5] 推送到GitHub并部署Netlify...
 git push origin main 2>nul
 if %errorlevel%==0 (
     echo   ✓ GitHub推送成功
 ) else (
-    echo   ✗ GitHub推送失败，请检查网络
+    echo   ✗ GitHub推送失败
 )
 
-echo.
-echo [5/5] 部署到Netlify...
 call netlify deploy --dir . --prod 2>nul
 if %errorlevel%==0 (
     echo   ✓ Netlify部署成功
