@@ -3,57 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>盘中监控 - 情绪仪表盘</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>盘中实时监控</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --gold: #FFD700;
-            --red: #FF4D4D;
-            --green: #00FF88;
-            --cyan: #00D4FF;
-            --dark: #0d1117;
-            --card: #161b22;
-            --border: #30363d;
-            --text: #e6edf3;
-            --text2: #8b949e;
+            --bg: #1a1a2e;
+            --card: #252547;
+            --border: #3a3a5c;
+            --text: #e0e0e0;
+            --text2: #8888aa;
+            --red: #ff4757;
+            --green: #2ed573;
+            --cyan: #00d4ff;
+            --gold: #ffd700;
+            --pink: #ff6b9d;
         }
         
         body {
-            background: var(--dark);
+            background: var(--bg);
             color: var(--text);
-            font-family: 'Noto Sans SC', sans-serif;
-            min-height: 100vh;
-            overflow-y: auto;
-            padding: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 20px;
         }
         
-        /* 顶部数据卡片 */
-        .stats-row {
+        /* 标题 */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            color: var(--pink);
+            margin-bottom: 8px;
+        }
+        
+        .header-info {
+            font-size: 0.85rem;
+            color: var(--text2);
+        }
+        
+        .live-badge {
+            color: var(--green);
+            font-weight: 600;
+        }
+        
+        /* 数据卡片 */
+        .stats-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 1000px) {
+            .stats-grid { grid-template-columns: repeat(4, 1fr); }
         }
         
         .stat-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px;
+            border-radius: 10px;
+            padding: 16px;
             text-align: center;
+            position: relative;
         }
         
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text2);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         
         .stat-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 700;
         }
         
@@ -63,77 +87,99 @@
         .stat-value.gold { color: var(--gold); }
         
         .stat-sub {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             color: var(--text2);
-            margin-top: 2px;
+            margin-top: 4px;
         }
+        
+        .stat-change {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .stat-change.up { background: rgba(255, 71, 87, 0.2); color: var(--red); }
+        .stat-change.down { background: rgba(46, 213, 115, 0.2); color: var(--green); }
         
         /* 趋势图区域 */
         .trend-section {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-            text-align: center;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
         }
         
-        .trend-title {
-            font-size: 0.9rem;
-            color: var(--gold);
-            margin-bottom: 12px;
+        .section-title {
+            font-size: 1rem;
+            color: var(--cyan);
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
         }
         
-        .trend-placeholder {
-            color: var(--text2);
-            font-size: 0.85rem;
-            padding: 20px;
-        }
-        
-        /* 主内容区域 */
-        .main-content {
+        .charts-row {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-        
-        /* 情绪仪表盘 */
-        .sentiment-dashboard {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            display: grid;
-            grid-template-columns: 200px 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
         
-        @media (max-width: 900px) {
-            .sentiment-dashboard { grid-template-columns: 1fr; }
-            .stats-row { grid-template-columns: repeat(4, 1fr); }
+        @media (max-width: 800px) {
+            .charts-row { grid-template-columns: 1fr; }
         }
         
-        /* 左侧情绪等级 */
-        .sentiment-level {
+        .chart-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            height: 200px;
+        }
+        
+        .chart-title {
+            font-size: 0.85rem;
+            color: var(--text2);
+            margin-bottom: 10px;
+        }
+        
+        canvas {
+            width: 100%;
+            height: calc(100% - 30px);
+        }
+        
+        /* 情绪仪表盘 */
+        .sentiment-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 24px;
+        }
+        
+        @media (max-width: 900px) {
+            .sentiment-section { grid-template-columns: 1fr; }
+        }
+        
+        .sentiment-left {
             text-align: center;
             padding: 20px;
-            background: rgba(255, 77, 77, 0.1);
-            border: 1px solid rgba(255, 77, 77, 0.3);
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(255, 71, 87, 0.1), rgba(255, 107, 157, 0.1));
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 10px;
         }
         
-        .level-badge {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
+        .level-big {
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--red);
         }
         
-        .level-text {
+        .level-name {
             font-size: 1rem;
             color: var(--gold);
             margin: 8px 0;
@@ -142,128 +188,99 @@
         .level-score {
             font-size: 0.85rem;
             color: var(--text2);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .level-bar {
-            height: 6px;
+            height: 8px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .level-bar-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--green), var(--gold), var(--red));
-            width: 57%;
-            border-radius: 3px;
+            width: 71%;
         }
         
         .level-desc {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text2);
         }
         
-        /* 右侧详情 */
-        .sentiment-details {
+        .sentiment-right {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
         }
         
-        /* 指数卡片 */
-        .index-cards {
+        .index-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
         
         .index-card {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 6px;
-            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 16px;
             text-align: center;
         }
         
         .index-name {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text2);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         
         .index-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
         
         .index-value.up { color: var(--red); }
         .index-value.down { color: var(--green); }
         
-        /* 情绪标签 */
-        .sentiment-tags {
+        .tags-section {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
         
-        .sentiment-row {
+        .tag-row {
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-        
-        .sentiment-icon {
-            font-size: 1rem;
-        }
-        
-        .tag-list {
-            display: flex;
             flex-wrap: wrap;
-            gap: 6px;
         }
         
-        .tag {
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 4px;
-            padding: 3px 8px;
-            font-size: 0.75rem;
+        .tag-label {
+            font-size: 0.85rem;
             color: var(--cyan);
         }
         
-        .tag.red { 
-            background: rgba(255, 77, 77, 0.1);
-            border-color: rgba(255, 77, 77, 0.2);
-            color: var(--red);
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: var(--cyan);
         }
         
-        .tag.green { 
-            background: rgba(0, 255, 136, 0.1);
-            border-color: rgba(0, 255, 136, 0.2);
-            color: var(--green);
-        }
+        .tag.red { background: rgba(255, 71, 87, 0.1); border-color: rgba(255, 71, 87, 0.2); color: var(--red); }
+        .tag.green { background: rgba(46, 213, 115, 0.1); border-color: rgba(46, 213, 115, 0.2); color: var(--green); }
+        .tag.gold { background: rgba(255, 215, 0, 0.1); border-color: rgba(255, 215, 0, 0.2); color: var(--gold); }
         
-        .tag.gold { 
-            background: rgba(255, 215, 0, 0.1);
-            border-color: rgba(255, 215, 0, 0.2);
-            color: var(--gold);
-        }
-        
-        /* 题材涨停排名 */
-        .sector-rank {
+        /* 题材排名 */
+        .sector-section {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            margin-top: 16px;
-        }
-        
-        .sector-title {
-            font-size: 0.9rem;
-            color: var(--gold);
-            margin-bottom: 12px;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
         }
         
         .sector-list {
@@ -275,165 +292,48 @@
         .sector-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 8px 12px;
+            padding: 10px 16px;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 4px;
+            border-radius: 6px;
         }
         
-        .sector-name {
-            font-size: 0.85rem;
-        }
-        
-        .sector-count {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            color: var(--red);
-        }
-        
-        /* 更新时间 */
-        .update-time {
-            text-align: right;
-            font-size: 0.75rem;
-            color: var(--text2);
-            margin-bottom: 12px;
-        }
-        
-        /* 信息行 */
-        .info-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-        
-        @media (max-width: 900px) {
-            .info-row { grid-template-columns: 1fr; }
-        }
-        
-        .info-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-        }
-        
-        .info-title {
-            font-size: 0.9rem;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-        
-        .info-content {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .position-item, .trade-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 4px;
-            font-size: 0.85rem;
-        }
-        
-        .stock-code {
-            color: var(--gold);
-            font-weight: 600;
-        }
-        
-        .stock-name {
-            flex: 1;
-        }
-        
-        .stock-pnl {
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .stock-pnl.up { color: var(--red); }
-        .stock-pnl.down { color: var(--green); }
-        
-        .trade-time {
-            color: var(--text2);
-            width: 50px;
-        }
-        
-        .trade-dir {
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-        }
-        
-        .trade-dir.buy { 
-            background: rgba(255, 77, 77, 0.2);
-            color: var(--red);
-        }
-        
-        .trade-dir.sell { 
-            background: rgba(0, 255, 136, 0.2);
-            color: var(--green);
-        }
-        
-        .trade-price {
-            color: var(--text);
-            margin-left: auto;
-        }
-        
-        /* 趋势图 */
-        .trend-section {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-        
-        .trend-title {
-            font-size: 0.9rem;
-            color: var(--gold);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .trend-chart {
-            height: 150px;
-            position: relative;
-        }
-        
-        #trendCanvas {
-            width: 100%;
-            height: 100%;
-        }
+        .sector-name { font-size: 0.9rem; }
+        .sector-count { color: var(--red); font-weight: 600; }
     </style>
 </head>
 <body>
-    <!-- 顶部数据卡片 -->
-    <div class="stats-row">
+    <!-- 标题 -->
+    <div class="header">
+        <h1>盘中实时监控 V2.3</h1>
+        <div class="header-info">
+            2026-05-28 | 更新: <span id="update-time">13:49:33</span> | <span class="live-badge">● LIVE</span> | 每60秒自动刷新
+        </div>
+    </div>
+    
+    <!-- 数据卡片 -->
+    <div class="stats-grid">
         <div class="stat-card">
-            <div class="stat-label">监控数</div>
-            <div class="stat-value cyan">21</div>
+            <div class="stat-label">监控股行情</div>
+            <div class="stat-value cyan">21/20</div>
             <div class="stat-sub">全市场</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">上涨</div>
-            <div class="stat-value red" id="up-count">1634</div>
+            <div class="stat-value red" id="up-count">2925</div>
+            <span class="stat-change up">-45</span>
         </div>
         <div class="stat-card">
             <div class="stat-label">下跌</div>
-            <div class="stat-value green" id="down-count">3526</div>
+            <div class="stat-value green" id="down-count">2192</div>
+            <span class="stat-change down">+34</span>
         </div>
         <div class="stat-card">
             <div class="stat-label">涨停</div>
-            <div class="stat-value red" id="limit-up">92</div>
+            <div class="stat-value red" id="limit-up">104</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">跌停</div>
-            <div class="stat-value green" id="limit-down">12</div>
+            <div class="stat-value green" id="limit-down">10</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">炸板</div>
@@ -441,148 +341,92 @@
         </div>
         <div class="stat-card">
             <div class="stat-label">异动</div>
-            <div class="stat-value cyan" id="abnormal">25</div>
+            <div class="stat-value cyan" id="abnormal">24</div>
         </div>
     </div>
     
-    <!-- 短线数据趋势 -->
+    <!-- 趋势图 -->
     <div class="trend-section">
-        <div class="trend-title">
-            <span>📈</span>
-            <span>短线数据趋势</span>
-            <span style="font-size: 0.75rem; color: var(--text2);">实时更新</span>
-        </div>
-        <div class="trend-chart">
-            <canvas id="trendCanvas"></canvas>
-        </div>
-    </div>
-    
-    <!-- 持仓和交易信息 -->
-    <div class="info-row">
-        <div class="info-card">
-            <div class="info-title">📊 当前持仓</div>
-            <div class="info-content" id="positions">
-                <div class="position-item">
-                    <span class="stock-code">301591</span>
-                    <span class="stock-name">肯特股份</span>
-                    <span class="stock-pnl down">-5.75%</span>
-                </div>
-                <div class="position-item">
-                    <span class="stock-code">002886</span>
-                    <span class="stock-name">沃特股份</span>
-                    <span class="stock-pnl down">-1.02%</span>
-                </div>
+        <div class="section-title">📊 短线数据趋势 (23个数据点)</div>
+        <div class="charts-row">
+            <div class="chart-box">
+                <div class="chart-title">情绪趋势</div>
+                <canvas id="sentimentChart"></canvas>
             </div>
-        </div>
-        <div class="info-card">
-            <div class="info-title">📋 今日交易</div>
-            <div class="info-content" id="trades">
-                <div class="trade-item">
-                    <span class="trade-time">10:00</span>
-                    <span class="stock-code">301591</span>
-                    <span class="trade-dir buy">买入</span>
-                    <span class="trade-price">43.02</span>
-                </div>
-                <div class="trade-item">
-                    <span class="trade-time">13:45</span>
-                    <span class="stock-code">600172</span>
-                    <span class="trade-dir sell">卖出</span>
-                    <span class="trade-price">13.14</span>
-                </div>
-                <div class="trade-item">
-                    <span class="trade-time">14:00</span>
-                    <span class="stock-code">002886</span>
-                    <span class="trade-dir buy">买入</span>
-                    <span class="trade-price">29.85</span>
-                </div>
+            <div class="chart-box">
+                <div class="chart-title">涨跌数</div>
+                <canvas id="updownChart"></canvas>
             </div>
         </div>
     </div>
     
-    <!-- 主内容区域 -->
-    <div class="main-content">
-        <div class="sentiment-dashboard">
-            <!-- 左侧情绪等级 -->
-            <div class="sentiment-level">
-                <div class="level-badge" id="sentiment-level">L4</div>
-                <div class="level-text">情绪偏强</div>
-                <div class="level-score" id="sentiment-score">情绪得分 57/100</div>
-                <div class="level-bar">
-                    <div class="level-bar-fill"></div>
-                </div>
-                <div class="level-desc" id="sentiment-desc">可以参与，优选前排核心标的</div>
+    <!-- 情绪仪表盘 -->
+    <div class="sentiment-section">
+        <div class="sentiment-left">
+            <div class="level-big">L4</div>
+            <div class="level-name">情绪偏强</div>
+            <div class="level-score">情绪得分 71/100</div>
+            <div class="level-bar">
+                <div class="level-bar-fill"></div>
             </div>
-            
-            <!-- 右侧详情 -->
-            <div class="sentiment-details">
-                <!-- 指数卡片 -->
-                <div class="index-cards">
-                    <div class="index-card">
-                        <div class="index-name">上证</div>
-                        <div class="index-value down" id="shanghai">-0.44%</div>
-                    </div>
-                    <div class="index-card">
-                        <div class="index-name">深成指</div>
-                        <div class="index-value down" id="shenzhen">-0.30%</div>
-                    </div>
-                    <div class="index-card">
-                        <div class="index-name">创业板</div>
-                        <div class="index-value up" id="chinext">+0.56%</div>
-                    </div>
-                </div>
-                
-                <!-- 情绪标签 -->
-                <div class="sentiment-tags">
-                    <div class="sentiment-row">
-                        <span class="sentiment-icon">🔹</span>
-                        <span style="font-size: 0.8rem; color: var(--text2);">大盘情绪 L3（权重60%）</span>
-                    </div>
-                    <div class="tag-list">
-                        <span class="tag">上证-0.44%(微跌)</span>
-                        <span class="tag">深成指-0.30%(微跌)</span>
-                        <span class="tag">创业板+0.56%(微涨)</span>
-                        <span class="tag red">全市场涨跌比1634:3526(偏空)</span>
-                        <span class="tag red">全市场92只涨停(极度亢奋)</span>
-                        <span class="tag">全市场12只跌停(强)</span>
-                    </div>
-                    
-                    <div class="sentiment-row" style="margin-top: 8px;">
-                        <span class="sentiment-icon">🔹</span>
-                        <span style="font-size: 0.8rem; color: var(--text2);">题材情绪 L5（权重40%）| 封板率100% | 封板14 炸板0 | 最高4连板</span>
-                    </div>
-                    <div class="tag-list">
-                        <span class="tag gold">封板率100%(封板很好)</span>
-                        <span class="tag">主线电力2只涨停(主线明确)</span>
-                        <span class="tag">最高4连板(中位)</span>
-                    </div>
-                </div>
-            </div>
+            <div class="level-desc">可以参与，优选前排核心标的</div>
         </div>
         
-        <!-- 题材涨停排名 -->
-        <div class="sector-rank">
-            <div class="sector-title">🔥 题材涨停排名</div>
-            <div class="sector-list" id="sector-list">
-                <div class="sector-item">
-                    <span class="sector-name">电力</span>
-                    <span class="sector-count">2只</span>
+        <div class="sentiment-right">
+            <div class="index-row">
+                <div class="index-card">
+                    <div class="index-name">上证</div>
+                    <div class="index-value up" id="shanghai">+0.32%</div>
                 </div>
-                <div class="sector-item">
-                    <span class="sector-name">电池</span>
-                    <span class="sector-count">1只</span>
+                <div class="index-card">
+                    <div class="index-name">深成指</div>
+                    <div class="index-value up" id="shenzhen">+0.70%</div>
                 </div>
-                <div class="sector-item">
-                    <span class="sector-name">元件</span>
-                    <span class="sector-count">1只</span>
+                <div class="index-card">
+                    <div class="index-name">创业板</div>
+                    <div class="index-value up" id="chinext">+1.53%</div>
                 </div>
-                <div class="sector-item">
-                    <span class="sector-name">数据中心(AIDC)</span>
-                    <span class="sector-count">1只</span>
+            </div>
+            
+            <div class="tags-section">
+                <div class="tag-row">
+                    <span class="tag-label">🔹 大盘情绪 L4（权重60%）</span>
                 </div>
-                <div class="sector-item">
-                    <span class="sector-name">光学光申</span>
-                    <span class="sector-count">1只</span>
+                <div class="tag-row">
+                    <span class="tag">上证+0.32%(微涨)</span>
+                    <span class="tag">深成指+0.70%(微涨)</span>
+                    <span class="tag">创业板+1.53%(大涨)</span>
+                    <span class="tag red">全市场104只涨停(极度亢奋)</span>
+                    <span class="tag">全市场10只跌停(弱)</span>
                 </div>
+                
+                <div class="tag-row" style="margin-top: 8px;">
+                    <span class="tag-label">🔹 题材情绪 L5（权重40%）| 封板率100% | 封板14 炸板0 | 最高4连板</span>
+                </div>
+                <div class="tag-row">
+                    <span class="tag gold">封板率100%(封板很好)</span>
+                    <span class="tag">主线电力2只涨停(主线明确)</span>
+                    <span class="tag">最高4连板(中位)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 题材排名 -->
+    <div class="sector-section">
+        <div class="section-title">🔥 题材涨停排名</div>
+        <div class="sector-list" id="sector-list">
+            <div class="sector-item">
+                <span class="sector-name">电力</span>
+                <span class="sector-count">2只</span>
+            </div>
+            <div class="sector-item">
+                <span class="sector-name">元件</span>
+                <span class="sector-count">2只</span>
+            </div>
+            <div class="sector-item">
+                <span class="sector-name">电池</span>
+                <span class="sector-count">1只</span>
             </div>
         </div>
     </div>
@@ -592,178 +436,180 @@
         function updateTime() {
             const now = new Date();
             const timeStr = now.toLocaleTimeString('zh-CN', { hour12: false });
-            document.title = `盘中监控 - ${timeStr}`;
+            document.getElementById('update-time').textContent = timeStr;
         }
         updateTime();
         setInterval(updateTime, 1000);
         
-        // 本地服务器地址
-        const SERVER_URL = 'http://localhost:8088';
-        
-        // 加载实时数据
-        async function loadMonitorData() {
-            try {
-                // 优先从本地服务器获取
-                const response = await fetch(`${SERVER_URL}/api/monitor?t=${Date.now()}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    updateUI(data);
-                    console.log('✅ 已连接本地服务器');
-                    return;
-                }
-            } catch (e) {
-                console.log('⚠️ 本地服务器未连接，尝试JSON文件');
+        // 绘制情绪趋势图
+        function drawSentimentChart() {
+            const canvas = document.getElementById('sentimentChart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.offsetWidth;
+            const height = canvas.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            // 模拟数据
+            const data = [52, 55, 53, 57, 54, 58, 56, 59, 57, 60, 58, 62, 60, 64, 62, 66, 64, 68, 66, 70, 68, 71, 71];
+            const minVal = Math.min(...data);
+            const maxVal = Math.max(...data);
+            const range = maxVal - minVal || 1;
+            
+            // 绘制网格
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = (height / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(40, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+                
+                ctx.fillStyle = '#8888aa';
+                ctx.font = '10px sans-serif';
+                ctx.textAlign = 'right';
+                ctx.fillText(Math.round(maxVal - (range / 4) * i), 35, y + 4);
             }
             
-            // 降级：从JSON文件获取
+            // 绘制折线
+            ctx.strokeStyle = '#ff6b9d';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            const stepX = (width - 50) / (data.length - 1);
+            data.forEach((val, i) => {
+                const x = 45 + i * stepX;
+                const y = height - ((val - minVal) / range) * (height - 20) - 10;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            
+            // 绘制数据点
+            ctx.fillStyle = '#ff6b9d';
+            data.forEach((val, i) => {
+                const x = 45 + i * stepX;
+                const y = height - ((val - minVal) / range) * (height - 20) - 10;
+                ctx.beginPath();
+                ctx.arc(x, y, 3, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+        
+        // 绘制涨跌数图
+        function drawUpdownChart() {
+            const canvas = document.getElementById('updownChart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.offsetWidth;
+            const height = canvas.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+            
+            ctx.clearRect(0, 0, width, height);
+            
+            const upData = [2800, 2850, 2900, 2880, 2920, 2900, 2950, 2930, 2980, 2960, 3000, 2980, 3020, 3000, 3050, 3030, 3080, 3060, 3100, 3080, 3120, 3100, 2925];
+            const downData = [2200, 2150, 2100, 2120, 2080, 2100, 2050, 2070, 2020, 2040, 2000, 2020, 1980, 2000, 1950, 1970, 1920, 1940, 1890, 1910, 1860, 1880, 2192];
+            
+            const maxVal = Math.max(...upData, ...downData);
+            const minVal = Math.min(...upData, ...downData);
+            const range = maxVal - minVal || 1;
+            
+            // 绘制网格
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = (height / 4) * i;
+                ctx.beginPath();
+                ctx.moveTo(40, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+                
+                ctx.fillStyle = '#8888aa';
+                ctx.font = '10px sans-serif';
+                ctx.textAlign = 'right';
+                ctx.fillText(Math.round(maxVal - (range / 4) * i), 35, y + 4);
+            }
+            
+            const stepX = (width - 50) / (upData.length - 1);
+            
+            // 绘制上涨线（红色）
+            ctx.strokeStyle = '#ff4757';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            upData.forEach((val, i) => {
+                const x = 45 + i * stepX;
+                const y = height - ((val - minVal) / range) * (height - 20) - 10;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            
+            // 绘制下跌线（绿色）
+            ctx.strokeStyle = '#2ed573';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            downData.forEach((val, i) => {
+                const x = 45 + i * stepX;
+                const y = height - ((val - minVal) / range) * (height - 20) - 10;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            ctx.stroke();
+            
+            // 图例
+            ctx.fillStyle = '#ff4757';
+            ctx.fillRect(width - 80, 10, 12, 3);
+            ctx.fillStyle = '#e0e0e0';
+            ctx.font = '10px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('上涨', width - 65, 14);
+            
+            ctx.fillStyle = '#2ed573';
+            ctx.fillRect(width - 80, 22, 12, 3);
+            ctx.fillStyle = '#e0e0e0';
+            ctx.fillText('下跌', width - 65, 26);
+        }
+        
+        // 初始化图表
+        setTimeout(() => {
+            drawSentimentChart();
+            drawUpdownChart();
+        }, 100);
+        
+        window.addEventListener('resize', () => {
+            drawSentimentChart();
+            drawUpdownChart();
+        });
+        
+        // 加载实时数据
+        async function loadData() {
             try {
-                const response = await fetch(`monitor_data.json?t=${Date.now()}`);
+                const response = await fetch('http://localhost:8088/api/monitor?t=' + Date.now());
                 if (response.ok) {
                     const data = await response.json();
-                    updateUI(data);
+                    if (data.market) {
+                        document.getElementById('up-count').textContent = data.market.up_count || 2925;
+                        document.getElementById('down-count').textContent = data.market.down_count || 2192;
+                        document.getElementById('limit-up').textContent = data.market.limit_up || 104;
+                        document.getElementById('limit-down').textContent = data.market.limit_down || 10;
+                        document.getElementById('broken-limit').textContent = data.market.broken_limit || 5;
+                        document.getElementById('abnormal').textContent = data.market.abnormal || 24;
+                    }
                 }
             } catch (e) {
                 console.log('使用默认数据');
             }
         }
         
-        function updateUI(data) {
-            // 更新市场数据
-            if (data.market) {
-                document.getElementById('up-count').textContent = data.market.up_count || 0;
-                document.getElementById('down-count').textContent = data.market.down_count || 0;
-                document.getElementById('limit-up').textContent = data.market.limit_up || 0;
-                document.getElementById('limit-down').textContent = data.market.limit_down || 0;
-                document.getElementById('broken-limit').textContent = data.market.broken_limit || 0;
-                document.getElementById('abnormal').textContent = data.market.abnormal || 0;
-            }
-            
-            // 更新情绪指标
-            if (data.sentiment) {
-                document.getElementById('sentiment-level').textContent = data.sentiment.level || 'L3';
-                document.getElementById('sentiment-score').textContent = `情绪得分 ${data.sentiment.score || 50}/100`;
-                document.getElementById('sentiment-desc').textContent = data.sentiment.description || '中性';
-            }
-            
-            // 更新指数
-            if (data.indices) {
-                updateIndex('shanghai', data.indices.shanghai);
-                updateIndex('shenzhen', data.indices.shenzhen);
-                updateIndex('chinext', data.indices.chinext);
-            }
-            
-            // 更新题材排名
-            if (data.sectors && data.sectors.length > 0) {
-                const sectorList = document.getElementById('sector-list');
-                sectorList.innerHTML = data.sectors.map(s => `
-                    <div class="sector-item">
-                        <span class="sector-name">${s.name}</span>
-                        <span class="sector-count">${s.count}只</span>
-                    </div>
-                `).join('');
-            }
-            
-            // 更新时间
-            if (data.update_time) {
-                document.getElementById('update-time').textContent = `更新: ${data.update_time}`;
-            }
-        }
-        
-        function updateIndex(id, value) {
-            const el = document.getElementById(id);
-            if (el) {
-                const change = parseFloat(value) || 0;
-                el.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
-                el.className = `index-value ${change >= 0 ? 'up' : 'down'}`;
-            }
-        }
-        
-        // 页面加载时获取数据
-        loadMonitorData();
-        
-        // 每30秒刷新数据
-        setInterval(loadMonitorData, 30000);
-        
-        // 绘制趋势图
-        function drawTrendChart() {
-            const canvas = document.getElementById('trendCanvas');
-            if (!canvas) return;
-            
-            const ctx = canvas.getContext('2d');
-            const width = canvas.offsetWidth;
-            const height = canvas.offsetHeight;
-            
-            canvas.width = width;
-            canvas.height = height;
-            
-            // 模拟数据
-            const data = [52, 55, 53, 57, 54, 58, 56, 59, 57, 60, 58, 57];
-            const labels = ['9:30', '10:00', '10:30', '11:00', '11:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'];
-            
-            // 清空画布
-            ctx.clearRect(0, 0, width, height);
-            
-            // 绘制背景网格
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-            ctx.lineWidth = 1;
-            for (let i = 0; i < 5; i++) {
-                const y = (height / 5) * i;
-                ctx.beginPath();
-                ctx.moveTo(0, y);
-                ctx.lineTo(width, y);
-                ctx.stroke();
-            }
-            
-            // 绘制折线
-            ctx.strokeStyle = '#00D4FF';
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            
-            const stepX = width / (data.length - 1);
-            const minVal = Math.min(...data);
-            const maxVal = Math.max(...data);
-            const range = maxVal - minVal || 1;
-            
-            data.forEach((val, i) => {
-                const x = i * stepX;
-                const y = height - ((val - minVal) / range) * (height - 20) - 10;
-                
-                if (i === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
-                }
-            });
-            
-            ctx.stroke();
-            
-            // 绘制数据点
-            ctx.fillStyle = '#FFD700';
-            data.forEach((val, i) => {
-                const x = i * stepX;
-                const y = height - ((val - minVal) / range) * (height - 20) - 10;
-                
-                ctx.beginPath();
-                ctx.arc(x, y, 4, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            
-            // 绘制标签
-            ctx.fillStyle = '#8b949e';
-            ctx.font = '10px sans-serif';
-            ctx.textAlign = 'center';
-            
-            [0, 3, 6, 9, 11].forEach(i => {
-                const x = i * stepX;
-                ctx.fillText(labels[i], x, height - 2);
-            });
-        }
-        
-        // 初始绘制
-        setTimeout(drawTrendChart, 100);
-        
-        // 窗口大小改变时重绘
-        window.addEventListener('resize', drawTrendChart);
+        loadData();
+        setInterval(loadData, 60000);
     </script>
 </body>
 </html>
