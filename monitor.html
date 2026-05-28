@@ -10,11 +10,14 @@
         
         :root {
             --gold: #FFD700;
-            --green: #00FF88;
             --red: #FF4D4D;
+            --green: #00FF88;
             --cyan: #00D4FF;
             --dark: #0a0a1a;
             --card-bg: rgba(22, 33, 62, 0.8);
+            /* A股配色：红涨绿跌 */
+            --up: #FF4D4D;
+            --down: #00FF88;
         }
         
         body {
@@ -271,6 +274,9 @@
         
         .text-green { color: var(--green); }
         .text-red { color: var(--red); }
+        /* A股配色：涨用红色，跌用绿色 */
+        .text-up { color: var(--red); }
+        .text-down { color: var(--green); }
         .text-gold { color: var(--gold); }
         
         /* 滚动条样式 */
@@ -435,14 +441,14 @@
                                 <td>100</td>
                                 <td>43.075</td>
                                 <td>40.60</td>
-                                <td class="text-red">-5.75%</td>
+                                <td class="text-green">-5.75%</td>
                             </tr>
                             <tr>
                                 <td class="text-gold">002886</td>
                                 <td>100</td>
                                 <td>29.905</td>
                                 <td>29.60</td>
-                                <td class="text-red">-1.02%</td>
+                                <td class="text-green">-1.02%</td>
                             </tr>
                         </tbody>
                     </table>
@@ -462,19 +468,19 @@
                                 <tr>
                                     <td>10:00</td>
                                     <td>301591</td>
-                                    <td class="text-green">买入</td>
+                                    <td class="text-red">买入</td>
                                     <td>43.02</td>
                                 </tr>
                                 <tr>
                                     <td>13:45</td>
                                     <td>600172</td>
-                                    <td class="text-red">卖出</td>
+                                    <td class="text-green">卖出</td>
                                     <td>13.14</td>
                                 </tr>
                                 <tr>
                                     <td>14:00</td>
                                     <td>002886</td>
-                                    <td class="text-green">买入</td>
+                                    <td class="text-red">买入</td>
                                     <td>29.85</td>
                                 </tr>
                             </tbody>

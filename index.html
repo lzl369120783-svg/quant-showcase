@@ -10,11 +10,14 @@
         
         :root {
             --gold: #FFD700;
-            --green: #00FF88;
             --red: #FF4D4D;
+            --green: #00FF88;
             --cyan: #00D4FF;
             --dark: #0a0a1a;
             --darker: #050510;
+            /* A股配色：红涨绿跌 */
+            --up: #FF4D4D;
+            --down: #00FF88;
         }
         
         body {
@@ -241,8 +244,8 @@
             white-space: nowrap;
         }
         
-        .ticker-item.up { color: var(--green); }
-        .ticker-item.down { color: var(--red); }
+        .ticker-item.up { color: var(--red); }
+        .ticker-item.down { color: var(--green); }
         .ticker-item.flat { color: #888; }
         
         @keyframes ticker {
