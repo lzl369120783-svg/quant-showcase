@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盘前纪要 - 2026-05-28 周四</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .back-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+        }
+        .header h1 {
+            color: #FFD700;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header .date {
+            color: #a0a0b0;
+            font-size: 14px;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .section-header {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section-header h2 {
+            color: #FFD700;
+            font-size: 18px;
+        }
+        .section-header .toggle {
+            color: #a0a0b0;
+            transition: transform 0.3s;
+        }
+        .section-header .toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+        .section-content {
+            padding: 15px 20px;
+            max-height: 3000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+        }
+        .section-content.collapsed {
+            max-height: 0;
+            padding: 0 20px;
+        }
+        .content-text {
+            white-space: pre-wrap;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 12px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 22px; }
+            .section-header h2 { font-size: 16px; }
+        }
+    </style>
+    <script src="../back-button.js"></script>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-btn">← 返回首页</a>
+        
+        <div class="header">
+            <h1>📊 盘前纪要</h1>
+            <div class="date">2026-05-28 周四 · 来源：韭研公社</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📰 盘前纪要</h2>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="content-text">5月28日盘前纪要
+
+**No.1 盘前热点事件**
+
+一、昨日热点
+电力：华电能源
+电容：江海股份
+数据中心：泰永长征、四方股份
+PCB：中京电子
+消费：步步高
+短剧：欢瑞世纪
+
+二、多地用电负荷创历史新高 欧洲热到失控
+广东电网用电负荷今年第一次创新高，达到1.6593亿千瓦
+广西电网系统负荷今年第四次创历史新高，达到3881.6万千瓦
+欧洲罕见"超前热浪"席卷多国
+
+电力：华电能源、华银电力、辽宁能源、华电辽能
+广东+电力：粤电力A、韶能股份
+广西+电力：桂冠电力、广西能源
+
+三、伊美谅解备忘录初步非正式文件内容披露
+美国承诺解除针对伊朗的海上封锁
+WTI原油期货日内下跌4%
+
+四、蓝箭航天无锡生产基地投产
+国内首个基于高强度不锈钢和智能化激光制造技术的火箭批量生产工厂
+蓝箭航天：鲁信创投、金风科技
+
+五、央视财经：中国算力服务加速出海
+汕头"词元出海"日均百亿词元
+深圳微型主机出货量占全球市场15%
+
+汕头算力：海兰信、天亿马
+深圳微型主机：智微智能、工业富联
+
+六、行业要闻
+1、和林微纳：华为韬定律+精微制造
+2、字节跳动考虑今年支出最多700亿美元用于AI基础设施（润泽科技）
+3、恒生港美科技指数将纳入SpaceX（再升科技、西部材料）
+4、段永平举牌泡泡玛特（新消费）
+5、长鑫科技科创板IPO获上市委会议通过
+
+连板梯队：
+**3连板**：华电能源、香江控股、华塑控股
+**2连板**：步步高、盛龙股份、真视通、中京电子、中百集团
+
+人气热榜：
+同花顺：华天科技、长电科技、华电辽能、京东方A、大唐发电
+东方财富：华天科技、长电科技、华电辽能、中京电子、华能蒙电</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📋 开盘必读</h2>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="content-text">5月28日开盘必读资讯
+
+一、盘前资讯
+
+1、要闻简讯
+- 加快建设大宗商品资源配置枢纽
+- 国家能源局：提升能源产业链供应链安全水平
+- 市场监管总局：部署开展信用赋能整治"内卷式"竞争专项行动
+- 司法部：加快研究推进人工智能健康发展综合性立法、低空经济立法
+- 存储牛市太疯狂！Valve宣布Steam Deck定价暴涨40%
+- Meta开启"付费时代"：AI聊天机器人订阅服务
+
+2、盘前个股人气热度
+韭研公社：中芯国际、长电科技、海星股份、昊华科技、东阳光
+同花顺：华天科技、长电科技、华电辽能、京东方A、大唐发电
+东方财富：华天科技、长电科技、华电辽能、中京电子、华能蒙电
+淘股吧：华天科技、中京电子、华电能源、步步高、N长进
+
+3、公司公告
+嘉亨家化：控股股东变更为杭州拼便宜
+恩捷股份：拟4亿元收购江苏爱思开100%股权
+德福科技：拟31亿元投建年产5万吨高端AI电子电路铜箔项目
+长信科技：拟不超30亿元采购算力服务器
+龙芯中科：拟定增不超23亿元
+
+4、知名美股
+美股三大股指小幅收涨
+美光科技收涨超3%，续创新高
+台积电股价收涨超2%，创历史新高
+Meta涨近4%
+WTI原油期货结算价收跌5.55%
+
+5、涨停复盘
+**3连板**：华电能源、香江控股、华塑控股
+**2连板**：步步高、盛龙股份、真视通、中京电子、中百集团
+
+AI硬件涨停7家，电力相关7家，被动元器件4家，消费4家</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            数据来源：韭研公社 · 仅供参考，不构成投资建议
+        </div>
+    </div>
+    
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.toggle');
+            content.classList.toggle('collapsed');
+            toggle.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
