@@ -534,12 +534,17 @@
     </div>
     
     <script>
-        // 鍔犺浇鍔ㄧ敾
-        window.addEventListener('load', () => {
+        // 加载动画 - 使用DOMContentLoaded确保页面解析完就隐藏
+        document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 document.getElementById('loadingScreen').classList.add('hidden');
-            }, 1200);
+            }, 800);
         });
+        // 备用：如果DOMContentLoaded没触发，3秒后强制隐藏
+        setTimeout(() => {
+            var el = document.getElementById('loadingScreen');
+            if (el) el.classList.add('hidden');
+        }, 3000);
         
         // 绮掑瓙鏁堟灉
         const canvas = document.getElementById('particles');
