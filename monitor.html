@@ -310,27 +310,27 @@
         </div>
         <div class="stat-card">
             <div class="stat-label">上涨</div>
-            <div class="stat-value red">1634</div>
+            <div class="stat-value red" id="up-count">1634</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">下跌</div>
-            <div class="stat-value green">3526</div>
+            <div class="stat-value green" id="down-count">3526</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">涨停</div>
-            <div class="stat-value red">92</div>
+            <div class="stat-value red" id="limit-up">92</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">跌停</div>
-            <div class="stat-value green">12</div>
+            <div class="stat-value green" id="limit-down">12</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">炸板</div>
-            <div class="stat-value gold">5</div>
+            <div class="stat-value gold" id="broken-limit">5</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">异动</div>
-            <div class="stat-value cyan">25</div>
+            <div class="stat-value cyan" id="abnormal">25</div>
         </div>
     </div>
     
@@ -352,13 +352,13 @@
         <div class="sentiment-dashboard">
             <!-- 左侧情绪等级 -->
             <div class="sentiment-level">
-                <div class="level-badge">L4</div>
+                <div class="level-badge" id="sentiment-level">L4</div>
                 <div class="level-text">情绪偏强</div>
-                <div class="level-score">情绪得分 57/100</div>
+                <div class="level-score" id="sentiment-score">情绪得分 57/100</div>
                 <div class="level-bar">
                     <div class="level-bar-fill"></div>
                 </div>
-                <div class="level-desc">可以参与，优选前排核心标的</div>
+                <div class="level-desc" id="sentiment-desc">可以参与，优选前排核心标的</div>
             </div>
             
             <!-- 右侧详情 -->
@@ -367,15 +367,15 @@
                 <div class="index-cards">
                     <div class="index-card">
                         <div class="index-name">上证</div>
-                        <div class="index-value down">-0.44%</div>
+                        <div class="index-value down" id="shanghai">-0.44%</div>
                     </div>
                     <div class="index-card">
                         <div class="index-name">深成指</div>
-                        <div class="index-value down">-0.30%</div>
+                        <div class="index-value down" id="shenzhen">-0.30%</div>
                     </div>
                     <div class="index-card">
                         <div class="index-name">创业板</div>
-                        <div class="index-value up">+0.56%</div>
+                        <div class="index-value up" id="chinext">+0.56%</div>
                     </div>
                 </div>
                 
@@ -410,7 +410,7 @@
         <!-- 题材涨停排名 -->
         <div class="sector-rank">
             <div class="sector-title">🔥 题材涨停排名</div>
-            <div class="sector-list">
+            <div class="sector-list" id="sector-list">
                 <div class="sector-item">
                     <span class="sector-name">电力</span>
                     <span class="sector-count">2只</span>
@@ -444,6 +444,76 @@
         }
         updateTime();
         setInterval(updateTime, 1000);
+        
+        // 加载实时数据
+        async function loadMonitorData() {
+            try {
+                const response = await fetch('monitor_data.json?t=' + Date.now());
+                if (response.ok) {
+                    const data = await response.json();
+                    updateUI(data);
+                }
+            } catch (e) {
+                console.log('使用默认数据');
+            }
+        }
+        
+        function updateUI(data) {
+            // 更新市场数据
+            if (data.market) {
+                document.getElementById('up-count').textContent = data.market.up_count || 0;
+                document.getElementById('down-count').textContent = data.market.down_count || 0;
+                document.getElementById('limit-up').textContent = data.market.limit_up || 0;
+                document.getElementById('limit-down').textContent = data.market.limit_down || 0;
+                document.getElementById('broken-limit').textContent = data.market.broken_limit || 0;
+                document.getElementById('abnormal').textContent = data.market.abnormal || 0;
+            }
+            
+            // 更新情绪指标
+            if (data.sentiment) {
+                document.getElementById('sentiment-level').textContent = data.sentiment.level || 'L3';
+                document.getElementById('sentiment-score').textContent = `情绪得分 ${data.sentiment.score || 50}/100`;
+                document.getElementById('sentiment-desc').textContent = data.sentiment.description || '中性';
+            }
+            
+            // 更新指数
+            if (data.indices) {
+                updateIndex('shanghai', data.indices.shanghai);
+                updateIndex('shenzhen', data.indices.shenzhen);
+                updateIndex('chinext', data.indices.chinext);
+            }
+            
+            // 更新题材排名
+            if (data.sectors && data.sectors.length > 0) {
+                const sectorList = document.getElementById('sector-list');
+                sectorList.innerHTML = data.sectors.map(s => `
+                    <div class="sector-item">
+                        <span class="sector-name">${s.name}</span>
+                        <span class="sector-count">${s.count}只</span>
+                    </div>
+                `).join('');
+            }
+            
+            // 更新时间
+            if (data.update_time) {
+                document.getElementById('update-time').textContent = `更新: ${data.update_time}`;
+            }
+        }
+        
+        function updateIndex(id, value) {
+            const el = document.getElementById(id);
+            if (el) {
+                const change = parseFloat(value) || 0;
+                el.textContent = (change >= 0 ? '+' : '') + change.toFixed(2) + '%';
+                el.className = `index-value ${change >= 0 ? 'up' : 'down'}`;
+            }
+        }
+        
+        // 页面加载时获取数据
+        loadMonitorData();
+        
+        // 每30秒刷新数据
+        setInterval(loadMonitorData, 30000);
     </script>
 </body>
 </html>
