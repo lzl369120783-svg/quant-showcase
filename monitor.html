@@ -445,10 +445,27 @@
         updateTime();
         setInterval(updateTime, 1000);
         
+        // 本地服务器地址
+        const SERVER_URL = 'http://localhost:8088';
+        
         // 加载实时数据
         async function loadMonitorData() {
             try {
-                const response = await fetch('monitor_data.json?t=' + Date.now());
+                // 优先从本地服务器获取
+                const response = await fetch(`${SERVER_URL}/api/monitor?t=${Date.now()}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    updateUI(data);
+                    console.log('✅ 已连接本地服务器');
+                    return;
+                }
+            } catch (e) {
+                console.log('⚠️ 本地服务器未连接，尝试JSON文件');
+            }
+            
+            // 降级：从JSON文件获取
+            try {
+                const response = await fetch(`monitor_data.json?t=${Date.now()}`);
                 if (response.ok) {
                     const data = await response.json();
                     updateUI(data);
