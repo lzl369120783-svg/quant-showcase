@@ -617,21 +617,7 @@
         });
         
         // 模拟实时数据更新
-        setInterval(() => {
-            const assets = document.getElementById('totalAssets');
-            const currentAssets = parseInt(assets.textContent.replace(/[¥,]/g, ''));
-            const change = Math.floor(Math.random() * 200) - 100;
-            const newAssets = currentAssets + change;
-            assets.textContent = '¥' + newAssets.toLocaleString();
-            
-            if (change > 0) {
-                assets.style.color = '#00FF88';
-            } else if (change < 0) {
-                assets.style.color = '#FF4D4D';
-            }
-        }, 3000);
-        
-        // 自动刷新iframe（每3分钟�?        setInterval(() => {
+// 自动刷新iframe（每3分钟�?        setInterval(() => {
             document.getElementById('monitorFrame').src = 'monitor.html?' + new Date().getTime();
         }, 180000);
     </script>
