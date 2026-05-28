@@ -1,0 +1,25 @@
+{
+  "update_time": "15:49:44",
+  "date": "20260528",
+  "market": {
+    "up_count": 0,
+    "down_count": 0,
+    "limit_up": 0,
+    "limit_down": 0,
+    "broken_limit": 0,
+    "abnormal": 0
+  },
+  "sentiment": {
+    "level": "L3",
+    "score": 50,
+    "description": "中性"
+  },
+  "indices": {
+    "shanghai": 0,
+    "shenzhen": 0,
+    "chinext": 0
+  },
+  "sectors": [],
+  "positions": [],
+  "trades": []
+}
