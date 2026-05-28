@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>实时监控 - 盘中异动跟踪</title>
+    <title>盘中监控 - 情绪仪表盘</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,495 +13,437 @@
             --red: #FF4D4D;
             --green: #00FF88;
             --cyan: #00D4FF;
-            --dark: #0a0a1a;
-            --card-bg: rgba(22, 33, 62, 0.8);
-            /* A股配色：红涨绿跌 */
-            --up: #FF4D4D;
-            --down: #00FF88;
+            --dark: #0d1117;
+            --card: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text2: #8b949e;
         }
         
         body {
             background: var(--dark);
-            color: #e0e0e0;
+            color: var(--text);
             font-family: 'Noto Sans SC', sans-serif;
             height: 100vh;
             overflow: hidden;
+            padding: 16px;
         }
         
-        /* 顶部导航 */
-        .header {
-            background: rgba(0, 0, 0, 0.5);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--cyan);
-        }
-        
-        .back-btn {
-            color: #888;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: color 0.2s;
-        }
-        
-        .back-btn:hover { color: var(--cyan); }
-        
-        .status-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--green);
-        }
-        
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        
-        /* 主容器 */
-        .container {
-            padding: 16px 24px;
-            height: calc(100vh - 50px);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        
-        /* 实时数据卡片 */
+        /* 顶部数据卡片 */
         .stats-row {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        
-        @media (max-width: 1200px) {
-            .stats-row { grid-template-columns: repeat(3, 1fr); }
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
         }
         
         .stat-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 212, 255, 0.15);
-            border-radius: 10px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
             padding: 12px;
             text-align: center;
         }
         
         .stat-label {
-            font-size: 0.7rem;
-            color: #888;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.75rem;
+            color: var(--text2);
+            margin-bottom: 4px;
         }
         
         .stat-value {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.4rem;
             font-weight: 700;
-            color: var(--gold);
         }
         
-        .stat-value.green { color: var(--green); }
         .stat-value.red { color: var(--red); }
+        .stat-value.green { color: var(--green); }
         .stat-value.cyan { color: var(--cyan); }
+        .stat-value.gold { color: var(--gold); }
         
-        /* 监控区域 */
-        .monitor-grid {
+        .stat-sub {
+            font-size: 0.65rem;
+            color: var(--text2);
+            margin-top: 2px;
+        }
+        
+        /* 趋势图区域 */
+        .trend-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .trend-title {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .trend-placeholder {
+            color: var(--text2);
+            font-size: 0.85rem;
+            padding: 20px;
+        }
+        
+        /* 主内容区域 */
+        .main-content {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr;
             gap: 16px;
-            flex: 1;
-            min-height: 0;
         }
         
-        @media (max-width: 1000px) {
-            .monitor-grid { grid-template-columns: 1fr; }
+        /* 情绪仪表盘 */
+        .sentiment-dashboard {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
         }
         
-        .panel {
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 212, 255, 0.15);
-            border-radius: 10px;
+        @media (max-width: 900px) {
+            .sentiment-dashboard { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: repeat(4, 1fr); }
+        }
+        
+        /* 左侧情绪等级 */
+        .sentiment-level {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            border-radius: 8px;
+        }
+        
+        .level-badge {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--red);
+        }
+        
+        .level-text {
+            font-size: 1rem;
+            color: var(--gold);
+            margin: 8px 0;
+        }
+        
+        .level-score {
+            font-size: 0.85rem;
+            color: var(--text2);
+            margin-bottom: 8px;
+        }
+        
+        .level-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
             overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .level-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--green), var(--gold), var(--red));
+            width: 57%;
+            border-radius: 3px;
+        }
+        
+        .level-desc {
+            font-size: 0.75rem;
+            color: var(--text2);
+        }
+        
+        /* 右侧详情 */
+        .sentiment-details {
             display: flex;
             flex-direction: column;
+            gap: 12px;
         }
         
-        .panel-header {
-            background: rgba(0, 212, 255, 0.08);
-            padding: 12px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        /* 指数卡片 */
+        .index-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
         }
         
-        .panel-title {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--cyan);
-        }
-        
-        .panel-badge {
-            font-size: 0.7rem;
-            padding: 2px 8px;
-            border-radius: 10px;
-            background: rgba(0, 255, 136, 0.15);
-            color: var(--green);
-        }
-        
-        .panel-body {
+        .index-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
             padding: 12px;
-            flex: 1;
-            overflow: hidden;
+            text-align: center;
         }
         
-        /* 异动列表 */
-        .alert-list {
+        .index-name {
+            font-size: 0.75rem;
+            color: var(--text2);
+            margin-bottom: 4px;
+        }
+        
+        .index-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .index-value.up { color: var(--red); }
+        .index-value.down { color: var(--green); }
+        
+        /* 情绪标签 */
+        .sentiment-tags {
             display: flex;
             flex-direction: column;
             gap: 8px;
-            height: 100%;
-            overflow-y: auto;
         }
         
-        .alert-item {
-            background: rgba(0, 0, 0, 0.3);
+        .sentiment-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sentiment-icon {
+            font-size: 1rem;
+        }
+        
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .tag {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 4px;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            color: var(--cyan);
+        }
+        
+        .tag.red { 
+            background: rgba(255, 77, 77, 0.1);
+            border-color: rgba(255, 77, 77, 0.2);
+            color: var(--red);
+        }
+        
+        .tag.green { 
+            background: rgba(0, 255, 136, 0.1);
+            border-color: rgba(0, 255, 136, 0.2);
+            color: var(--green);
+        }
+        
+        .tag.gold { 
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.2);
+            color: var(--gold);
+        }
+        
+        /* 题材涨停排名 */
+        .sector-rank {
+            background: var(--card);
+            border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 12px;
-            border-left: 3px solid var(--cyan);
-            transition: all 0.2s;
+            padding: 16px;
+            margin-top: 16px;
         }
         
-        .alert-item:hover {
-            background: rgba(0, 212, 255, 0.05);
+        .sector-title {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 12px;
         }
         
-        .alert-item.buy { border-left-color: var(--green); }
-        .alert-item.sell { border-left-color: var(--red); }
-        .alert-item.warning { border-left-color: #ffa500; }
+        .sector-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
         
-        .alert-header {
+        .sector-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 6px;
-        }
-        
-        .alert-name {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .alert-time {
-            font-size: 0.75rem;
-            color: #888;
-        }
-        
-        .alert-content {
-            font-size: 0.8rem;
-            color: #aaa;
-        }
-        
-        .alert-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            padding: 2px 6px;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 4px;
-            margin-top: 6px;
         }
         
-        .alert-tag.buy { background: rgba(0, 255, 136, 0.15); color: var(--green); }
-        .alert-tag.sell { background: rgba(255, 77, 77, 0.15); color: var(--red); }
-        .alert-tag.warning { background: rgba(255, 165, 0, 0.15); color: #ffa500; }
-        
-        /* 持仓表格 */
-        .position-table {
-            width: 100%;
-            border-collapse: collapse;
+        .sector-name {
             font-size: 0.85rem;
         }
         
-        .position-table th {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 10px 12px;
-            text-align: left;
-            color: #888;
-            font-weight: 500;
+        .sector-count {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--red);
+        }
+        
+        /* 更新时间 */
+        .update-time {
+            text-align: right;
             font-size: 0.75rem;
-            text-transform: uppercase;
-        }
-        
-        .position-table td {
-            padding: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .position-table tr:hover td {
-            background: rgba(0, 212, 255, 0.03);
-        }
-        
-        .text-green { color: var(--green); }
-        .text-red { color: var(--red); }
-        /* A股配色：涨用红色，跌用绿色 */
-        .text-up { color: var(--red); }
-        .text-down { color: var(--green); }
-        .text-gold { color: var(--gold); }
-        
-        /* 滚动条样式 */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 212, 255, 0.3);
-            border-radius: 3px;
+            color: var(--text2);
+            margin-bottom: 12px;
         }
     </style>
 </head>
 <body>
-    <!-- 顶部导航 -->
-    <div class="header">
-        <div class="header-left">
-            <a href="index.html" class="back-btn">← 返回</a>
-            <div class="logo">REAL-TIME MONITOR</div>
+    <!-- 顶部数据卡片 -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-label">监控数</div>
+            <div class="stat-value cyan">21</div>
+            <div class="stat-sub">全市场</div>
         </div>
-        <div class="status-badge">
-            <div class="status-dot"></div>
-            <span>LIVE · 2026-05-27</span>
+        <div class="stat-card">
+            <div class="stat-label">上涨</div>
+            <div class="stat-value red">1634</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">下跌</div>
+            <div class="stat-value green">3526</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">涨停</div>
+            <div class="stat-value red">92</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">跌停</div>
+            <div class="stat-value green">12</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">炸板</div>
+            <div class="stat-value gold">5</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">异动</div>
+            <div class="stat-value cyan">25</div>
         </div>
     </div>
     
-    <div class="container">
-        <!-- 实时数据卡片 -->
-        <div class="stats-row">
-            <div class="stat-card">
-                <div class="stat-label">本金</div>
-                <div class="stat-value">¥50,000</div>
+    <!-- 趋势图区域 -->
+    <div class="trend-section">
+        <div class="trend-title">
+            <span>📈</span>
+            <span>短线数据趋势</span>
+            <span style="font-size: 0.75rem; color: var(--text2);">收盘趋势中(1/2)...</span>
+        </div>
+        <div class="trend-placeholder">
+            ⚠️ 趋势图需要累积至少2次数据才能显示<br>
+            启动自动监控(--loop)或多次运行(--once)将自动收集趋势数据
+        </div>
+    </div>
+    
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <div class="sentiment-dashboard">
+            <!-- 左侧情绪等级 -->
+            <div class="sentiment-level">
+                <div class="level-badge">L4</div>
+                <div class="level-text">情绪偏强</div>
+                <div class="level-score">情绪得分 57/100</div>
+                <div class="level-bar">
+                    <div class="level-bar-fill"></div>
+                </div>
+                <div class="level-desc">可以参与，优选前排核心标的</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">当前总值</div>
-                <div class="stat-value">¥47,952</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">总盈亏</div>
-                <div class="stat-value red">-¥2,048</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">持仓市值</div>
-                <div class="stat-value cyan">¥7,020</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">持仓浮盈</div>
-                <div class="stat-value red">-¥278</div>
+            
+            <!-- 右侧详情 -->
+            <div class="sentiment-details">
+                <!-- 指数卡片 -->
+                <div class="index-cards">
+                    <div class="index-card">
+                        <div class="index-name">上证</div>
+                        <div class="index-value down">-0.44%</div>
+                    </div>
+                    <div class="index-card">
+                        <div class="index-name">深成指</div>
+                        <div class="index-value down">-0.30%</div>
+                    </div>
+                    <div class="index-card">
+                        <div class="index-name">创业板</div>
+                        <div class="index-value up">+0.56%</div>
+                    </div>
+                </div>
+                
+                <!-- 情绪标签 -->
+                <div class="sentiment-tags">
+                    <div class="sentiment-row">
+                        <span class="sentiment-icon">🔹</span>
+                        <span style="font-size: 0.8rem; color: var(--text2);">大盘情绪 L3（权重60%）</span>
+                    </div>
+                    <div class="tag-list">
+                        <span class="tag">上证-0.44%(微跌)</span>
+                        <span class="tag">深成指-0.30%(微跌)</span>
+                        <span class="tag">创业板+0.56%(微涨)</span>
+                        <span class="tag red">全市场涨跌比1634:3526(偏空)</span>
+                        <span class="tag red">全市场92只涨停(极度亢奋)</span>
+                        <span class="tag">全市场12只跌停(强)</span>
+                    </div>
+                    
+                    <div class="sentiment-row" style="margin-top: 8px;">
+                        <span class="sentiment-icon">🔹</span>
+                        <span style="font-size: 0.8rem; color: var(--text2);">题材情绪 L5（权重40%）| 封板率100% | 封板14 炸板0 | 最高4连板</span>
+                    </div>
+                    <div class="tag-list">
+                        <span class="tag gold">封板率100%(封板很好)</span>
+                        <span class="tag">主线电力2只涨停(主线明确)</span>
+                        <span class="tag">最高4连板(中位)</span>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <!-- 监控区域 -->
-        <div class="monitor-grid">
-            <!-- 左侧：异动监控 -->
-            <div class="panel">
-                <div class="panel-header">
-                    <span class="panel-title">🚨 盘中异动跟踪</span>
-                    <span class="panel-badge">实时更新</span>
+        <!-- 题材涨停排名 -->
+        <div class="sector-rank">
+            <div class="sector-title">🔥 题材涨停排名</div>
+            <div class="sector-list">
+                <div class="sector-item">
+                    <span class="sector-name">电力</span>
+                    <span class="sector-count">2只</span>
                 </div>
-                <div class="panel-body">
-                    <div class="alert-list" id="alertList">
-                        <!-- 异动条目 -->
-                        <div class="alert-item buy">
-                            <div class="alert-header">
-                                <span class="alert-name">🟢 肯特股份 (301591)</span>
-                                <span class="alert-time">10:00</span>
-                            </div>
-                            <div class="alert-content">买入100股 @ ¥43.02，评分88分</div>
-                            <span class="alert-tag buy">买入成交</span>
-                        </div>
-                        
-                        <div class="alert-item buy">
-                            <div class="alert-header">
-                                <span class="alert-name">🟢 002886</span>
-                                <span class="alert-time">14:00</span>
-                            </div>
-                            <div class="alert-content">买入100股 @ ¥29.85，评分85分</div>
-                            <span class="alert-tag buy">买入成交</span>
-                        </div>
-                        
-                        <div class="alert-item sell">
-                            <div class="alert-header">
-                                <span class="alert-name">🔴 600172.SH 黄河旋风</span>
-                                <span class="alert-time">13:45</span>
-                            </div>
-                            <div class="alert-content">卖出300股 @ ¥13.14，止损卖出</div>
-                            <span class="alert-tag sell">止损卖出</span>
-                        </div>
-                        
-                        <div class="alert-item warning">
-                            <div class="alert-header">
-                                <span class="alert-name">⚠️ 肯特股份 (301591)</span>
-                                <span class="alert-time">15:00</span>
-                            </div>
-                            <div class="alert-content">冲高回落：冲高16.0%回撤13.9%</div>
-                            <span class="alert-tag warning">T+1待卖</span>
-                        </div>
-                        
-                        <div class="alert-item warning">
-                            <div class="alert-header">
-                                <span class="alert-name">⚠️ 002886</span>
-                                <span class="alert-time">15:00</span>
-                            </div>
-                            <div class="alert-content">冲高回落：冲高16.4%回撤14.2%</div>
-                            <span class="alert-tag warning">T+1待卖</span>
-                        </div>
-                        
-                        <div class="alert-item buy">
-                            <div class="alert-header">
-                                <span class="alert-name">❌ 600367.SH 红星发展</span>
-                                <span class="alert-time">10:00</span>
-                            </div>
-                            <div class="alert-content">买入委托0成交（可能被撤单）</div>
-                            <span class="alert-tag sell">0成交</span>
-                        </div>
-                        
-                        <div class="alert-item buy">
-                            <div class="alert-header">
-                                <span class="alert-name">❌ 301305.SZ 朗坤科技</span>
-                                <span class="alert-time">10:00</span>
-                            </div>
-                            <div class="alert-content">买入委托0成交（可能被撤单）</div>
-                            <span class="alert-tag sell">0成交</span>
-                        </div>
-                        
-                        <div class="alert-item buy">
-                            <div class="alert-header">
-                                <span class="alert-name">❌ 000021.SZ 深科技</span>
-                                <span class="alert-time">10:30</span>
-                            </div>
-                            <div class="alert-content">买入委托0成交（可能被撤单）</div>
-                            <span class="alert-tag sell">0成交</span>
-                        </div>
-                    </div>
+                <div class="sector-item">
+                    <span class="sector-name">电池</span>
+                    <span class="sector-count">1只</span>
                 </div>
-            </div>
-            
-            <!-- 右侧：持仓明细 -->
-            <div class="panel">
-                <div class="panel-header">
-                    <span class="panel-title">📊 当前持仓</span>
-                    <span class="panel-badge">2只</span>
+                <div class="sector-item">
+                    <span class="sector-name">元件</span>
+                    <span class="sector-count">1只</span>
                 </div>
-                <div class="panel-body">
-                    <table class="position-table">
-                        <thead>
-                            <tr>
-                                <th>代码</th>
-                                <th>数量</th>
-                                <th>成本</th>
-                                <th>现价</th>
-                                <th>盈亏</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-gold">301591</td>
-                                <td>100</td>
-                                <td>43.075</td>
-                                <td>40.60</td>
-                                <td class="text-green">-5.75%</td>
-                            </tr>
-                            <tr>
-                                <td class="text-gold">002886</td>
-                                <td>100</td>
-                                <td>29.905</td>
-                                <td>29.60</td>
-                                <td class="text-green">-1.02%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                    <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05);">
-                        <div class="panel-title" style="margin-bottom: 12px;">📋 今日交易</div>
-                        <table class="position-table">
-                            <thead>
-                                <tr>
-                                    <th>时间</th>
-                                    <th>代码</th>
-                                    <th>方向</th>
-                                    <th>价格</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>10:00</td>
-                                    <td>301591</td>
-                                    <td class="text-red">买入</td>
-                                    <td>43.02</td>
-                                </tr>
-                                <tr>
-                                    <td>13:45</td>
-                                    <td>600172</td>
-                                    <td class="text-green">卖出</td>
-                                    <td>13.14</td>
-                                </tr>
-                                <tr>
-                                    <td>14:00</td>
-                                    <td>002886</td>
-                                    <td class="text-red">买入</td>
-                                    <td>29.85</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="sector-item">
+                    <span class="sector-name">数据中心(AIDC)</span>
+                    <span class="sector-count">1只</span>
+                </div>
+                <div class="sector-item">
+                    <span class="sector-name">光学光申</span>
+                    <span class="sector-count">1只</span>
                 </div>
             </div>
         </div>
     </div>
     
     <script>
-        // 模拟实时更新
-        setInterval(() => {
-            const items = document.querySelectorAll('.alert-item');
-            items.forEach(item => {
-                item.style.opacity = '0.7';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                }, 200);
-            });
-        }, 5000);
+        // 更新时间
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('zh-CN', { hour12: false });
+            document.title = `盘中监控 - ${timeStr}`;
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
     </script>
 </body>
 </html>
