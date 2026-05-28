@@ -21,7 +21,8 @@
             background: var(--dark);
             color: #e0e0e0;
             font-family: 'Noto Sans SC', sans-serif;
-            min-height: 100vh;
+            height: 100vh;
+            overflow: hidden;
         }
         
         /* 顶部导航 */
@@ -86,7 +87,11 @@
         
         /* 主容器 */
         .container {
-            padding: 20px 24px;
+            padding: 16px 24px;
+            height: calc(100vh - 50px);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
         
         /* 实时数据卡片 */
@@ -105,7 +110,7 @@
             background: var(--card-bg);
             border: 1px solid rgba(0, 212, 255, 0.15);
             border-radius: 10px;
-            padding: 16px;
+            padding: 12px;
             text-align: center;
         }
         
@@ -133,6 +138,8 @@
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 16px;
+            flex: 1;
+            min-height: 0;
         }
         
         @media (max-width: 1000px) {
@@ -144,6 +151,8 @@
             border: 1px solid rgba(0, 212, 255, 0.15);
             border-radius: 10px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         
         .panel-header {
@@ -170,15 +179,17 @@
         }
         
         .panel-body {
-            padding: 16px;
+            padding: 12px;
+            flex: 1;
+            overflow: hidden;
         }
         
         /* 异动列表 */
         .alert-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            max-height: 500px;
+            gap: 8px;
+            height: 100%;
             overflow-y: auto;
         }
         
