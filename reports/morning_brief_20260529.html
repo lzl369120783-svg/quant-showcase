@@ -7,9 +7,9 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            background: #0a0a1a;
             color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
             min-height: 100vh;
             padding: 20px;
         }
@@ -21,39 +21,24 @@
             margin-bottom: 20px;
         }
         .header {
-            text-align: center; margin-bottom: 30px; padding: 20px;
+            text-align: center; margin-bottom: 20px; padding: 20px;
             background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 8px;
         }
-        .header h1 { color: #FFD700; font-size: 28px; margin-bottom: 10px; }
+        .header h1 { color: #FFD700; font-size: 24px; margin-bottom: 10px; }
         .header .date { color: #a0a0b0; font-size: 14px; }
-        .section {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px; margin-bottom: 20px; overflow: hidden;
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .tab {
+            padding: 10px 20px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px;
+            color: #ccc; cursor: pointer; text-decoration: none;
         }
-        .section-header {
-            background: rgba(255, 215, 0, 0.1); padding: 12px 20px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2); cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center;
+        .tab:hover { background: rgba(255, 215, 0, 0.1); color: #FFD700; }
+        .tab.active { background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: #FFD700; }
+        iframe {
+            width: 100%; height: 85vh; border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px; background: #fff;
         }
-        .section-header h2 { color: #FFD700; font-size: 18px; }
-        .section-header .toggle { color: #a0a0b0; transition: transform 0.3s; }
-        .section-header .toggle.collapsed { transform: rotate(-90deg); }
-        .section-content {
-            padding: 15px 20px; max-height: 20000px; overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s;
-        }
-        .section-content.collapsed { max-height: 0; padding: 0 20px; }
-        .content-text { white-space: pre-wrap; line-height: 1.8; font-size: 14px; }
-        .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
     </style>
-    <script>
-        function toggleSection(header) {
-            const content = header.nextElementSibling;
-            const toggle = header.querySelector(".toggle");
-            content.classList.toggle("collapsed");
-            toggle.classList.toggle("collapsed");
-        }
-    </script>
 </head>
 <body>
     <div class="container">
@@ -64,390 +49,25 @@
             <div class="date">2026-05-29 周五</div>
         </div>
 
-        <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h2>📰 盘前纪要</h2>
-                <span class="toggle">▼</span>
-            </div>
-            <div class="section-content">
-                <div class="content-text">每天10分钟阅读，开阔看盘思路，节约复盘时间。
-
-觉得有用，请将此文分享给身边每一位热爱学习的朋友，一起成长进步！
-
-
-
-
- 
-
-No.1 盘前热点事件
-
- 
-
-一、昨日热点
-
-电力：华电能源、粤电力A
-
-电容：江海股份
-
-MLCC：风华高科
-
-PCB：华塑控股、中京电子
-
-光纤：新能泰山
-
-算力：大位科技
-
-金刚石散热：黄河旋风
-
- 
-
-二、央视财经：太空算力火了，太空经济市场规模或将超万亿美元
-
-近期，工业和信息化部对外表示，支持开展太空算力技术前瞻性研究，有序推动太空算力产业发展。业内机构预测，到2030年，全球太空经济市场规模将超过万亿美元。其中，太空算力是重要的基础设施。据了解，国内业界目前正在搭建规模更大的算力星座、攻关核心技术。今年4月，由产学研多方参与的太空算力创新中心在北京经开区发起筹建，同期还发布了“太空算力关键共性技术攻关榜单”，聚焦在可回收火箭、太空光伏、激光通信、抗辐照芯片等产业链核心环节，未来单个项目最高资助金额可达1000万元。 (央视财经)
-
-太空算力：顺灏股份、金利华电、雷科防务
-
-太空经济：航天机电、航天工程、航天动力、中国卫星、再升科技、西部材料
-
- 
-
-三、美股SaaS板块领涨 Snowflake涨超36%
-
-Snowflake股价上涨36.48%（数据云平台），Snowflare第一财季财报的核心数据令市场振奋，公司当季营收达13.9亿美元，同比增长33%，远超分析师预期的13.2亿美元。此外公司宣布已承诺在未来五年内向亚马逊AWS投入60亿美元，涵盖亚马逊自研的Graviton芯片及AI GPU资源。这是Snowflake成立以来最大的一笔基础设施投资承诺，也是继Anthropic之后AWS在AI领域赢得的又一重大客户合作。Snowflake还以未披露金额收购了AI智能体平台Natoma，进一步强化其AI数据云能力。
-
-华胜天成：通过联营公司Grid Dynamics与Snowflake商业合作，AI云数仓领域协同
-
-蓝色光标：AWS核心客户，共建AI平台，受益Snowflake-AWS大单带来的云AI生态红利
-
-星环科技：云原生数仓/大数据平台，自研TDH分布式数仓
-
- 
-
-四、戴尔上调AI服务器销售额展望 盘后涨超38%
-
-戴尔科技盘后涨幅扩大至38%，此前公布第一财季业绩远超预期，得益于人工智能（AI）服务器需求强劲。公司截至2027年1月的财年营收将在约1670亿美元，其中600亿美元来自AI服务器销售，这高于此前约1400亿美元的营收展望。
-
-PCB：广合科技
-
-电源线：泓淋电力
-
-散热：飞荣达
-
-连接：新亚电子
-
-分销：神州数码
-
-代工：华勤技术、工业富联
-
- 
-
-五、国务院印发《城市更新“十五五”规划》
-
-到2030年，城市更新行动取得重要进展，城市开发建设方式转型初见成效，安全发展基础更加牢固，服务效能不断提高，人居环境明显改善，新旧动能加快转换，文化遗产有效保护，风貌特色更加彰显，治理水平大幅提高，城市成为人民群众高品质生活的空间。
-
-城市更新：新城市、通用电梯、快意电梯、梅轮电梯
-
- 
-
-六、行业要闻
-
-1、5月28日晚，比亚迪发布中国首款4nm制程智驾芯片，宣布为城市领航安全兜底。（通达电气、联创电子）
-
-2、两部门印发《人工智能计量体系和能力建设指引（2026版）》，系统布局人工智能计量能力建设。（广电计量）
-
-3、IBM加码量子赛道：计划投资100亿美元，力争2029年前建成大型量子计算机。（国盾量子、科大国创）
-
-4、津巴布韦宣布：将锂、镍、钴、石墨等14种矿产列为关键矿产。
-
-5、欧盟正通过一项重新修订的《芯片法》再次尝试振兴其半导体产业，该法案要求到2035年投入1200亿欧元。
-
-6、美官员称美伊谈判代表已就谅解备忘录达成一致，仍需特朗普作出最终批准。</div>
-            </div>
+        <div class="tabs">
+            <a class="tab active" onclick="switchTab(0)">📰 盘前纪要</a>
+            <a class="tab" onclick="switchTab(1)">📋 开盘必读</a>
         </div>
 
-        <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h2>📋 开盘必读</h2>
-                <span class="toggle">▼</span>
-            </div>
-            <div class="section-content">
-                <div class="content-text">No.2 公告精选
-
- 
-
-一、日常公告
-
-吉林化纤：实际控制人变更为吉林省国资委
-
-禾盛新材：拟定增募资不超1.9亿元 用于国产智能算力中心建设项目
-
-智翔金泰：与药友制药签署GR1803项目许可协议 总金额至高18.2亿元
-
-广电运通：控股子公司中标3.09亿元政务云项目
-
-盛视科技：预中标2.69亿元口岸查验配套设施设备项目
-
-华康洁净：中标9400万元中微公司电子洁净项目
-
-汇绿生态：武汉钧恒在原有约300万只年产能的基础上，正稳步推进产能扩张
-
- 
-
-二、停复牌
-
-*ST亚太：停牌一天，摘帽，亚太实业
-
- 
-
-三、地雷阵
-
-美年健康：股东拟减持3.00%股份
-
-新致软件：股东拟减持3.00%股份
-
-瑞晨环保：股东拟减持3.00%股份
-
-声迅股份：股东拟减持2.99%股份
-
-万 德 斯：股东拟减持2.00%股份
-
-柏 星 龙：股东拟减持1.99%股份
-
-庄园牧场：股东拟减持1.16%股份
-
-正邦科技：股东拟减持1.00%股份
-
-中国核建：股东拟减持1.00%股份
-
-信科移动：股东拟减持1.00%股份
-
-汉缆股份：股东拟减持1.00%股份
-
-广康生化：股东拟减持0.60%股份
-
- 
-
-四、异动公告
-
-天通股份：近期实控人一致行动人已减持0.31%股份
-
-合锻智能：不涉及AI算力业务 未取得核聚变相关业务收入
-
-北京科锐：与特斯拉采购协议仅为意向性约定 存在重大不确定性
-
-粤电力A：克拉玛依项目投资收益预计12个月内不会对公司带来重大影响
-
-再升科技：目前“高硅氧纤维产品”暂无在手订单 后续订单获取存在较大不确定性
-
-金钼股份：公司是国内重要芯片生产商核心材料供应商以及签订相关大额订单等为不实信息
-
-江海股份：公司目前超级电容器、MLPC的规模、营收占比及其在AI服务器电源上的应用都较小
-
-澜起科技：股东上海融迎及其一致行动人询价转让1222.8万股 持股比例降至5.78%
-
-中芯国际：国家集成电路基金对港股中芯国际的多头持仓比例降至7.99%
-
-德邦科技：第一大股东国家大基金5月19日至5月28日减持142.24万股 持股比例降至11.9%
-
-沪硅产业：第二大股东国家大基金5月20日至5月28日减持3305.02万股 持股比例降至12.89%
-
-（大基金减持半导体主动降温）
-
- 
-
-五、动态更新
-
- 
-
-  
-
- 
-
-No.3 全球市场
-
- 
-
-一、全球市场
-
-美股三大股指收盘集体收涨，SaaS板块领涨，Snowflake大涨超36%，ServiceNow涨超6%，微软涨超3%。量子计算板块上涨，D-Wave涨超7%，IBM涨超3%。光通信板块普跌，Lumentum、康宁跌超4%。
-
-  
-
-二、热门美股和中概股
-
-  
-
-三、大宗商品（夜盘品种）
-
- 
-
-  
-
- 
-
-No.4 连板梯队和涨停事件
-
- 
-
-一、连板梯队和涨停分布图
-
-4连板：华塑控股、华电能源、香江控股
-
-3连板：中京电子
-
-2连板：江海股份、德新科技、粤电力A、合锻智能、艾华集团
-
-  
-
-二、连板晋级回顾推演
-
- 
-
- 
-
-三、涨停事件
-
-1、AI硬件（46）
-
-4板（PCB）：华塑控股
-
-3板（PCB）：中京电子
-
-2板（PCB）：合锻智能
-
-1板（PCB）：宏和科技、宝鼎科技、诺德股份、金安国纪、众源新材、泰坦股份、中国巨石、海亮股份
-
- 
-
-2板（电容/MLCC）：江海股份、艾华集团
-
-1板（电容/MLCC）：皖维高新、华锋股份、风华高科、火炬电子、铜峰电子、鸿远电子、大 东 南、博杰股份、红星发展、洁美科技、中仑新材、博迁新材
-
- 
-
-1板（光通信）：新能泰山、金时科技、云南锗业、国泰集团、安孚科技、科瑞技术、中兴通讯、天通股份、本川智能、联特科技
-
- 
-
-1板（AI散热）：冰山冷热、大元泵业、黄河旋风、四 方 达、金富科技、奕东电子、惠丰钻石、恒盛能源
-
- 
-
-1板（其他AI硬件）：蒙娜丽莎、伟隆股份、横店东磁
-
-事件1：摩根士丹利对英伟达下一代Rubin机架进行了全面的物料清单（BOM）拆解，在其覆盖的下游零部件中，PCB内容价值增幅最为显著，较GB300大涨233%，其次是MLCC+182%。
-
-事件2：随着英伟达GPU平台迭代，数据中心机柜功耗将从传统服务器的10至15千瓦飙升至2029至2030年Feynman平台时代的逾1.5兆瓦，涨幅接近100倍。
-
-事件3：金刚石铜复合材料在郑州超算中心实现规模化应用，并使得芯片模组传热能力提升80%。
-
- 
-
-2、半导体（15）
-
-1板：沃顿科技、国风新材、怡达股份、华微电子、盛剑科技、康达新材、沃格光电、杭可科技、万通发展、燕 东 微、宇晶股份、光智科技、有研新材、高新发展、和顺石油
-
-事件：5月25日，华为发表韬（τ）定律。这是中国在全球半导体领域首次提出指导产业发展的新原则。基于该定律，华为过去六年已成功设计并量产了381款芯片。今年秋季，华为将发布新的麒麟手机芯片，完整采用逻辑折叠技术，大幅提升相关性能。
-
- 
-
-3、电力电网（11）
-
-4板：华电能源
-
-2板：粤电力A
-
-1板：科林电气、白云电器、三晖电气、惠天热电、中电电机、浙江新能、宁波能源、建投能源、甘肃能源
-
-事件1：5月22日，国家发改委表示，“十五五”时期，预计投资超过5万亿元用于新型电网建设。
-
-事件2：5月27日，广东电网用电负荷今年第一次创新高，达到1.6593亿千瓦，同比增长0.61%，较往年首次峰值出现时间提前近两个月。
-
- 
-
-4、算力（5）
-
-1板：大位科技、中嘉博创、力合科创、高乐股份、东方材料
-
-事件：据媒体报道，字节跳动考虑今年支出最多700亿美元，用于建设数据中心等AI基础设施。
-
- 
-
-5、商业航天（2）
-
-1板：航天机电、再升科技
-
-事件1：6-7月，国内商业航天将进入密集发射窗口，包括三型重点可回收型号，航天一院CZ-10B（可回收）、中国商火CZ-12B（可回收）、蓝箭ZQ-3（可回收）。
-
-事件2：SpaceX提交IPO文件，计划6月12日在纳斯达克上市。
-
- 
-
-6、公告涨停（2）
-
-北京科锐：与全球知名储能公司T公司签署储能系统采购合作协议（5.28）
-
-金河生物：接受多家投资者调研 金霉素全球市场空间扩容至16-18万吨（5.28）
-
- 
-
- 
-
-No.5 机构席位和游资动向
-
- 
-
- 
-
- 
-
- 
-
- 
-
-No.6 股价新高
-
- 
-
-今日收盘价创新高81家，昨日60家，前日82家（找对标，看行业趋势）
-
-主要集中在半导体、PCB、光通信
-
-  
-
- 
-
-No.7 新股
-
- 
-
- 
-
- 
-
- 
-
-No.8 人气热榜
-
- 
-
-同花顺热榜：中京电子、华天科技、风华高科、再升科技、长电科技
-
-东方财富热榜：风华高科、华天科技、中京电子、中兴通讯、再升科技
-
-（数据实时变化，9点数据更新后再去官网刷新更准确）
-
-  
-
- 
-
-本文内容基于互联网信息整理，不构成投资建议；仅用于研究学习，提高市场认知能力。"</div>
-            </div>
-        </div>
-
-        <div class="footer">
-            仅供参考，不构成投资建议
-        </div>
+        <iframe id="contentFrame" src="https://www.jiuyangongshe.com/a/117tl6mz9bx"></iframe>
     </div>
+    
+    <script>
+        const urls = [
+            'https://www.jiuyangongshe.com/a/117tl6mz9bx',
+            'https://www.jiuyangongshe.com/a/2z3nl4k8fgw'
+        ];
+        const tabs = document.querySelectorAll('.tab');
+        
+        function switchTab(idx) {
+            document.getElementById('contentFrame').src = urls[idx];
+            tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+        }
+    </script>
 </body>
 </html>
