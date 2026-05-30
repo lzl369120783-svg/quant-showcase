@@ -31,6 +31,11 @@ if exist "%SOURCE%\monitor_%DATE%.html" (
     echo   ✓ 监控报告已更新
 )
 
+if exist "%SOURCE%\morning_brief_%DATE%.html" (
+    copy "%SOURCE%\morning_brief_%DATE%.html" "%TARGET%\reports\" >nul
+    echo   ✓ 盘前纪要已更新
+)
+
 echo.
 echo [2/5] 更新账户报告...
 if exist "C:\Users\Administrator\WorkBuddy\20260410111908\astock_analyzer\_pnl_report.html" (
@@ -43,6 +48,7 @@ echo [3/5] 更新主页链接到今天的报告...
 cd /d "%TARGET%"
 powershell -Command "(Get-Content index.html) -replace 'trade_analysis_\d{8}', 'trade_analysis_%DATE%' -replace 'screen_\d{8}', 'screen_%DATE%' | Set-Content index.html"
 powershell -Command "(Get-Content index.html) -replace 'review_\d{8}', 'review_%DATE%' -replace 'monitor_\d{8}', 'monitor_%DATE%' | Set-Content index.html"
+powershell -Command "(Get-Content index.html) -replace 'morning_brief_\d{8}', 'morning_brief_%DATE%' | Set-Content index.html"
 echo   ✓ 主页链接已更新为 %DATE%
 
 echo.
@@ -57,11 +63,11 @@ if %errorlevel%==0 (
 )
 
 echo.
-echo [5/5] 推送到GitHub（Cloudflare Pages自动部署）...
+echo [5/5] 推送到GitHub（GitHub Pages自动部署）...
 git push origin main 2>nul
 if %errorlevel%==0 (
     echo   ✓ GitHub推送成功
-    echo   ✓ Cloudflare Pages会自动部署（1-2分钟）
+    echo   ✓ GitHub Pages会自动部署（1-2分钟）
 ) else (
     echo   ✗ GitHub推送失败
 )
@@ -72,9 +78,9 @@ echo   更新完成！
 echo ========================================
 echo.
 echo 访问链接：
-echo   Cloudflare: https://quant-showcase.pages.dev
-echo   GitHub:     https://lzl369120783-svg.github.io/quant-showcase/
+echo   新域名: https://jinzita.dpdns.org/
+echo   GitHub: https://lzl369120783-svg.github.io/quant-showcase/
 echo.
-echo 注意：推送后Cloudflare Pages会自动部署，约1-2分钟生效
+echo 注意：推送后GitHub Pages会自动部署，约1-2分钟生效
 echo.
 pause

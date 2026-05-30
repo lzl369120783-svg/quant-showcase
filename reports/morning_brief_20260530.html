@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盘前纪要 - 2026-05-30 周六</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .back-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+        }
+        .header h1 {
+            color: #FFD700;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header .date {
+            color: #a0a0b0;
+            font-size: 14px;
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .section-header {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .section-header h2 {
+            color: #FFD700;
+            font-size: 18px;
+        }
+        .section-header .toggle {
+            color: #a0a0b0;
+            transition: transform 0.3s;
+        }
+        .section-header .toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+        .section-content {
+            padding: 15px 20px;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s;
+        }
+        .section-content.collapsed {
+            max-height: 0;
+            padding: 0 20px;
+        }
+        .content-text {
+            white-space: pre-wrap;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+        .content-text .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .content-text .stock {
+            color: #ff4757;
+        }
+        .content-text .index {
+            color: #00D4FF;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 12px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 22px; }
+            .section-header h2 { font-size: 16px; }
+        }
+    </style>
+    <script src="back-button.js"></script>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← 返回首页</a>
+        
+        <div class="header">
+            <h1>📊 盘前纪要</h1>
+            <div class="date">2026-05-30 周六 · 来源：韭研公社</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📰 盘前纪要</h2>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="content-text">抓取失败，请稍后重试</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h2>📋 开盘必读</h2>
+                <span class="toggle">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="content-text">抓取失败，请稍后重试</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            数据来源：韭研公社 · 仅供参考，不构成投资建议
+        </div>
+    </div>
+    
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.toggle');
+            content.classList.toggle('collapsed');
+            toggle.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
