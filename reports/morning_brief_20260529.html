@@ -13,105 +13,50 @@
             min-height: 100vh;
             padding: 20px;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
         .back-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            color: #FFD700;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            transition: all 0.3s;
+            display: inline-block; padding: 8px 16px;
+            background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700; text-decoration: none; border-radius: 4px;
+            margin-bottom: 20px; transition: all 0.3s;
         }
-        .back-btn:hover {
-            background: rgba(255, 215, 0, 0.2);
-        }
+        .back-btn:hover { background: rgba(255, 215, 0, 0.2); }
         .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255, 215, 0, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 8px;
+            text-align: center; margin-bottom: 30px; padding: 20px;
+            background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 8px;
         }
-        .header h1 {
-            color: #FFD700;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .header .date {
-            color: #a0a0b0;
-            font-size: 14px;
-        }
+        .header h1 { color: #FFD700; font-size: 28px; margin-bottom: 10px; }
+        .header .date { color: #a0a0b0; font-size: 14px; }
         .section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            overflow: hidden;
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px; margin-bottom: 20px; overflow: hidden;
         }
         .section-header {
-            background: rgba(255, 215, 0, 0.1);
-            padding: 12px 20px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: rgba(255, 215, 0, 0.1); padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2); cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .section-header h2 {
-            color: #FFD700;
-            font-size: 18px;
-        }
-        .section-header .toggle {
-            color: #a0a0b0;
-            transition: transform 0.3s;
-        }
-        .section-header .toggle.collapsed {
-            transform: rotate(-90deg);
-        }
+        .section-header h2 { color: #FFD700; font-size: 18px; }
+        .section-header .toggle { color: #a0a0b0; transition: transform 0.3s; }
+        .section-header .toggle.collapsed { transform: rotate(-90deg); }
         .section-content {
-            padding: 15px 20px;
-            max-height: 2000px;
-            overflow: hidden;
+            padding: 15px 20px; max-height: 5000px; overflow: hidden;
             transition: max-height 0.3s ease-out, padding 0.3s;
         }
-        .section-content.collapsed {
-            max-height: 0;
-            padding: 0 20px;
-        }
-        .content-text {
-            white-space: pre-wrap;
-            line-height: 1.8;
-            font-size: 14px;
-        }
-        .content-text .highlight {
-            color: #FFD700;
-            font-weight: bold;
-        }
-        .content-text .stock {
-            color: #ff4757;
-        }
-        .content-text .index {
-            color: #00D4FF;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 12px;
-        }
-        @media (max-width: 768px) {
-            .header h1 { font-size: 22px; }
-            .section-header h2 { font-size: 16px; }
-        }
+        .section-content.collapsed { max-height: 0; padding: 0 20px; }
+        .content-text { white-space: pre-wrap; line-height: 1.8; font-size: 14px; }
+        .content-text .highlight { color: #FFD700; font-weight: bold; }
+        .content-text .stock { color: #ff4757; }
+        .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
     </style>
-    <script src="back-button.js"></script>
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            const toggle = header.querySelector('.toggle');
+            content.classList.toggle('collapsed');
+            toggle.classList.toggle('collapsed');
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -119,7 +64,7 @@
         
         <div class="header">
             <h1>📊 盘前纪要</h1>
-            <div class="date">2026-05-29 周五 · 来源：韭研公社</div>
+            <div class="date">2026-05-29 周五</div>
         </div>
 
         <div class="section">
@@ -128,7 +73,46 @@
                 <span class="toggle">▼</span>
             </div>
             <div class="section-content">
-                <div class="content-text">抓取失败，请稍后重试</div>
+                <div class="content-text">每天10分钟阅读，开阔看盘思路，节约复盘时间。
+
+No.1 盘前热点事件
+
+一、昨日热点
+电力：华电能源
+电容：江海股份
+数据中心：泰永长征、四方股份
+PCB：中京电子
+消费：步步高
+短剧：欢瑞世纪
+
+二、多地用电负荷创历史新高 欧洲热到失控
+1、5月27日13时44分，广东电网用电负荷今年第一次创新高，达到1.6593亿千瓦，同比增长0.61%。
+2、5月26日21时54分，广西电网系统负荷今年第四次创历史新高，达到3881.6万千瓦。
+3、百度热搜第一：欧洲热到失控。一场罕见的超前热浪正席卷欧洲。
+
+<span class="stock">电力：华电能源、华银电力、辽宁能源、华电辽能</span>
+<span class="stock">广东+电力：粤电力A、韶能股份</span>
+<span class="stock">广西+电力：桂冠电力、广西能源</span>
+
+三、伊美谅解备忘录初步非正式文件内容披露
+美国承诺解除针对伊朗的海上封锁，WTI原油期货日内下跌4%。
+<span class="stock">重建：中工国际、北方国际</span>
+<span class="stock">北交所+重建：铁拓机械</span>
+
+四、蓝箭航天无锡生产基地投产
+朱雀三号运载火箭的后续研制试验、批次化生产。
+<span class="stock">蓝箭航天：鲁信创投、金风科技</span>
+
+五、央视财经：中国算力服务加速出海
+汕头词元出海调用规模快速增长。
+<span class="stock">汕头算力：海兰信、天亿马</span>
+<span class="stock">深圳微型主机：智微智能、工业富联</span>
+
+六、行业要闻
+1、和林微纳：为华为架构创新搭测试桥梁
+2、字节跳动考虑今年支出最多700亿美元用于AI基础设施
+3、恒生港美科技指数将纳入SpaceX
+4、段永平举牌泡泡玛特</div>
             </div>
         </div>
 
@@ -138,22 +122,42 @@
                 <span class="toggle">▼</span>
             </div>
             <div class="section-content">
-                <div class="content-text">抓取失败，请稍后重试</div>
+                <div class="content-text"><span class="highlight">No.2 公告精选</span>
+
+一、日常公告
+嘉亨家化：控股股东变更为杭州拼便宜
+恩捷股份：拟收购江苏爱思开100%股权
+长信科技：子公司拟不超30亿元采购算力服务器
+德福科技：拟投资31亿元建设年产5万吨高端AI电子电路铜箔项目
+北京科锐：与全球知名储能公司签署储能系统采购合作协议
+
+二、停复牌
+*ST汇科：复牌，摘帽
+胜通能源：停牌
+
+三、地雷阵
+至纯科技：股东拟减持5.48%股份
+绿通科技：股东拟减持3.00%股份
+
+<span class="highlight">No.3 全球市场</span>
+美股三大股指小幅收涨，美光科技延续昨日涨势，收涨超3%。
+纳斯达克中国金龙指数收涨1.05%。蔚来涨超9%。
+
+<span class="highlight">No.4 连板梯队和涨停事件</span>
+3连板：华电能源、香江控股、华塑控股
+2连板：步步高、盛龙股份、真视通、中京电子、中百集团
+
+涨停事件：
+1、AI硬件（13）- PCB涨幅最大+233%
+2、电力（7）- 十五五电网投资超5万亿
+3、消费（4）- 估值处历史底部
+4、短剧（3）- 海外短剧市场快速扩张</div>
             </div>
         </div>
 
         <div class="footer">
-            数据来源：韭研公社 · 仅供参考，不构成投资建议
+            仅供参考，不构成投资建议
         </div>
     </div>
-    
-    <script>
-        function toggleSection(header) {
-            const content = header.nextElementSibling;
-            const toggle = header.querySelector('.toggle');
-            content.classList.toggle('collapsed');
-            toggle.classList.toggle('collapsed');
-        }
-    </script>
 </body>
 </html>
