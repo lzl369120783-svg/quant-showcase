@@ -3,628 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A鑲¤秴鐭嚎閲忓寲浜ゆ槗绯荤粺 - 瀹炵洏灞曠ず</title>
-    <!-- 绉婚櫎Google Fonts浠ュ姞閫熷浗鍐呰闂?-->
+    <title>A股超短线量化交易系统 - 实盘展示</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --gold: #FFD700;
-            --red: #FF4D4D;
-            --green: #00FF88;
-            --cyan: #00D4FF;
-            --dark: #0a0a1a;
-            --darker: #050510;
-            /* A鑲￠厤鑹诧細绾㈡定缁胯穼 */
-            --up: #FF4D4D;
-            --down: #00FF88;
-        }
-        
         body {
-            background: var(--darker);
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
             color: #e0e0e0;
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
             min-height: 100vh;
-            overflow-x: hidden;
         }
-        
-        /* 绮掑瓙鑳屾櫙 */
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        /* 鍔ㄦ�佽儗鏅?*/
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 60%);
-        }
-        
-        /* 鐐厜鏁堟灉 */
-        .glow-line {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), var(--cyan), transparent);
-            animation: glowMove 4s linear infinite;
-            z-index: 1000;
-        }
-        
-        @keyframes glowMove {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        /* 涓诲鍣?*/
         .container {
-            max-width: 1800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 15px 30px;
+            padding: 40px 20px;
         }
-        
-        /* 椤堕儴瀵艰埅 */
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.15);
-            margin-bottom: 20px;
-        }
-        
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 900;
-            background: linear-gradient(90deg, var(--gold), var(--cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--green);
-            border-radius: 50%;
-            animation: pulse 1.5s infinite;
-            box-shadow: 0 0 10px var(--green);
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-        
-        .status-text {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            color: var(--green);
-            letter-spacing: 2px;
-        }
-        
-        /* 涓绘爣棰?*/
-        .hero {
+        header {
             text-align: center;
-            padding: 30px 0 20px;
+            margin-bottom: 60px;
         }
-        
-        .hero-title {
-            font-family: 'Orbitron', sans-serif;
+        h1 {
             font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--cyan) 50%, var(--green) 100%);
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
-            animation: glow 3s ease-in-out infinite;
         }
-        
-        @keyframes glow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.2); }
-        }
-        
-        .hero-subtitle {
-            font-size: 0.95rem;
+        .subtitle {
             color: #888;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-size: 1.1rem;
         }
-        
-        /* 瀹炴椂鏁版嵁闈㈡澘 */
-        .realtime-panel {
+        .cards {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
         }
-        
-        @media (max-width: 900px) {
-            .realtime-panel { grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        .data-card {
-            background: linear-gradient(135deg, rgba(22, 33, 62, 0.9) 0%, rgba(10, 10, 26, 0.9) 100%);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 12px;
-            padding: 18px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        .data-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            animation: shimmer 3s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        
-        .data-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--gold);
-            box-shadow: 0 8px 24px rgba(255, 215, 0, 0.15);
-        }
-        
-        .data-label {
-            font-size: 0.75rem;
-            color: #888;
-            margin-bottom: 6px;
-            letter-spacing: 1px;
-        }
-        
-        .data-value {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--gold);
-        }
-        
-        .data-value.positive { color: var(--green); }
-        .data-value.negative { color: var(--red); }
-        
-        .data-change {
-            font-size: 0.8rem;
-            margin-top: 6px;
-        }
-        
-        .data-change.up { color: var(--green); }
-        .data-change.down { color: var(--red); }
-        
-        /* 鑲＄エ浠ｇ爜婊氬姩 */
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 8px 0;
-            margin: 15px 0;
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-        }
-        
-        .ticker {
-            display: flex;
-            animation: ticker 30s linear infinite;
-        }
-        
-        .ticker-item {
-            flex-shrink: 0;
-            padding: 0 25px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            white-space: nowrap;
-        }
-        
-        .ticker-item.up { color: var(--red); }
-        .ticker-item.down { color: var(--green); }
-        .ticker-item.flat { color: #888; }
-        
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        /* 涓诲唴瀹瑰尯鍩?*/
-        .main-content {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 16px;
-            margin-top: 15px;
-        }
-        
-        @media (max-width: 900px) {
-            .main-content { grid-template-columns: 1fr; }
-            .sidebar { display: grid; grid-template-columns: repeat(2, 1fr); }
-        }
-        
-        @media (max-width: 600px) {
-            .sidebar { grid-template-columns: 1fr; }
-        }
-        
-        /* 宸︿晶妯″潡 */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            justify-content: flex-start;
-        }
-        
-        .module-card {
-            background: linear-gradient(145deg, rgba(22, 33, 62, 0.8) 0%, rgba(10, 10, 26, 0.9) 100%);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 10px;
-            padding: 14px 12px;
+        .card {
+            background: rgba(22, 33, 62, 0.8);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 32px;
             text-align: center;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
-        .module-card::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.4s, height 0.4s;
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
         }
-        
-        .module-card:hover::after {
-            width: 200px;
-            height: 200px;
-        }
-        
-        .module-card:hover {
-            transform: translateX(5px);
-            border-color: var(--cyan);
-            box-shadow: 0 4px 16px rgba(0, 212, 255, 0.2);
-        }
-        
-        .module-icon {
-            font-size: 1.5rem;
-            margin-bottom: 6px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .module-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--cyan);
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* 涓績鐩戞帶鍖哄煙 */
-        .monitor-area {
-            background: rgba(10, 10, 26, 0.95);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .monitor-header {
-            background: rgba(0, 212, 255, 0.1);
-            padding: 12px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-        }
-        
-        .monitor-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            color: var(--cyan);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .monitor-badge {
-            background: var(--green);
-            color: var(--dark);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .monitor-iframe {
-            width: 100%;
-            height: 700px;
-            border: none;
-        }
-        
-        /* 搴曢儴 */
-        .footer {
-            text-align: center;
-            padding: 20px 0;
-            border-top: 1px solid rgba(255, 215, 0, 0.1);
-            margin-top: 20px;
-        }
-        
-        .footer-text {
-            font-size: 0.8rem;
-            color: #666;
-        }
-        
-        .disclaimer {
-            background: rgba(255, 200, 0, 0.06);
-            border: 1px solid rgba(255, 200, 0, 0.15);
-            border-radius: 6px;
-            padding: 12px;
-            margin-top: 12px;
-            font-size: 0.75rem;
-            color: rgba(255, 215, 0, 0.7);
-        }
-        
-        /* 鍔犺浇鍔ㄧ敾 */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--darker);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
-        }
-        
-        .loading-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        
-        .loading-ring {
-            width: 60px;
-            height: 60px;
-            border: 3px solid transparent;
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .card-icon {
+            font-size: 3rem;
             margin-bottom: 16px;
         }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .card h3 {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
         }
-        
-        .loading-text {
-            font-family: 'Orbitron', sans-serif;
+        .card p {
+            color: #999;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 16px 48px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            color: #0a0a1a;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin: 48px 0;
+        }
+        .feature {
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .feature h4 {
+            color: #00d4ff;
+            margin-bottom: 8px;
+        }
+        .feature p {
+            color: #888;
             font-size: 0.9rem;
-            color: var(--gold);
-            letter-spacing: 3px;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+        .disclaimer {
+            background: rgba(255, 200, 0, 0.1);
+            border: 1px solid rgba(255, 200, 0, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 32px;
+            font-size: 0.9rem;
+            color: #ffa500;
         }
     </style>
 </head>
 <body>
-    <!-- 鍔犺浇鍔ㄧ敾 -->
-
-    
-    <!-- 绮掑瓙鑳屾櫙 -->
-    <canvas id="particles"></canvas>
-    
-    <!-- 鍔ㄦ�佽儗鏅?-->
-    <div class="bg-animation"></div>
-    
-    <!-- 鐐厜鏁堟灉 -->
-    <div class="glow-line"></div>
-    
     <div class="container">
-        
-        <!-- 涓绘爣棰?-->
-        <div class="hero">
-            <h1 class="hero-title">A鑲¤秴鐭嚎閲忓寲浜ゆ槗绯荤粺</h1>
-            <p class="hero-subtitle">AI-Powered 路 Real-Time 路 50K Capital</p>
-        </div>
-        
-        <!-- 鎸囨暟婊氬姩 -->
-        <div class="ticker-wrap">
-            <div class="ticker" id="ticker">
-                <span class="ticker-item up">涓婅瘉鎸囨暟 3350.26 +0.85%</span>
-                <span class="ticker-item up">娣辫瘉鎴愭寚 10280.45 +1.12%</span>
-                <span class="ticker-item down">鍒涗笟鏉挎寚 2045.33 -0.32%</span>
-                <span class="ticker-item up">绉戝垱50 985.67 +0.56%</span>
-                <span class="ticker-item up">鍖楄瘉50 1280.45 +1.85%</span>
-                <span class="ticker-item down">娌繁300 3920.15 -0.15%</span>
-                <span class="ticker-item up">涓瘉500 6180.92 +0.78%</span>
-                <span class="ticker-item flat">涓瘉1000 6520.33 0.00%</span>
-                <!-- 閲嶅鐢ㄤ簬鏃犵紳婊氬姩 -->
-                <span class="ticker-item up">涓婅瘉鎸囨暟 3350.26 +0.85%</span>
-                <span class="ticker-item up">娣辫瘉鎴愭寚 10280.45 +1.12%</span>
-                <span class="ticker-item down">鍒涗笟鏉挎寚 2045.33 -0.32%</span>
-                <span class="ticker-item up">绉戝垱50 985.67 +0.56%</span>
-                <span class="ticker-item up">鍖楄瘉50 1280.45 +1.85%</span>
-                <span class="ticker-item down">娌繁300 3920.15 -0.15%</span>
-                <span class="ticker-item up">涓瘉500 6180.92 +0.78%</span>
-                <span class="ticker-item flat">涓瘉1000 6520.33 0.00%</span>
+        <header>
+            <h1>📊 A股超短线量化交易系统</h1>
+            <p class="subtitle">V3.0 · 实盘5万资金账户 · 每日更新</p>
+        </header>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">📈</div>
+                <h3>实时交易报告</h3>
+                <p>查看今日交易记录、持仓明细、盈亏分析和风险指标</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>自动化策略</h3>
+                <p>竞价选股、智能卖出、风控执行全自动运行</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>数据驱动</h3>
+                <p>基于6维评分体系，量化筛选强势股</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌍</div>
+                <h3>全球风险监控</h3>
+                <p><a href="global-risk-monitor/" style="color:#00d4ff;text-decoration:none;">查看全球市场风险监控 →</a></p>
             </div>
         </div>
-        
-        <!-- 涓诲唴瀹瑰尯鍩?-->
-        <div class="main-content">
-            <!-- 宸︿晶妯″潡 -->
-            <div class="sidebar">
-                <a href="reports/morning_brief_20260528.html" class="module-card">
-                    <div class="module-icon">馃摪</div>
-                    <div class="module-title">鐩樺墠绾</div>
-                </a>
-                <a href="pnl_report.html" class="module-card">
-                    <div class="module-icon">馃搳</div>
-                    <div class="module-title">璐︽埛灞曠ず</div>
-                </a>
-                <a href="reports/trade_analysis_20260529.html" class="module-card">
-                    <div class="module-icon">馃搵</div>
-                    <div class="module-title">浜ゆ槗鍒嗘瀽</div>
-                </a>
-                <a href="reports/screen_20260529.html" class="module-card">
-                    <div class="module-icon">馃攳</div>
-                    <div class="module-title">閫夎偂鎶ュ憡</div>
-                </a>
-                <a href="reports/review_20260529.html" class="module-card">
-                    <div class="module-icon">馃</div>
-                    <div class="module-title">澶嶇洏鍒嗘瀽</div>
-                </a>
-                <a href="global-risk-monitor/" class="module-card">
-                    <div class="module-icon">🌍</div>
-                    <div class="module-title">全球风险监控</div>
-                </a>
-                <a href="about.html" class="module-card">
-                    <div class="module-icon">馃摉</div>
-                    <div class="module-title">绯荤粺璇存槑</div>
-                </a>
+
+        <div style="text-align: center;">
+            <a href="_pnl_report.html" class="btn">查看今日报告 →</a>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h4>超短线策略</h4>
+                <p>专注龙头战法、涨停板、题材炒作</p>
             </div>
-            
-            <!-- 涓績鐩戞帶鍖哄煙 -->
-            <div class="monitor-area">
-                <div class="monitor-header">
-                    <div class="monitor-title">
-                        <span>馃搱 REAL-TIME MONITOR</span>
-                        <span class="monitor-badge">LIVE</span>
-                    </div>
-                    <span style="font-size: 0.75rem; color: #888;">Auto Refresh: 3min</span>
-                </div>
-                <iframe src="monitor.html" class="monitor-iframe" id="monitorFrame"></iframe>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h4>严格风控</h4>
+                <p>单票止损-6%，同题材≤2只</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h4>实时监控</h4>
+                <p>盘中自动监控，及时预警</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📋</div>
+                <h4>复盘分析</h4>
+                <p>每日自动生成交易报告</p>
             </div>
         </div>
-        
-        <!-- 搴曢儴 -->
-        <div class="footer">
-            <p class="footer-text">V3.0 路 姣忔棩鑷姩鏇存柊 路 浠呬緵瀛︿範浜ゆ祦</p>
+
+        <footer>
+            <p>数据每3分钟自动更新 | 仅供学习交流，不构成投资建议</p>
             <div class="disclaimer">
-                鈿狅笍 鍏嶈矗澹版槑锛氭湰绯荤粺鎵�鏈変氦鏄撹褰曞拰鍒嗘瀽鎶ュ憡浠呬緵瀛︿範鐮旂┒浣跨敤锛屼笉鏋勬垚浠讳綍鎶曡祫寤鸿銆傝偂甯傛湁椋庨櫓锛屾姇璧勯渶璋ㄦ厧銆?            </div>
-        </div>
+                ⚠️ 免责声明：本系统所有交易记录和分析报告仅供学习研究使用，不构成任何投资建议。股市有风险，投资需谨慎。
+            </div>
+        </footer>
     </div>
-    
-    <script>
-        // 加载动画 - 使用DOMContentLoaded确保页面解析完就隐藏
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 800);
-        });
-        // 备用：如果DOMContentLoaded没触发，3秒后强制隐藏
-        setTimeout(() => {
-            var el = document.getElementById('loadingScreen');
-            if (el) el.classList.add('hidden');
-        }, 3000);
-        
-        // 绮掑瓙鏁堟灉
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        function createParticle() {
-            return {
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 2 + 0.5,
-                speedX: (Math.random() - 0.5) * 0.5,
-                speedY: (Math.random() - 0.5) * 0.5,
-                opacity: Math.random() * 0.5 + 0.2
-            };
-        }
-        
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < 40; i++) {
-                particles.push(createParticle());
-            }
-        }
-        
-        function drawParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach((p, i) => {
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 215, 0, ${p.opacity})`;
-                ctx.fill();
-                
-                particles.forEach((p2, j) => {
-                    if (i === j) return;
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(0, 212, 255, ${0.08 * (1 - dist / 120)})`;
-                        ctx.stroke();
-                    }
-                });
-                
-                p.x += p.speedX;
-                p.y += p.speedY;
-                
-                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
-            });
-            
-            requestAnimationFrame(drawParticles);
-        }
-        
-        resizeCanvas();
-        initParticles();
-        drawParticles();
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initParticles();
-        });
-        
-        // 妯℃嫙瀹炴椂鏁版嵁鏇存柊
-// 鑷姩鍒锋柊iframe锛堟瘡3鍒嗛挓锛?        setInterval(() => {
-            document.getElementById('monitorFrame').src = 'monitor.html?' + new Date().getTime();
-        }, 180000);
-    </script>
 </body>
 </html>
