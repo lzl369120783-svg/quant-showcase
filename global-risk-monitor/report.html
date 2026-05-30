@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A股宏观风控终端 - 实时监控</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a1a;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(22,33,62,0.8), rgba(10,10,26,0.9));
+            border: 1px solid rgba(0,212,255,0.2);
+            border-radius: 12px;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .header .time {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .section {
+            background: rgba(22,33,62,0.6);
+            border: 1px solid rgba(0,212,255,0.15);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .section-title {
+            padding: 15px 20px;
+            background: rgba(0,212,255,0.1);
+            border-bottom: 1px solid rgba(0,212,255,0.2);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .section-content {
+            padding: 15px 20px;
+        }
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+        .metric-name {
+            flex: 1;
+            color: #ccc;
+        }
+        .metric-value {
+            flex: 0 0 180px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .metric-status {
+            flex: 0 0 160px;
+            text-align: right;
+            font-size: 0.9rem;
+        }
+        .status-green { color: #00ff88; }
+        .status-yellow { color: #ffd700; }
+        .status-red { color: #ff4d4d; }
+        .status-grey { color: #666; }
+        .sub-row {
+            padding: 6px 0 6px 20px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+        .top-list {
+            padding: 15px 20px;
+        }
+        .top-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .top-item:last-child {
+            border-bottom: none;
+        }
+        .advice {
+            background: rgba(255,200,0,0.1);
+            border: 1px solid rgba(255,200,0,0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 10px;
+            color: #ffa500;
+            font-size: 0.95rem;
+        }
+        .reference {
+            padding: 10px 20px;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            color: #0a0a1a;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        .update-time {
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📈 A股宏观风控终端</h1>
+            <div class="time">数据更新时间：2026-05-30 20:56 | V2.5-AKShare</div>
+        </div>
+
+        <!-- 1. 短线市场情绪 -->
+        <div class="section">
+            <div class="section-title">🔥 短线市场情绪 (Sentiment)</div>
+            <div class="section-content">
+                <div class="metric-row">
+                    <span class="metric-name">🎯 综合情绪评分</span>
+                    <span class="metric-value">25</span>
+                    <span class="metric-status status-yellow">情绪偏弱</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">📊 大盘情绪</span>
+                    <span class="metric-value">L1</span>
+                    <span class="metric-status status-red">情绪冰点</span>
+                </div>
+                <div class="sub-row">↳ · 跌停50只(极度恐慌)</div>
+                <div class="sub-row">↳ · 炸板率44%(封板质量差)</div>
+                <div class="sub-row">↳ · 涨跌比1.0(偏弱)</div>
+                <div class="metric-row">
+                    <span class="metric-name">🎯 题材情绪</span>
+                    <span class="metric-value">L4</span>
+                    <span class="metric-status status-green">情绪偏强</span>
+                </div>
+                <div class="sub-row">↳ · 连板高度5板(偏高)</div>
+                <div class="sub-row">↳ · 连板股9只(梯队尚可)</div>
+                <div class="advice">💡 操作建议：观望为主，只看不动，等待情绪修复</div>
+            </div>
+        </div>
+
+        <!-- 今日Top5标的 -->
+        <div class="section">
+            <div class="section-title">🏆 今日Top5标的</div>
+            <div class="top-list">
+                <div class="top-item">
+                    <span>1. 香江控股</span>
+                    <span>5连板</span>
+                    <span>63分</span>
+                    <span>房地产开</span>
+                </div>
+                <div class="top-item">
+                    <span>2. 泓淋电力</span>
+                    <span>首板</span>
+                    <span>61分</span>
+                    <span>电网设备</span>
+                </div>
+                <div class="top-item">
+                    <span>3. 新亚电子</span>
+                    <span>首板</span>
+                    <span>61分</span>
+                    <span>消费电子</span>
+                </div>
+                <div class="top-item">
+                    <span>4. 青龙管业</span>
+                    <span>首板</span>
+                    <span>61分</span>
+                    <span>装修建材</span>
+                </div>
+                <div class="top-item">
+                    <span>5. 粤电力Ａ</span>
+                    <span>3连板</span>
+                    <span>60分</span>
+                    <span>电力</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 资金杠杆与情绪 -->
+        <div class="section">
+            <div class="section-title">🏛️ 资金杠杆与情绪 (Leverage)</div>
+            <div class="section-content">
+                <div class="metric-row">
+                    <span class="metric-name">💰 两融余额</span>
+                    <span class="metric-value">2.13 万亿</span>
+                    <span class="metric-status status-red">极度疯狂</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">📊 两融/流通市值比</span>
+                    <span class="metric-value">0.00 %</span>
+                    <span class="metric-status status-green">结构健康</span>
+                </div>
+            </div>
+            <div class="reference">📚 2015牛市顶参考: 两融余额 2.27万亿 / 占比 4.5%</div>
+        </div>
+
+        <!-- 3. 经济景气度 -->
+        <div class="section">
+            <div class="section-title">🏭 经济景气度 (Growth)</div>
+            <div class="section-content">
+                <div class="metric-row">
+                    <span class="metric-name">🏭 制造业PMI (01月)</span>
+                    <span class="metric-value">53.0</span>
+                    <span class="metric-status status-green">行业扩张 (利好)</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">🌏 GDP同比增速</span>
+                    <span class="metric-value">12.4 %</span>
+                    <span class="metric-status status-grey">2006年Q1 增速</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 整体估值锚 -->
+        <div class="section">
+            <div class="section-title">🌏 整体估值锚 (Valuation)</div>
+            <div class="section-content">
+                <div class="metric-row">
+                    <span class="metric-name">📉 A股总市值</span>
+                    <span class="metric-value">2583766561.56 万亿</span>
+                    <span class="metric-status status-grey">---</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">🌏 2025年GDP总量</span>
+                    <span class="metric-value">140.19 万亿</span>
+                    <span class="metric-status status-grey">---</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">📏 市值/GDP (巴菲特)</span>
+                    <span class="metric-value">1843046266.9 %</span>
+                    <span class="metric-status status-red">07年级泡沫</span>
+                </div>
+            </div>
+            <div class="reference">
+                📚 历史大顶比值参考:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• 2007年疯牛顶: ~125%<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• 2015年疯牛顶: ~110%<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;• 底部安全区间: 40% - 60%
+            </div>
+        </div>
+
+        <!-- 5. 通胀与货币 -->
+        <div class="section">
+            <div class="section-title">💸 通胀与货币 (Inflation & Money)</div>
+            <div class="section-content">
+                <div class="metric-row">
+                    <span class="metric-name">🛒 CPI同比 (01月)</span>
+                    <span class="metric-value">7.1 %</span>
+                    <span class="metric-status status-red">高通胀 (政策收紧)</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">🏭 PPI同比</span>
+                    <span class="metric-value">3.0 %</span>
+                    <span class="metric-status status-green">工业回暖 (利润修复)</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-name">✂️ M1-M2 剪刀差</span>
+                    <span class="metric-value">1.7 %</span>
+                    <span class="metric-status status-green">资金活化 (牛市动力)</span>
+                </div>
+                <div class="sub-row">↳ M2增速: 18.9 % (印钞速度)</div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="../" class="back-btn">← 返回主页</a>
+        </div>
+
+        <div class="update-time">
+            数据来源: AKShare | 仅供参考，不构成投资建议
+        </div>
+    </div>
+</body>
+</html>
