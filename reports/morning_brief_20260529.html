@@ -7,9 +7,9 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            background: #0a0a1a;
             color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
             min-height: 100vh;
             padding: 20px;
         }
@@ -18,43 +18,29 @@
             display: inline-block; padding: 8px 16px;
             background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3);
             color: #FFD700; text-decoration: none; border-radius: 4px;
-            margin-bottom: 20px; transition: all 0.3s;
+            margin-bottom: 20px;
         }
-        .back-btn:hover { background: rgba(255, 215, 0, 0.2); }
         .header {
-            text-align: center; margin-bottom: 30px; padding: 20px;
+            text-align: center; margin-bottom: 20px; padding: 20px;
             background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 8px;
         }
-        .header h1 { color: #FFD700; font-size: 28px; margin-bottom: 10px; }
+        .header h1 { color: #FFD700; font-size: 24px; margin-bottom: 10px; }
         .header .date { color: #a0a0b0; font-size: 14px; }
-        .section {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px; margin-bottom: 20px; overflow: hidden;
+        .tabs {
+            display: flex; gap: 10px; margin-bottom: 20px;
         }
-        .section-header {
-            background: rgba(255, 215, 0, 0.1); padding: 12px 20px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2); cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center;
+        .tab {
+            padding: 10px 20px; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px;
+            color: #ccc; cursor: pointer; text-decoration: none;
         }
-        .section-header h2 { color: #FFD700; font-size: 18px; }
-        .section-header .toggle { color: #a0a0b0; transition: transform 0.3s; }
-        .section-header .toggle.collapsed { transform: rotate(-90deg); }
-        .section-content {
-            padding: 15px 20px; max-height: 20000px; overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s;
+        .tab:hover { background: rgba(255, 215, 0, 0.1); color: #FFD700; }
+        .tab.active { background: rgba(255, 215, 0, 0.15); color: #FFD700; border-color: #FFD700; }
+        iframe {
+            width: 100%; height: 80vh; border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px; background: #fff;
         }
-        .section-content.collapsed { max-height: 0; padding: 0 20px; }
-        .content-text { white-space: pre-wrap; line-height: 1.8; font-size: 14px; }
-        .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
     </style>
-    <script>
-        function toggleSection(header) {
-            const content = header.nextElementSibling;
-            const toggle = header.querySelector(".toggle");
-            content.classList.toggle("collapsed");
-            toggle.classList.toggle("collapsed");
-        }
-    </script>
 </head>
 <body>
     <div class="container">
@@ -65,351 +51,25 @@
             <div class="date">2026-05-29 周五</div>
         </div>
 
-        <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h2>📰 盘前纪要</h2>
-                <span class="toggle">▼</span>
-            </div>
-            <div class="section-content">
-                <div class="content-text">每天10分钟阅读，开阔看盘思路，节约复盘时间。
-
-觉得有用，请将此文分享给身边每一位热爱学习的朋友，一起成长进步！
-
-
-
-
- 
-
-No.1 盘前热点事件
-
- 
-
-一、昨日热点
-
-电力：华电能源
-
-电容：江海股份
-
-数据中心：泰永长征、四方股份
-
-PCB：中京电子
-
-消费：步步高
-
-短剧：欢瑞世纪
-
- 
-
-二、多地用电负荷创历史新高 欧洲热到失控
-
-1、5月27日13时44分，广东电网用电负荷今年第一次创新高，达到1.6593亿千瓦，同比增长0.61%，较往年首次峰值出现时间提前近两个月。目前，广东电力供应平稳有序。
-
-2、5月26日21时54分，广西电网系统负荷今年第四次创历史新高，达到3881.6万千瓦，较原纪录增加约170.9万千瓦。
-
-3、百度热搜第一：欧洲热到失控。一场罕见的“超前热浪”正席卷欧洲，法国、英国、西班牙、意大利和爱尔兰等多国连续刷新5月史上最高的气温纪录。目前，法国96个行政区中已有13个发布了第二高级别的高温橙色警报，另有29个地区处于黄色警戒状态。这也是法国自2004年建立全国高温预警系统以来，首次在5月启动相关警报机制。‌‌
-
-电力：华电能源、华银电力、辽宁能源、华电辽能
-
-广东+电力：粤电力A、韶能股份
-
-广西+电力：桂冠电力、广西能源
-
- 
-
-三、伊美谅解备忘录初步非正式文件内容披露
-
-根据一份有关伊朗与美国谅解备忘录框架的初步非正式文件，美国承诺解除针对伊朗的海上封锁，并撤出部署在伊朗周边区域的部分军事力量。作为交换，伊朗将于一个月内逐步把霍尔木兹海峡商业船只通行量恢复至局势升级前水平，但不包括军事船只。船只通行的管理和航线安排，将由伊朗与阿曼共同协调。
-
-针对上述报道，特朗普周三表示，没有任何一个国家能够控制这条水道，WTI原油期货日内下跌4%。
-
-重建：中工国际、北方国际
-
-北交所+重建：铁拓机械
-
- 
-
-四、蓝箭航天无锡生产基地投产 助力朱雀三号火箭批量化生产
-
-据无锡发布消息，5月27日，蓝箭航天无锡生产基地正式投产。该基地是国内首个基于高强度不锈钢和智能化激光制造技术的火箭批量生产工厂，将为朱雀三号运载火箭的后续研制试验、批次化生产及商业化任务实施奠定基础。此次投产的无锡基地位于惠山区，占地约112亩，一期总投资23亿元。建成后，该基地将作为朱雀三号运载火箭的智能制造中心，具备年发射20次的总装、总测能力和配套保障能力。
-
-3月31日，上交所官网显示，长鑫科技和蓝箭航天因财务资料已过有效期，IPO中止。长鑫科技财务资料更新后，IPO目前已过会。
-
-蓝箭航天朱雀三号可重复使用火箭总设计师张晓东此前表示，2026年上半年遥二箭再次开展回收试验。（6月底前）
-
-蓝箭航天：鲁信创投、金风科技
-
- 
-
-五、央视财经：中国算力服务加速出海 微型电脑主机全球卖爆了
-
-在广东汕头，依托“来数加工”政策试点，海外用户发起的大模型调用需求，可以通过合规链路进入专区，在当地数据中心完成推理计算和词元消耗后，再通过海底光缆返回海外客户端。上个月，全国首次Token（词元）出海全链路验证在这里完成。从4月底每天1亿词元调用量，到现在日均百亿词元，不到一个月，汕头“词元出海”的调用规模快速增长。算力服务出海的背后，是我国算力基础设施和硬件供给能力的同步提升。在深圳，一批只有巴掌大小的微型电脑主机，正在成为海外大型游戏设计、人工智能本地推理等场景里的“轻量化算力底座”。目前，这里的微型主机出货量已占全球市场15%左右。（央视财经）
-
-汕头算力：海兰信、天亿马
-
-深圳微型主机：智微智能、工业富联
-
- 
-
-六、行业要闻
-
-1、和林微纳官微发文：当华为用架构创新（韬定律）绕开了先进制程的封锁，和林微纳正在用精微制造技术，为这条新路线搭好测试的桥梁。
-
-2、据媒体报道，字节跳动考虑今年支出最多700亿美元，用于建设数据中心等AI基础设施。（润泽科技）
-
-3、恒生指数公司发布公告，恒生港美科技指数将纳入SpaceX。（再升科技、西部材料）
-
-4、段永平举牌泡泡玛特。（新消费）
-
-5、美股Astrotech昨晚暴涨459%，该公司宣布已批准一项战略计划，专注于月球资源开发、自主月球工业基础设施，以及未来基于月球的先进计算和半导体制造机遇。（商业航天）
-
-6、长鑫科技科创板IPO获上市委会议通过。
-
-7、香港金管局：就内地投资者投资账户新增三项监管措施，开户核查倒查至2023年1月。
-
-8、李强在浙江舟山宁波调研时强调，加快建设大宗商品资源配置枢纽，为统筹发展和安全提供可靠保障。</div>
-            </div>
+        <div class="tabs">
+            <a class="tab active" onclick="switchTab(0)">📰 盘前纪要</a>
+            <a class="tab" onclick="switchTab(1)">📋 开盘必读</a>
         </div>
 
-        <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h2>📋 开盘必读</h2>
-                <span class="toggle": ▼</span>
-            </div>
-            <div class="section-content">
-                <div class="content-text">No.2 公告精选
-
- 
-
-一、日常公告
-
-嘉亨家化：控股股东变更为杭州拼便宜 徐意成为实控人
-
-张 小 泉：富春控股及其关联公司合并重整计划获法院批准
-
-恩捷股份：拟收购江苏爱思开100%股权 基础购买价款为4亿元
-
-长信科技：子公司拟不超30亿元采购算力服务器
-
-德福科技：拟投资31亿元建设年产5万吨高端AI电子电路铜箔项目
-
-北京科锐：与全球知名储能公司T公司签署储能系统采购合作协议
-
-四 方 达：公司金刚石散热片已通过海外客户测试 进入小批量供货阶段
-
-龙芯中科：拟定增募资23亿元 用于基于Xnm工艺的信息化芯片研发及产业化项目等
-
-金 螳 螂：中标约2.94亿元室内装修工程
-
- 
-
-二、停复牌
-
-*ST汇科：复牌，摘帽，汇金科技
-
-胜通能源：停牌，七腾机器人要约收购期限届满
-
- 
-
-三、地雷阵
-
-至纯科技：股东拟减持5.48%股份
-
-绿通科技：股东拟减持3.00%股份
-
-大豪科技：股东拟减持1.00%股份
-
-威贸电子：股东拟减持0.99%股份
-
-远方信息：股东拟减持0.95%股份
-
-昊帆生物：股东拟减持0.50%股份
-
-晶丰明源：股东拟减持0.28%股份
-
- 
-
-国瑞科技：股东拟询价转让3.50%股份
-
- 
-
-四、异动公告
-
-华塑控股：未从事PCB生产业务
-
-凯恩股份：目前核心业务不包括电解电容器纸业务
-
-步 步 高：已完成在营的22家超市门店的胖东来模式调改
-
-雄韬股份：华为公司发表了韬（τ）定律与公司业务不存在关联
-
-沃格光电：在泛半导体领域的业务尚处于早期阶段 营收规模占比极低
-
-华电辽能：绿氢市场仍处于培育阶段 下游需求和产品价格存在不确定性
-
-ST万邦：力争尽早消除公司股票被实施其他风险警示有关事项对公司的影响
-
-华塑控股：5月21日至5月26日期间 第二大股东信通万华合计减持1073.12万股公司股份
-
-真 视 通：液冷和高压快充业务占公司总收入比例较低 相关业务在短期内对公司业绩影响较小
-
- 
-
-五、动态更新
-
- 
-
-  
-
- 
-
-No.3 全球市场
-
- 
-
-一、全球市场
-
-美股三大股指小幅收涨，美光科技延续昨日涨势，收涨超3%，续创新高。台积电股价收涨超2%，创历史新高，有报道称台积电3纳米下半年涨价15%，明年或再涨10%。Meta涨近4%，公司将推出AI聊天机器人订阅服务。
-
-纳斯达克中国金龙指数收涨1.05%。蔚来涨超9%，小马智行涨超4%。
-
-  
-
-二、热门美股和中概股
-
-  
-
-三、大宗商品（夜盘品种）
-
- 
-
-  
-
- 
-
-No.4 连板梯队和涨停事件
-
- 
-
-一、连板梯队和涨停分布图
-
-3连板：华电能源、香江控股、华塑控股
-
-2连板：步步高、盛龙股份、真视通、中京电子、中百集团
-
-  
-
-二、连板晋级回顾推演
-
- 
-
- 
-
-三、涨停事件
-
-1、AI硬件（13）
-
-3板（PCB）：华塑控股
-
-2板（PCB）：中京电子
-
-2板（其他AI硬件）：真视通
-
-1板（其他AI硬件）：江海股份、泰永长征、天正电气、良信股份、凯恩股份、旭光电子、四方股份、海星股份、美格智能、艾华集团
-
-事件1：摩根士丹利对英伟达下一代Rubin机架进行了全面的物料清单（BOM）拆解，在其覆盖的下游零部件中，PCB内容价值增幅最为显著，较GB300大涨233%，其次是MLCC+182%。
-
-事件2：随着英伟达GPU平台迭代，数据中心机柜功耗将从传统服务器的10至15千瓦飙升至2029至2030年Feynman平台时代的逾1.5兆瓦，涨幅接近100倍。
-
- 
-
-2、电力（7）
-
-3板：华电能源
-
-1板：华银电力、辽宁能源、华能蒙电、华电辽能、粤电力A、韶能股份
-
-事件1：5月22日，国家发改委表示，“十五五”时期，预计投资超过5万亿元用于新型电网建设。
-
-事件2：根据国家气候中心预测，今年夏天全国大部分地区气温较常年同期偏高。高温天气将大幅增加空调降温用电需求。综合研判，今夏全国最高用电负荷将达到16亿千瓦左右，较去年增加9000万千瓦左右，相当于多出一个河南省的用电负荷。
-
- 
-
-3、消费（4）
-
-2板：步 步 高、中百集团
-
-1板：佳禾食品、水井坊
-
-事件：消费板块估值处历史底部，布局窗口期逐步显现，部分资金有高低切变化的迹象。
-
- 
-
-4、短剧（3）
-
-1板：欢瑞世纪、百纳千成、掌阅科技
-
-事件：央视财经报道，近两年海外短剧市场快速扩张， 相关成片产出同比增长5倍，预计全年增幅可达50倍。
-
- 
-
- 
-
-No.5 机构席位和游资动向
-
- 
-
- 
-
- 
-
- 
-
- 
-
-No.6 股价新高
-
- 
-
-今日收盘价创新高60家，昨日82家，前日133家（找对标，看行业趋势）
-
-主要集中在半导体、PCB、光通信
-
-  
-
- 
-
-No.7 新股
-
- 
-
- 
-
- 
-
- 
-
-No.8 人气热榜
-
- 
-
-同花顺热榜：华天科技、长电科技、华电辽能、大唐发电、京东方A
-
-东方财富热榜：华天科技、长电科技、华电辽能、中京电子、华能蒙电
-
-（数据实时变化，9点数据更新后再去官网刷新更准确）
-
-  
-
- 
-
-本文内容基于互联网信息整理，不构成投资建议；仅用于研究学习，提高市场认知能力。"</div>
-            </div>
-        </div>
-
-        <div class="footer">
-            仅供参考，不构成投资建议
-            </div>
-        </div>
+        <iframe id="contentFrame" src="https://www.jiuyangongshe.com/a/jrsst0j85y"></iframe>
     </div>
+    
+    <script>
+        const urls = [
+            'https://www.jiuyangongshe.com/a/jrsst0j85y',
+            'https://www.jiuyangongshe.com/a/2z3nl4k8fgw'
+        ];
+        const tabs = document.querySelectorAll('.tab');
+        
+        function switchTab(idx) {
+            document.getElementById('contentFrame').src = urls[idx];
+            tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+        }
+    </script>
 </body>
 </html>
