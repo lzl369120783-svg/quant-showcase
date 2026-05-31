@@ -10,12 +10,12 @@ import xml.etree.ElementTree as ET
 import json
 from datetime import datetime
 
-# 国内RSS源
+# 国内RSS源（移除机器之心，被阿里云WAF拦截）
 RSS_SOURCES = [
-    {'name': '机器之心', 'url': 'https://www.jiqizhixin.com/rss', 'category': 'AI媒体'},
     {'name': '量子位', 'url': 'https://www.qbitai.com/feed', 'category': 'AI媒体'},
     {'name': 'InfoQ中文', 'url': 'https://www.infoq.cn/feed', 'category': '技术'},
     {'name': '少数派', 'url': 'https://sspai.com/feed', 'category': '科技'},
+    {'name': '36氪', 'url': 'https://36kr.com/feed', 'category': '科技'},
 ]
 
 def escape(t):
@@ -47,8 +47,8 @@ def fetch_rss_news():
                 root = ET.fromstring(content)
                 
                 count = 0
-                for item in root.findall('.//item')[:5]:
-                    if count >= 3:  # 每个源最多3条
+                for item in root.findall('.//item')[:10]:
+                    if count >= 5:  # 每个源最多5条
                         break
                     
                     title = item.find('title')
@@ -115,10 +115,27 @@ def generate_html(aihot_data, rss_items):
             <h1>🔥 AI热点</h1>
             <div class="s">AI日报 · {date}</div>
         </div>
-        <div class="u">数据来源：AIHOT + 国内RSS · 更新时间: {now}</div>
+        <div class="u">数据来源：国内RSS + AIHOT · 更新时间: {now}</div>
 '''
     
-    # AIHOT数据
+    # 国内RSS数据（放在前面）
+    if rss_items:
+        html += '        <div class="section">\n'
+        html += '            <div class="section-title">📰 国内AI媒体</div>\n'
+        html += '            <div class="n">\n'
+        
+        for item in rss_items:
+            html += f'''                <div class="nc">
+                    <div class="nt"><a href="{escape(item['url'])}" target="_blank">{escape(item['title'])}</a></div>
+                    <div class="nm">{escape(item['source'])}</div>
+                    <div class="nsm">{escape(item['summary'])}</div>
+                </div>
+'''
+        
+        html += '            </div>\n'
+        html += '        </div>\n'
+    
+    # AIHOT数据（放在后面）
     if aihot_data and 'sections' in aihot_data:
         for section in aihot_data['sections']:
             html += f'        <div class="section">\n'
@@ -141,24 +158,7 @@ def generate_html(aihot_data, rss_items):
             html += '            </div>\n'
             html += '        </div>\n'
     
-    # RSS数据
-    if rss_items:
-        html += '        <div class="section">\n'
-        html += '            <div class="section-title">国内AI媒体</div>\n'
-        html += '            <div class="n">\n'
-        
-        for item in rss_items:
-            html += f'''                <div class="nc">
-                    <div class="nt"><a href="{escape(item['url'])}" target="_blank">{escape(item['title'])}</a></div>
-                    <div class="nm">{escape(item['source'])}</div>
-                    <div class="nsm">{escape(item['summary'])}</div>
-                </div>
-'''
-        
-        html += '            </div>\n'
-        html += '        </div>\n'
-    
-    html += f'''        <div class="f">数据来源：aihot.virxact.com + 国内RSS · 仅供参考</div>
+    html += f'''        <div class="f">数据来源：国内RSS + aihot.virxact.com · 仅供参考</div>
     </div>
 </body>
 </html>'''
