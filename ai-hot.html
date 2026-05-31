@@ -6,275 +6,85 @@
     <title>AI热点 - 每日资讯</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
-            color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            color: #FFD700;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        .back-btn:hover {
-            background: rgba(255, 215, 0, 0.2);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(0, 212, 255, 0.05));
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 12px;
-        }
-        .header h1 {
-            color: #FFD700;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .header .subtitle {
-            color: #888;
-            font-size: 14px;
-        }
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #888;
-        }
-        .news-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .news-card {
-            background: rgba(18, 18, 42, 0.9);
-            border: 1px solid rgba(255, 215, 0, 0.15);
-            border-radius: 10px;
-            padding: 20px;
-            transition: all 0.3s;
-        }
-        .news-card:hover {
-            border-color: rgba(255, 215, 0, 0.4);
-            transform: translateY(-2px);
-        }
-        .news-title {
-            color: #FFD700;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        .news-title a {
-            color: #FFD700;
-            text-decoration: none;
-        }
-        .news-title a:hover {
-            text-decoration: underline;
-        }
-        .news-meta {
-            display: flex;
-            gap: 16px;
-            color: #888;
-            font-size: 12px;
-            margin-bottom: 10px;
-        }
-        .news-source {
-            color: #00D4FF;
-        }
-        .news-summary {
-            color: #ccc;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .news-tags {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        .tag {
-            padding: 2px 8px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 4px;
-            color: #00D4FF;
-            font-size: 12px;
-        }
-        .category-tag {
-            padding: 2px 8px;
-            background: rgba(255, 77, 77, 0.1);
-            border: 1px solid rgba(255, 77, 77, 0.3);
-            border-radius: 4px;
-            color: #FF4D4D;
-            font-size: 12px;
-        }
-        .refresh-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 20px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            color: #00D4FF;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .refresh-btn:hover {
-            background: rgba(0, 212, 255, 0.2);
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: #555;
-            font-size: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 30px;
-        }
-        @media (max-width: 768px) {
-            .header h1 { font-size: 22px; }
-            .news-title { font-size: 16px; }
-        }
+        body { background: linear-gradient(135deg, #0a0a1a, #1a1a2e); color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif; min-height: 100vh; padding: 20px; }
+        .c { max-width: 1000px; margin: 0 auto; }
+        .b { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: rgba(255,215,0,.1); border: 1px solid rgba(255,215,0,.3); color: #FFD700; text-decoration: none; border-radius: 6px; margin-bottom: 20px; font-size: 14px; }
+        .b:hover { background: rgba(255,215,0,.2); }
+        .h { text-align: center; margin-bottom: 30px; padding: 30px; background: linear-gradient(135deg, rgba(255,215,0,.08), rgba(0,212,255,.05)); border: 1px solid rgba(255,215,0,.2); border-radius: 12px; }
+        .h h1 { color: #FFD700; font-size: 28px; margin-bottom: 10px; }
+        .h .s { color: #888; font-size: 14px; }
+        .n { display: flex; flex-direction: column; gap: 16px; }
+        .nc { background: rgba(18,18,42,.9); border: 1px solid rgba(255,215,0,.15); border-radius: 10px; padding: 20px; transition: all .3s; }
+        .nc:hover { border-color: rgba(255,215,0,.4); transform: translateY(-2px); }
+        .nt { color: #FFD700; font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .nt a { color: #FFD700; text-decoration: none; }
+        .nt a:hover { text-decoration: underline; }
+        .nm { display: flex; gap: 16px; color: #888; font-size: 12px; margin-bottom: 10px; }
+        .ns { color: #00D4FF; }
+        .nsm { color: #ccc; font-size: 14px; line-height: 1.6; }
+        .u { text-align: center; color: #555; font-size: 12px; margin-bottom: 20px; }
+        .f { text-align: center; padding: 20px; color: #555; font-size: 12px; border-top: 1px solid rgba(255,255,255,.05); margin-top: 30px; }
+        @media (max-width: 768px) { .h h1 { font-size: 22px; } .nt { font-size: 16px; } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <a href="index.html" class="back-btn">← 返回首页</a>
-        
-        <div class="header">
+    <div class="c">
+        <a href="index.html" class="b">← 返回首页</a>
+        <div class="h">
             <h1>🔥 AI热点</h1>
-            <div class="subtitle">每日AI资讯 · 智能聚合</div>
+            <div class="s">每日AI资讯 · RSS聚合</div>
         </div>
-        
-        <button class="refresh-btn" onclick="loadNews()">🔄 刷新数据</button>
-        
-        <div id="news-container" class="news-list">
-            <div class="loading">加载中...</div>
+        <div class="u">更新时间: 2026-05-31 21:12</div>
+        <div class="n">
+            <div class="nc">
+                <div class="nt"><a href="https://36kr.com/p/3831135917107075?f=rss" target="_blank">36氪首发 | 服务富士康，半年营收超两千万的机器人解决方案商完成天使轮融资</a></div>
+                <div class="nm"><span class="ns">36氪</span><span>2026-05-30 09:53</span></div>
+                <div class="nsm">
+ 
+ 
+  &lt;p&gt;作者&amp;nbsp;|&amp;nbsp;乔钰杰&lt;/p&gt;
+  &lt;p&gt;编辑&amp;nbsp;|&amp;nbsp;袁斯来&lt;/p&gt;
+  &lt;p&gt;硬氪获悉，乘物机器人（深圳）有限公司（以下简称“乘物机器人”）近日完成天使轮融资，由中国台湾工业自动化与智能...</div>
+            </div>
+            <div class="nc">
+                <div class="nt"><a href="https://36kr.com/p/3830580716365449?f=rss" target="_blank">千里科技再添筹码，或将整合吉利辅助驾驶团队｜36氪独家</a></div>
+                <div class="nm"><span class="ns">36氪</span><span>2026-05-30 00:28</span></div>
+                <div class="nsm">
+ 
+ 
+  &lt;p&gt;为助力千里科技成为“第二个华为”，吉利决定为它增添新的技术筹码。&lt;/p&gt;
+  &lt;p&gt;36氪从多位产业人士处了解到，吉利中央研究院数百人的辅助驾驶团队，将在近期被整合入千里科技。目前，吉利研究院辅助驾驶团队，已有人收到了转...</div>
+            </div>
+            <div class="nc">
+                <div class="nt"><a href="https://36kr.com/p/3830254963517318?f=rss" target="_blank">36氪首发｜「穿越者」载人航天公司完成新一轮亿元融资，某头部互联网战投领投，探路者等跟投</a></div>
+                <div class="nm"><span class="ns">36氪</span><span>2026-05-29 19:00</span></div>
+                <div class="nsm">
+ 
+ 
+  &lt;p&gt;36氪获悉，北京穿越者载人航天科技有限公司（以下简称“穿越者”）近日完成Pre-A轮亿元融资，由某头部互联网战投领投，探路者集团等跟投，老股东中天汇富、彬复资本持续加注。光源资本担任本轮独家财务顾问。本轮融资资金将重点用...</div>
+            </div>
+            <div class="nc">
+                <div class="nt"><a href="https://36kr.com/p/3830194503526277?f=rss" target="_blank">氪星晚报 ｜联想创投等入股诺仕机器人；苹果据悉将在WWDC重点展示端侧AI能力；国家外汇管理局：4月中国外汇市场总计成交25.3万亿元</a></div>
+                <div class="nm"><span class="ns">36氪</span><span>2026-05-29 17:57</span></div>
+                <div class="nsm">
+ 
+ 
+  &lt;h2&gt;大公司：&lt;/h2&gt;
+  &lt;p&gt;&lt;strong&gt;上汽通用五菱全球车EKSION在印尼雅加达向首批用户交付&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;36氪获悉，5月28日，上汽集团迎来全球第一亿辆整车交付，成为我国首家累计产销...</div>
+            </div>
+            <div class="nc">
+                <div class="nt"><a href="https://36kr.com/newsflashes/3832869930952327?f=rss" target="_blank">华金证券：6月A股继续震荡偏强，科技主线不变</a></div>
+                <div class="nm"><span class="ns">36氪</span><span>2026-05-31 16:53</span></div>
+                <div class="nsm">36氪获悉，华金证券发布研报称，复盘历史，影响6月A股市场走势的核心因素是政策和外部事件、基本面和流动性。今年6月A股可能延续震荡偏强趋势，受世界杯等因素影响有限。行业配置上，6月科技主线可能不变，建议继续逢低配置：一是政策和产业趋势向上的...</div>
+            </div>
+            <div class="nc">
+                <div class="nt"><a href="https://36kr.com/newsflashes/3832893774391173?f=rss" target="_blank">宝鼎科技：公司未与英伟达有过接触或业务合作，目前未有高速覆铜板M7和M9产品销售</a></div>
+                <div class="nm"><span class="ns">36氪</span><span>2026-05-31 15:41</span></div>
+                <div class="nsm">36氪获悉，宝鼎科技公告，公司澄清，近期网上关于公司产品纳入英伟达供应链体系认证的信息为不实信息，公司未与英伟达有过接触或业务合作。公司覆铜板产品为常规产品，无AI覆铜板，高速覆铜板M7和M9均无销售；铜箔产品主要为普通铜箔，超低轮廓HVL...</div>
+            </div>
         </div>
-        
-        <div class="footer">
-            数据来源：TrendRadar · 仅供参考
-        </div>
+        <div class="f">数据来源：36氪 · 仅供参考</div>
     </div>
-    
-    <script>
-        // 示例数据（后续可通过GitHub Actions自动更新）
-        const sampleNews = [
-            {
-                title: "OpenAI发布GPT-5.5：幻觉率下降50%，推理速度提升3倍",
-                url: "#",
-                source: "OpenAI",
-                category: "模型发布",
-                date: "2026-05-30",
-                summary: "GPT-5.5正式发布，聚焦企业级应用，支持100万Token超长上下文，幻觉率较前代下降超50%，推理速度提升3倍。",
-                tags: ["GPT-5.5", "OpenAI", "大模型"]
-            },
-            {
-                title: "Claude Opus 4.8发布：快速模式成本降至前代1/3",
-                url: "#",
-                source: "Anthropic",
-                category: "模型发布",
-                date: "2026-05-30",
-                summary: "Anthropic发布Claude Opus 4.8，快速模式成本降至前代三分之一，进一步优化智能体编排和代码质量。",
-                tags: ["Claude", "Anthropic", "成本优化"]
-            },
-            {
-                title: "特斯拉Optimus机器人工厂动工：年产能1000万台",
-                url: "#",
-                source: "特斯拉",
-                category: "机器人",
-                date: "2026-05-30",
-                summary: "特斯拉专属的Optimus人形机器人工厂已动工，规划年产能最高达1000万台，标志着具身智能硬件进入规模化量产前夜。",
-                tags: ["特斯拉", "机器人", "具身智能"]
-            },
-            {
-                title: "国产大模型周调用量达7.94万亿Token，是美国的2.4倍",
-                url: "#",
-                source: "行业报告",
-                category: "市场数据",
-                date: "2026-05-30",
-                summary: "国内大模型周调用量达7.942万亿Token，是美国的2.4倍。腾讯混元、阿里通义千问、百度文心一言、DeepSeek等占据全球调用量前五席中的四席。",
-                tags: ["国产大模型", "市场份额", "DeepSeek"]
-            },
-            {
-                title: "MiniMax披露B端客户半年增长5倍，ARR 60天翻倍",
-                url: "#",
-                source: "MiniMax",
-                category: "商业化",
-                date: "2026-05-30",
-                summary: "MiniMax披露B端客户半年增长5倍，年化经常性收入（ARR）在60天内翻倍，证明AI能力正在快速转化为商业收入。",
-                tags: ["MiniMax", "商业化", "ARR"]
-            },
-            {
-                title: "比亚迪发布4nm智驾芯片璇玑A3：整车算力超2100 TOPS",
-                url: "#",
-                source: "比亚迪",
-                category: "芯片",
-                date: "2026-05-30",
-                summary: "比亚迪发布4nm智驾芯片璇玑A3，支持整车算力超2100 TOPS，展现了在自动驾驶硬件领域的垂直整合突破。",
-                tags: ["比亚迪", "智驾芯片", "自动驾驶"]
-            },
-            {
-                title: "苹果将重点展示端侧AI能力：WWDC前瞻",
-                url: "#",
-                source: "苹果",
-                category: "端侧AI",
-                date: "2026-05-30",
-                summary: "苹果计划在WWDC上重点展示其自研芯片支持的终端本地AI处理能力，iOS 27将推出新版Siri。",
-                tags: ["苹果", "端侧AI", "WWDC"]
-            },
-            {
-                title: "创想三维登陆港交所：消费级3D打印第一股",
-                url: "#",
-                source: "财经新闻",
-                category: "IPO",
-                date: "2026-05-30",
-                summary: "深圳创想三维成功登陆港交所，成为消费级3D打印第一股。深圳四小龙共同占据全球入门级3D打印机九成以上市场份额。",
-                tags: ["3D打印", "IPO", "深圳"]
-            }
-        ];
-        
-        function loadNews() {
-            const container = document.getElementById('news-container');
-            container.innerHTML = '';
-            
-            sampleNews.forEach(news => {
-                const card = document.createElement('div');
-                card.className = 'news-card';
-                card.innerHTML = `
-                    <div class="news-title">
-                        <a href="${news.url}" target="_blank">${news.title}</a>
-                    </div>
-                    <div class="news-meta">
-                        <span class="news-source">${news.source}</span>
-                        <span class="category-tag">${news.category}</span>
-                        <span>${news.date}</span>
-                    </div>
-                    <div class="news-summary">${news.summary}</div>
-                    <div class="news-tags">
-                        ${news.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-        
-        // 页面加载时自动加载新闻
-        loadNews();
-    </script>
 </body>
 </html>
