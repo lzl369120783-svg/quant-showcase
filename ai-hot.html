@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI热点 - 每日资讯</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .back-btn:hover {
+            background: rgba(255, 215, 0, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+        }
+        .header h1 {
+            color: #FFD700;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .header .subtitle {
+            color: #888;
+            font-size: 14px;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .news-card {
+            background: rgba(18, 18, 42, 0.9);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        .news-card:hover {
+            border-color: rgba(255, 215, 0, 0.4);
+            transform: translateY(-2px);
+        }
+        .news-title {
+            color: #FFD700;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .news-title a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+        .news-title a:hover {
+            text-decoration: underline;
+        }
+        .news-meta {
+            display: flex;
+            gap: 16px;
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .news-source {
+            color: #00D4FF;
+        }
+        .news-summary {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .news-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            padding: 2px 8px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 4px;
+            color: #00D4FF;
+            font-size: 12px;
+        }
+        .category-tag {
+            padding: 2px 8px;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            border-radius: 4px;
+            color: #FF4D4D;
+            font-size: 12px;
+        }
+        .refresh-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            color: #00D4FF;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .refresh-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #555;
+            font-size: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 30px;
+        }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 22px; }
+            .news-title { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← 返回首页</a>
+        
+        <div class="header">
+            <h1>🔥 AI热点</h1>
+            <div class="subtitle">每日AI资讯 · 智能聚合</div>
+        </div>
+        
+        <button class="refresh-btn" onclick="loadNews()">🔄 刷新数据</button>
+        
+        <div id="news-container" class="news-list">
+            <div class="loading">加载中...</div>
+        </div>
+        
+        <div class="footer">
+            数据来源：TrendRadar · 仅供参考
+        </div>
+    </div>
+    
+    <script>
+        // 示例数据（后续可通过GitHub Actions自动更新）
+        const sampleNews = [
+            {
+                title: "OpenAI发布GPT-5.5：幻觉率下降50%，推理速度提升3倍",
+                url: "#",
+                source: "OpenAI",
+                category: "模型发布",
+                date: "2026-05-30",
+                summary: "GPT-5.5正式发布，聚焦企业级应用，支持100万Token超长上下文，幻觉率较前代下降超50%，推理速度提升3倍。",
+                tags: ["GPT-5.5", "OpenAI", "大模型"]
+            },
+            {
+                title: "Claude Opus 4.8发布：快速模式成本降至前代1/3",
+                url: "#",
+                source: "Anthropic",
+                category: "模型发布",
+                date: "2026-05-30",
+                summary: "Anthropic发布Claude Opus 4.8，快速模式成本降至前代三分之一，进一步优化智能体编排和代码质量。",
+                tags: ["Claude", "Anthropic", "成本优化"]
+            },
+            {
+                title: "特斯拉Optimus机器人工厂动工：年产能1000万台",
+                url: "#",
+                source: "特斯拉",
+                category: "机器人",
+                date: "2026-05-30",
+                summary: "特斯拉专属的Optimus人形机器人工厂已动工，规划年产能最高达1000万台，标志着具身智能硬件进入规模化量产前夜。",
+                tags: ["特斯拉", "机器人", "具身智能"]
+            },
+            {
+                title: "国产大模型周调用量达7.94万亿Token，是美国的2.4倍",
+                url: "#",
+                source: "行业报告",
+                category: "市场数据",
+                date: "2026-05-30",
+                summary: "国内大模型周调用量达7.942万亿Token，是美国的2.4倍。腾讯混元、阿里通义千问、百度文心一言、DeepSeek等占据全球调用量前五席中的四席。",
+                tags: ["国产大模型", "市场份额", "DeepSeek"]
+            },
+            {
+                title: "MiniMax披露B端客户半年增长5倍，ARR 60天翻倍",
+                url: "#",
+                source: "MiniMax",
+                category: "商业化",
+                date: "2026-05-30",
+                summary: "MiniMax披露B端客户半年增长5倍，年化经常性收入（ARR）在60天内翻倍，证明AI能力正在快速转化为商业收入。",
+                tags: ["MiniMax", "商业化", "ARR"]
+            },
+            {
+                title: "比亚迪发布4nm智驾芯片璇玑A3：整车算力超2100 TOPS",
+                url: "#",
+                source: "比亚迪",
+                category: "芯片",
+                date: "2026-05-30",
+                summary: "比亚迪发布4nm智驾芯片璇玑A3，支持整车算力超2100 TOPS，展现了在自动驾驶硬件领域的垂直整合突破。",
+                tags: ["比亚迪", "智驾芯片", "自动驾驶"]
+            },
+            {
+                title: "苹果将重点展示端侧AI能力：WWDC前瞻",
+                url: "#",
+                source: "苹果",
+                category: "端侧AI",
+                date: "2026-05-30",
+                summary: "苹果计划在WWDC上重点展示其自研芯片支持的终端本地AI处理能力，iOS 27将推出新版Siri。",
+                tags: ["苹果", "端侧AI", "WWDC"]
+            },
+            {
+                title: "创想三维登陆港交所：消费级3D打印第一股",
+                url: "#",
+                source: "财经新闻",
+                category: "IPO",
+                date: "2026-05-30",
+                summary: "深圳创想三维成功登陆港交所，成为消费级3D打印第一股。深圳四小龙共同占据全球入门级3D打印机九成以上市场份额。",
+                tags: ["3D打印", "IPO", "深圳"]
+            }
+        ];
+        
+        function loadNews() {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
+            
+            sampleNews.forEach(news => {
+                const card = document.createElement('div');
+                card.className = 'news-card';
+                card.innerHTML = `
+                    <div class="news-title">
+                        <a href="${news.url}" target="_blank">${news.title}</a>
+                    </div>
+                    <div class="news-meta">
+                        <span class="news-source">${news.source}</span>
+                        <span class="category-tag">${news.category}</span>
+                        <span>${news.date}</span>
+                    </div>
+                    <div class="news-summary">${news.summary}</div>
+                    <div class="news-tags">
+                        ${news.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+        
+        // 页面加载时自动加载新闻
+        loadNews();
+    </script>
+</body>
+</html>
