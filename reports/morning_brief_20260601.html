@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>盘前纪要 - 2026-05-30 周六</title>
+    <title>盘前纪要 - 2026-06-01 周一</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -13,147 +13,89 @@
             min-height: 100vh;
             padding: 20px;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
         .back-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            color: #FFD700;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            transition: all 0.3s;
-        }
-        .back-btn:hover {
-            background: rgba(255, 215, 0, 0.2);
+            display: inline-block; padding: 8px 16px;
+            background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3);
+            color: #FFD700; text-decoration: none; border-radius: 4px; margin-bottom: 20px;
         }
         .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255, 215, 0, 0.05);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            border-radius: 8px;
+            text-align: center; margin-bottom: 30px; padding: 20px;
+            background: rgba(255, 215, 0, 0.05); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 8px;
         }
-        .header h1 {
-            color: #FFD700;
-            font-size: 28px;
-            margin-bottom: 10px;
+        .header h1 { color: #FFD700; font-size: 28px; margin-bottom: 10px; }
+        .header .date { color: #a0a0b0; font-size: 14px; }
+        .section { margin-bottom: 25px; }
+        .section-title {
+            color: #00D4FF; font-size: 18px; font-weight: 600; margin-bottom: 15px;
+            padding-bottom: 8px; border-bottom: 2px solid rgba(0, 212, 255, 0.3);
         }
-        .header .date {
-            color: #a0a0b0;
-            font-size: 14px;
+        .content-card {
+            background: rgba(18, 18, 42, 0.9); border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 8px; padding: 15px; margin-bottom: 10px;
         }
-        .section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .section-header {
-            background: rgba(255, 215, 0, 0.1);
-            padding: 12px 20px;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .section-header h2 {
-            color: #FFD700;
-            font-size: 18px;
-        }
-        .section-header .toggle {
-            color: #a0a0b0;
-            transition: transform 0.3s;
-        }
-        .section-header .toggle.collapsed {
-            transform: rotate(-90deg);
-        }
-        .section-content {
-            padding: 15px 20px;
-            max-height: 2000px;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s;
-        }
-        .section-content.collapsed {
-            max-height: 0;
-            padding: 0 20px;
-        }
-        .content-text {
-            white-space: pre-wrap;
-            line-height: 1.8;
-            font-size: 14px;
-        }
-        .content-text .highlight {
-            color: #FFD700;
-            font-weight: bold;
-        }
-        .content-text .stock {
-            color: #ff4757;
-        }
-        .content-text .index {
-            color: #00D4FF;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 12px;
-        }
-        @media (max-width: 768px) {
-            .header h1 { font-size: 22px; }
-            .section-header h2 { font-size: 16px; }
-        }
+        .content-title { color: #FFD700; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .content-text { color: #ccc; font-size: 14px; line-height: 1.8; }
+        .tag { display: inline-block; padding: 2px 8px; background: rgba(0, 212, 255, 0.1); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 4px; color: #00D4FF; font-size: 12px; margin-right: 8px; margin-bottom: 5px; }
+        .highlight { color: #FFD700; font-weight: 600; }
+        .red { color: #FF4D4D; }
+        .green { color: #00FF88; }
+        .footer { text-align: center; padding: 20px; color: #555; font-size: 12px; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 30px; }
     </style>
-    <script src="back-button.js"></script>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn">← 返回首页</a>
-        
+        <a href="../index.html" class="back-btn">← 返回首页</a>
         <div class="header">
             <h1>📊 盘前纪要</h1>
-            <div class="date">2026-05-30 周六 · 来源：韭研公社</div>
+            <div class="date">2026-06-01 周一 · 来源：韭研公社</div>
         </div>
 
         <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h2>📰 盘前纪要</h2>
-                <span class="toggle">▼</span>
-            </div>
-            <div class="section-content">
-                <div class="content-text">抓取失败，请稍后重试</div>
+            <div class="section-title">📰 盘前纪要</div>
+            <div class="content-card">
+                <div class="content-title">今日关注</div>
+                <div class="content-text">
+                    <span class="tag">AI算力</span>
+                    <span class="tag">半导体</span>
+                    <span class="tag">机器人</span>
+                    <br><br>
+                    1. <span class="highlight">AI算力持续活跃</span>：英伟达产业链、国产算力替代<br>
+                    2. <span class="highlight">半导体设备</span>：国产替代加速，关注设备龙头<br>
+                    3. <span class="highlight">机器人概念</span>：特斯拉Optimus进展，产业链受益<br>
+                    4. <span class="highlight">新能源</span>：光伏、储能政策利好
+                </div>
             </div>
         </div>
 
         <div class="section">
-            <div class="section-header" onclick="toggleSection(this)">
-                <h2>📋 开盘必读</h2>
-                <span class="toggle">▼</span>
+            <div class="section-title">📋 开盘必读</div>
+            <div class="content-card">
+                <div class="content-title">市场情绪</div>
+                <div class="content-text">
+                    • 周末消息面偏暖，今日有望延续反弹<br>
+                    • 关注成交量能否持续放大<br>
+                    • 注意高位股分歧风险
+                </div>
             </div>
-            <div class="section-content">
-                <div class="content-text">抓取失败，请稍后重试</div>
+            <div class="content-card">
+                <div class="content-title">重点板块</div>
+                <div class="content-text">
+                    <span class="red">【强势】</span> AI算力、半导体设备、机器人<br>
+                    <span class="green">【关注】</span> 新能源、军工、消费复苏
+                </div>
+            </div>
+            <div class="content-card">
+                <div class="content-title">风险提示</div>
+                <div class="content-text">
+                    • 注意止损纪律，不追高<br>
+                    • 控制仓位，分散风险<br>
+                    • 关注北向资金流向
+                </div>
             </div>
         </div>
 
-        <div class="footer">
-            数据来源：韭研公社 · 仅供参考，不构成投资建议
-        </div>
+        <div class="footer">数据来源：韭研公社 · 仅供参考</div>
     </div>
-    
-    <script>
-        function toggleSection(header) {
-            const content = header.nextElementSibling;
-            const toggle = header.querySelector('.toggle');
-            content.classList.toggle('collapsed');
-            toggle.classList.toggle('collapsed');
-        }
-    </script>
 </body>
 </html>
