@@ -31,9 +31,16 @@ if exist "%SOURCE%\monitor_%DATE%.html" (
     echo   ✓ 监控报告已更新
 )
 
-if exist "%SOURCE%\morning_brief_%DATE%.html" (
-    copy "%SOURCE%\morning_brief_%DATE%.html" "%TARGET%\reports\" >nul
-    echo   ✓ 盘前纪要已更新
+:: 盘前纪要：找最新的（可能是昨天生成的）
+set LATEST_MB=
+for /f "delims=" %%f in ('dir /b /o-n "%SOURCE%\morning_brief_*.html" 2^>nul') do (
+    if not defined LATEST_MB set LATEST_MB=%%f
+)
+if defined LATEST_MB (
+    copy "%SOURCE%\%LATEST_MB%" "%TARGET%\reports\" >nul
+    echo   ✓ 盘前纪要已更新: %LATEST_MB%
+) else (
+    echo   - 未找到盘前纪要文件
 )
 
 echo.
@@ -48,7 +55,14 @@ echo [3/5] 更新主页链接到今天的报告...
 cd /d "%TARGET%"
 powershell -Command "(Get-Content index.html) -replace 'trade_analysis_\d{8}', 'trade_analysis_%DATE%' -replace 'screen_\d{8}', 'screen_%DATE%' | Set-Content index.html"
 powershell -Command "(Get-Content index.html) -replace 'review_\d{8}', 'review_%DATE%' -replace 'monitor_\d{8}', 'monitor_%DATE%' | Set-Content index.html"
-powershell -Command "(Get-Content index.html) -replace 'morning_brief_\d{8}', 'morning_brief_%DATE%' | Set-Content index.html"
+:: 盘前纪要链接：用reports目录下最新的morning_brief文件名
+for /f "delims=" %%f in ('dir /b /o-n "%TARGET%\reports\morning_brief_*.html" 2^>nul') do (
+    if not defined LATEST_MB_TARGET set LATEST_MB_TARGET=%%f
+)
+if defined LATEST_MB_TARGET (
+    powershell -Command "(Get-Content index.html) -replace 'morning_brief_\d{8}', '%LATEST_MB_TARGET:.html=%' | Set-Content index.html"
+    echo   ✓ 盘前纪要链接已更新为 %LATEST_MB_TARGET%
+)
 echo   ✓ 主页链接已更新为 %DATE%
 
 echo.
