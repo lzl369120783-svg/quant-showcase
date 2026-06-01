@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交易分析总结 · 2026-06-01</title>
+<style>
+@charset "utf-8";
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --green: #3fb950;
+  --red: #f85149;
+  --yellow: #d29922;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --cyan: #39d353;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 20px;
+  color: var(--blue);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 16px;
+  color: var(--cyan);
+  margin: 24px 0 12px;
+  padding-left: 8px;
+  border-left: 3px solid var(--cyan);
+}
+h3 {
+  font-size: 14px;
+  color: var(--purple);
+  margin: 16px 0 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 16px;
+  font-size: 13px;
+}
+th {
+  background: var(--surface);
+  color: var(--text2);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+}
+tr:hover td {
+  background: rgba(88, 166, 255, 0.05);
+}
+.positive { color: var(--red); font-weight: 600; }
+.negative { color: var(--green); font-weight: 600; }
+.warn { color: var(--yellow); }
+.ok { color: var(--green); }
+.info { color: var(--blue); }
+.highlight { background: rgba(248, 81, 73, 0.1); }
+.summary-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.summary-box .big {
+  font-size: 28px;
+  font-weight: 700;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+.metric .label {
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+.metric .value {
+  font-size: 18px;
+  font-weight: 700;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.tag-red { background: rgba(248, 81, 73, 0.15); color: var(--red); }
+.tag-green { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+.tag-yellow { background: rgba(210, 153, 34, 0.15); color: var(--yellow); }
+.tag-blue { background: rgba(88, 166, 255, 0.15); color: var(--blue); }
+.score {
+  display: inline-block;
+  min-width: 36px;
+  text-align: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+}
+.score-high { background: rgba(63, 185, 80, 0.2); color: var(--green); }
+.score-mid { background: rgba(210, 153, 34, 0.2); color: var(--yellow); }
+.score-low { background: rgba(248, 81, 73, 0.2); color: var(--red); }
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  margin-top: 4px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+.finding {
+  background: var(--surface);
+  border-left: 3px solid var(--yellow);
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+}
+.finding.positive-finding { border-left-color: var(--green); }
+.finding.negative-finding { border-left-color: var(--red); }
+.finding strong { color: var(--text); }
+.footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  color: var(--text3);
+  font-size: 12px;
+  text-align: center;
+}
+.section { break-inside: avoid; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 4px 0; }
+.checklist li::before { content: "▸ "; color: var(--text3); }
+blockquote {
+  border-left: 3px solid var(--blue);
+  padding: 10px 16px;
+  margin: 12px 0;
+  background: rgba(88, 166, 255, 0.05);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  body { padding: 12px; font-size: 13px; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+  table { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<h1>📊 交易分析总结 · 2026-06-01（周一）</h1>
+
+<!-- ===== 核心指标 ===== -->
+<div class="metrics">
+  <div class="metric">
+    <div class="label">今日已实现盈亏</div>
+    <div class="value positive">+¥121</div>
+  </div>
+  <div class="metric">
+    <div class="label">卖出笔数</div>
+    <div class="value">7笔</div>
+  </div>
+  <div class="metric">
+    <div class="label">买入笔数</div>
+    <div class="value">1笔</div>
+  </div>
+  <div class="metric">
+    <div class="label">竞价成功率</div>
+    <div class="value info">100%</div>
+    <div class="bar"><div class="bar-fill" style="width:100%;background:var(--green)"></div></div>
+  </div>
+  <div class="metric">
+    <div class="label">持仓浮盈</div>
+    <div class="value positive">+¥1,276</div>
+  </div>
+  <div class="metric">
+    <div class="label">盘中情绪</div>
+    <div class="value ok">偏强(66分)</div>
+  </div>
+</div>
+
+<!-- ===== Section 1: 已实现盈亏 ===== -->
+<div class="section">
+<h2>一、今日已实现盈亏</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>方向</th><th>数量</th><th>成交价</th><th>成本</th><th>盈亏</th><th>盈亏%</th><th>原因</th></tr>
+    <tr>
+      <td>青龙管业(002457)</td><td>卖</td><td>200股</td><td>¥12.745</td><td>¥12.25</td>
+      <td class="positive">+¥99</td><td class="positive">+4.0%</td><td><span class="tag tag-yellow">冲高回落</span></td>
+    </tr>
+    <tr>
+      <td>青龙管业(002457)</td><td>卖</td><td>100股</td><td>¥12.74</td><td>¥12.25</td>
+      <td class="positive">+¥49</td><td class="positive">+4.0%</td><td><span class="tag tag-yellow">冲高回落</span></td>
+    </tr>
+    <tr>
+      <td>青龙管业(002457)</td><td>卖</td><td>100股</td><td>¥12.73</td><td>¥12.25</td>
+      <td class="positive">+¥48</td><td class="positive">+3.9%</td><td><span class="tag tag-yellow">冲高回落</span></td>
+    </tr>
+    <tr>
+      <td>300120.SZ</td><td>卖</td><td>200股</td><td>¥8.55</td><td>¥8.66*</td>
+      <td class="negative">-¥22</td><td class="negative">-1.3%</td><td><span class="tag tag-red">弱势信号</span></td>
+    </tr>
+    <tr>
+      <td>300120.SZ</td><td>卖</td><td>200股</td><td>¥8.55</td><td>¥8.66*</td>
+      <td class="negative">-¥22</td><td class="negative">-1.3%</td><td><span class="tag tag-red">弱势信号</span></td>
+    </tr>
+    <tr>
+      <td>300120.SZ</td><td>卖</td><td>100股</td><td>¥8.57</td><td>¥8.66*</td>
+      <td class="negative">-¥9</td><td class="negative">-1.0%</td><td><span class="tag tag-red">弱势信号</span></td>
+    </tr>
+    <tr>
+      <td>广电计量(002967)</td><td>卖</td><td>300股</td><td>¥20.90</td><td>¥21.31</td>
+      <td class="negative">-¥123</td><td class="negative">-1.9%</td><td><span class="tag tag-red">超时清仓</span></td>
+    </tr>
+  </tbody>
+</table>
+<p style="color:var(--text3);font-size:12px;">*300120.SZ 成本为估算值（原始buy记录未在近期日志中找到）。青龙管业成本来自05-29买入价¥12.25。合计已实现: 青龙管业+¥196 / 300120 -¥53 / 广电计量-¥123 = <strong>+¥121*</strong>（未扣手续费）</p>
+</div>
+
+<!-- ===== Section 2: 买入复盘 ===== -->
+<div class="section">
+<h2>二、买入复盘</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>数量</th><th>买入价</th><th>评分</th><th>盘中表现</th><th>当前状态</th></tr>
+    <tr>
+      <td>长虹美菱(000521)</td><td>800股</td><td>¥5.78</td>
+      <td><span class="score score-high">85</span></td>
+      <td>冲高+5.6%至¥6.11后回落，收盘¥5.80(+0.3%)</td>
+      <td><span class="tag tag-yellow">⏳ T+1待卖50%（冲高回落）</span></td>
+    </tr>
+  </tbody>
+</table>
+<div class="finding negative-finding">
+  <strong>竞价信号：</strong>12只信号中仅买入1只（长虹美菱），其余因buy_probability低或竞价涨停无法买入。长虹美菱为DeepSeek概念+国企改革，竞价+7.18%，但<span class="negative">盘中冲高5.6%后回落至接近成本</span>，已触发T+1弱势待卖信号。
+</div>
+</div>
+
+<!-- ===== Section 3: 盘中风控 ===== -->
+<div class="section">
+<h2>三、盘中风控执行</h2>
+<table>
+  <tbody>
+    <tr><th>股票</th><th>触发信号</th><th>风控动作</th><th>执行时间</th><th>结果</th></tr>
+    <tr>
+      <td>青龙管业(002457)</td><td>冲高7.9%回撤3.7%</td><td>分批卖出200股</td><td>14:20</td>
+      <td><span class="tag tag-green">✅ 成交@12.745</span></td>
+    </tr>
+    <tr>
+      <td>300120.SZ</td><td>弱势信号(冲高3.5%→-1.2%)</td><td>分批卖出200股</td><td>14:20</td>
+      <td><span class="tag tag-green">✅ 成交@8.55</span></td>
+    </tr>
+    <tr>
+      <td>青龙管业(002457)</td><td>冲高7.9%回撤3.6%</td><td>分批卖出100股</td><td>14:20</td>
+      <td><span class="tag tag-green">✅ 成交@12.74</span></td>
+    </tr>
+    <tr>
+      <td>300120.SZ</td><td>弱势信号(冲高3.5%→-1.3%)</td><td>分批卖出200股</td><td>14:20</td>
+      <td><span class="tag tag-green">✅ 成交@8.55</span></td>
+    </tr>
+    <tr>
+      <td>青龙管业(002457)</td><td>冲高7.9%回撤3.9%</td><td>分批卖出100股</td><td>14:25</td>
+      <td><span class="tag tag-green">✅ 成交@12.73</span></td>
+    </tr>
+    <tr>
+      <td>300120.SZ</td><td>弱势信号(冲高3.5%→-1.0%)</td><td>分批卖出100股</td><td>14:25</td>
+      <td><span class="tag tag-green">✅ 成交@8.57</span></td>
+    </tr>
+    <tr>
+      <td>广电计量(002967)</td><td>超时清仓(持仓4天>=2天, -1.8%)</td><td>全仓卖出300股</td><td>14:50</td>
+      <td><span class="tag tag-green">✅ 成交@20.90</span></td>
+    </tr>
+    <tr>
+      <td>广电计量(002967)</td><td>超时清仓(重复委托)</td><td>全仓卖出300股</td><td>14:50</td>
+      <td><span class="tag tag-red">❌ 证券可用数量不足</span></td>
+    </tr>
+    <tr>
+      <td>新时达(002527)</td><td>持有观察(盈利+9.6%)</td><td>继续持有</td><td>—</td>
+      <td><span class="tag tag-green">✅ 涨停+10.04%</span></td>
+    </tr>
+    <tr>
+      <td>中京电子(002579)</td><td>持有观察(盈利+8.8%)</td><td>继续持有</td><td>—</td>
+      <td><span class="tag tag-green">✅ 涨停+10.03%</span></td>
+    </tr>
+    <tr>
+      <td>长虹美菱(000521)</td><td>T+1待卖(弱势信号)</td><td>待卖50%</td><td>—</td>
+      <td><span class="tag tag-blue">⏳ 明日执行</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== Section 4: 纪律评估 ===== -->
+<div class="section">
+<h2>四、纪律执行评估</h2>
+<table>
+  <tbody>
+    <tr><th>维度</th><th>评分</th><th>说明</th></tr>
+    <tr><td>止损执行</td><td><span class="tag tag-blue">— 无触发</span></td><td>当日无硬止损触发，持仓均未跌破止损价</td></tr>
+    <tr><td>止盈执行</td><td><span class="tag tag-green">✅ 优秀</span></td><td>青龙管业分批止盈3笔锁定+196元，冲高7.9%回撤时果断出手</td></tr>
+    <tr><td>超时清仓</td><td><span class="tag tag-green">✅ 执行</span></td><td>广电计量持仓4天触发超时清仓，14:50成功卖出300股@20.90</td></tr>
+    <tr><td>仓位控制</td><td><span class="tag tag-green">✅ 正常</span></td><td>仅买入1只(长虹美菱9.25%)，单票不超限，风险LOW 0.46%</td></tr>
+    <tr><td>竞价选股</td><td><span class="tag tag-green">✅ 100%</span></td><td>买入1只(长虹美菱)全部成功成交，14:19即时成交800股@5.78</td></tr>
+    <tr><td>纪律遵守</td><td><span class="tag tag-yellow">⚠️ 部分</span></td><td>late_decision建议空仓(should_stop=true)，但仍买入1只长虹美菱</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== Section 5: 核心发现 ===== -->
+<div class="section">
+<h2>五、核心发现</h2>
+
+<div class="finding positive-finding">
+  <strong>1. 两只持仓股封涨停，浮盈大幅增长</strong><br>
+  新时达(002527)和中京电子(002579)均<span class="positive">涨停+10%</span>，分别浮盈+¥402和+¥604，合计浮盈+¥1,006。持仓已持4天，属于典型的"让利润奔跑"。
+</div>
+
+<div class="finding positive-finding">
+  <strong>2. 盘中风控系统运作良好</strong><br>
+  青龙管业冲高7.9%后回撤3%-4%触发分批卖出，成功锁定+196元利润。广电计量超时清仓14:50准时执行。<span class="positive">风控信号→执行链路正常</span>。
+</div>
+
+<div class="finding negative-finding">
+  <strong>3. 广电计量"证券可用数量不足"问题再次出现</strong><br>
+  超时清仓首笔300股成功后，系统尝试重复卖出300股被拒（9次异常：0_fill×3 / rejected×3 / canceled×3）。<span class="negative">这是can_sell_volume未实时更新的老问题</span>，首次卖出后可用股数未刷新，导致后续委托全部失败。
+</div>
+
+<div class="finding negative-finding">
+  <strong>4. late_decision空仓建议再次被忽视</strong><br>
+  late_decision明确建议<span class="negative">should_stop=true, max_position=0</span>，但系统仍买入1只长虹美菱。这是<strong>连续多次违背空仓建议</strong>的延续（05-21/05-22/05-27/05-29/06-01），建议在竞价系统加入should_stop自动拦截机制。
+</div>
+</div>
+
+<!-- ===== Section 6: 明日策略 ===== -->
+<div class="section">
+<h2>六、明日策略提示</h2>
+<ul class="checklist">
+  <li><strong>新时达(002527)</strong>：涨停+10.04%，持仓4天浮盈+¥402。明日关注是否继续封板或打开，考虑移动止盈</li>
+  <li><strong>中京电子(002579)</strong>：涨停+10.03%，持仓4天浮盈+¥604。同上，注意是否触发止盈信号</li>
+  <li><strong>长虹美菱(000521)</strong>：T+1待卖50%（弱势信号），明日开盘自动执行分批卖出</li>
+  <li><strong>can_sell_volume修复</strong>：广电计量重复卖出失败9次，需在卖出后立即更新本地可用股数缓存</li>
+  <li><strong>竞价策略</strong>：late_decision建议空仓观望，建议执行</li>
+</ul>
+</div>
+
+<!-- ===== 总结 ===== -->
+<div class="section">
+<h2>七、一句话总结</h2>
+<blockquote>
+今日盘面情绪偏强(66分)，两只持仓股新时达和中京电子双双封涨停带动浮盈+1,006元。已实现盈亏+121元，青龙管业分批止盈和广电计量超时清仓均执行到位。但广电计量重复卖出失败9次（can_sell_volume老问题）和再次忽视空仓建议是两个需要修复的系统性问题。
+</blockquote>
+</div>
+
+<div class="footer">
+  生成时间: 2026-06-01 15:10 · 由 mimo-v2.5-pro 生成 · A股超短线量化交易系统 V3.0.17
+</div>
+
+</body>
+</html>
