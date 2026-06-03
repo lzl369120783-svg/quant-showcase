@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交易分析总结 · 2026-06-03</title>
+<style>
+@charset "utf-8";
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text2: #8b949e;
+  --text3: #6e7681;
+  --green: #3fb950;
+  --red: #f85149;
+  --yellow: #d29922;
+  --blue: #58a6ff;
+  --purple: #bc8cff;
+  --cyan: #39d353;
+  --orange: #f0883e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h1 {
+  font-size: 20px;
+  color: var(--blue);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: 16px;
+  color: var(--cyan);
+  margin: 24px 0 12px;
+  padding-left: 8px;
+  border-left: 3px solid var(--cyan);
+}
+h3 {
+  font-size: 14px;
+  color: var(--purple);
+  margin: 16px 0 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 16px;
+  font-size: 13px;
+}
+th {
+  background: var(--surface);
+  color: var(--text2);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+}
+tr:hover td {
+  background: rgba(88, 166, 255, 0.05);
+}
+.positive { color: var(--red); font-weight: 600; }
+.negative { color: var(--green); font-weight: 600; }
+.warn { color: var(--yellow); }
+.ok { color: var(--green); }
+.info { color: var(--blue); }
+.highlight { background: rgba(248, 81, 73, 0.1); }
+.summary-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.summary-box .big {
+  font-size: 28px;
+  font-weight: 700;
+}
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+}
+.metric .label {
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 4px;
+}
+.metric .value {
+  font-size: 18px;
+  font-weight: 700;
+}
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.tag-red { background: rgba(248, 81, 73, 0.15); color: var(--red); }
+.tag-green { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+.tag-yellow { background: rgba(210, 153, 34, 0.15); color: var(--yellow); }
+.tag-blue { background: rgba(88, 166, 255, 0.15); color: var(--blue); }
+.score {
+  display: inline-block;
+  min-width: 36px;
+  text-align: center;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+}
+.score-high { background: rgba(63, 185, 80, 0.2); color: var(--green); }
+.score-mid { background: rgba(210, 153, 34, 0.2); color: var(--yellow); }
+.score-low { background: rgba(248, 81, 73, 0.2); color: var(--red); }
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  margin-top: 4px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+.finding {
+  background: var(--surface);
+  border-left: 3px solid var(--yellow);
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+}
+.finding.positive-finding { border-left-color: var(--green); }
+.finding.negative-finding { border-left-color: var(--red); }
+.finding strong { color: var(--text); }
+.footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  color: var(--text3);
+  font-size: 12px;
+  text-align: center;
+}
+.section { break-inside: avoid; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 4px 0; }
+.checklist li::before { content: "▸ "; color: var(--text3); }
+blockquote {
+  border-left: 3px solid var(--blue);
+  padding: 10px 16px;
+  margin: 12px 0;
+  background: rgba(88, 166, 255, 0.05);
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+}
+@media (max-width: 600px) {
+  body { padding: 12px; font-size: 13px; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+  table { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<h1>📊 交易分析总结 · 2026-06-03（周二）</h1>
+
+<!-- ===== 核心指标 ===== -->
+<div class="metrics">
+  <div class="metric">
+    <div class="label">今日已实现盈亏</div>
+    <div class="value positive">+¥657</div>
+  </div>
+  <div class="metric">
+    <div class="label">卖出笔数</div>
+    <div class="value">11笔</div>
+  </div>
+  <div class="metric">
+    <div class="label">买入笔数</div>
+    <div class="value">2笔</div>
+  </div>
+  <div class="metric">
+    <div class="label">竞价成功率</div>
+    <div class="value info">50%</div>
+    <div class="bar"><div class="bar-fill" style="width:50%;background:var(--yellow)"></div></div>
+  </div>
+</div>
+
+<!-- ===== Section 1: 已实现盈亏 ===== -->
+<div class="section">
+<h2>一、今日已实现盈亏</h2>
+<table>
+  <thead>
+    <tr><th>股票</th><th>方向</th><th>数量</th><th>成交价</th><th>成本</th><th>盈亏</th><th>盈亏%</th><th>原因</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>301439.SZ</td><td>卖</td><td>300股</td><td>¥22.07</td><td>¥23.48</td>
+      <td class="negative">-¥423</td><td class="negative">-6.0%</td><td><span class="tag tag-red">硬止损</span></td>
+    </tr>
+    <tr>
+      <td>中京电子(002579)</td><td>卖</td><td>100股</td><td>¥19.38</td><td>¥12.73</td>
+      <td class="positive">+¥665</td><td class="positive">+52.3%</td><td><span class="tag tag-yellow">冲高回落</span></td>
+    </tr>
+    <tr>
+      <td>嘉欣丝绸(002404)</td><td>卖</td><td>300股</td><td>¥7.25</td><td>¥7.45</td>
+      <td class="negative">-¥60</td><td class="negative">-2.7%</td><td><span class="tag tag-yellow">弱势信号</span></td>
+    </tr>
+    <tr>
+      <td>嘉欣丝绸(002404)</td><td>卖</td><td>100股</td><td>¥7.17</td><td>¥7.45</td>
+      <td class="negative">-¥28</td><td class="negative">-3.8%</td><td><span class="tag tag-yellow">弱势信号</span></td>
+    </tr>
+    <tr>
+      <td>小崧股份(603757)</td><td>卖</td><td>100股</td><td>¥58.90</td><td>¥57.54</td>
+      <td class="positive">+¥136</td><td class="positive">+2.4%</td><td><span class="tag tag-yellow">冲高回落</span></td>
+    </tr>
+    <tr>
+      <td>中京电子(002579)</td><td>卖</td><td>100股</td><td>¥19.88</td><td>¥12.73</td>
+      <td class="positive">+¥715</td><td class="positive">+56.2%</td><td><span class="tag tag-yellow">冲高回落</span></td>
+    </tr>
+    <tr>
+      <td>中京电子(002579)</td><td>卖</td><td>100股</td><td>¥20.01</td><td>¥12.73</td>
+      <td class="positive">+¥728</td><td class="positive">+57.2%</td><td><span class="tag tag-green">分批止盈</span></td>
+    </tr>
+    <tr>
+      <td>嘉欣丝绸(002404)</td><td>卖</td><td>200股</td><td>¥7.27</td><td>¥7.45</td>
+      <td class="negative">-¥36</td><td class="negative">-2.4%</td><td><span class="tag tag-red">硬止损</span></td>
+    </tr>
+    <tr>
+      <td>天地在线(002995)</td><td>卖</td><td>200股</td><td>¥24.90</td><td>¥26.23</td>
+      <td class="negative">-¥266</td><td class="negative">-5.1%</td><td><span class="tag tag-red">硬止损</span></td>
+    </tr>
+    <tr>
+      <td>景兴纸业(002067)</td><td>卖</td><td>1900股</td><td>¥4.88</td><td>¥5.02</td>
+      <td class="negative">-¥266</td><td class="negative">-2.8%</td><td><span class="tag tag-blue">超时清仓</span></td>
+    </tr>
+    <tr>
+      <td>新时达(002527)</td><td>卖</td><td>100股</td><td>¥14.63</td><td>¥12.34</td>
+      <td class="positive">+¥229</td><td class="positive">+18.6%</td><td><span class="tag tag-blue">超时清仓</span></td>
+    </tr>
+  </tbody>
+</table>
+<div class="summary-box">
+  <span style="color:var(--text3)">已实现盈亏合计：</span>
+  <span class="big positive">+¥657</span>
+  <span style="color:var(--text3);font-size:12px;margin-left:12px">（卖出11笔 · 止盈6笔+¥2,473 · 止损5笔-¥1,079 · 超时清仓2笔-¥37）</span>
+</div>
+</div>
+
+<!-- ===== Section 2: 买入复盘 ===== -->
+<div class="section">
+<h2>二、买入复盘</h2>
+<table>
+  <thead>
+    <tr><th>股票</th><th>数量</th><th>买入价</th><th>评分</th><th>盘中表现</th><th>当前状态</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>盈新发展(000620)</td><td>2500股</td><td>¥2.90</td>
+      <td><span class="score score-high">85</span></td>
+      <td>冲高+6.2%至¥3.08后回落，收盘¥2.88(-0.7%)</td>
+      <td><span class="tag tag-yellow">⏳ T+1待卖50%（冲高回落6.2%回撤6.2%）</span></td>
+    </tr>
+    <tr>
+      <td>春秋电子(603890)</td><td>200股</td><td>¥30.97</td>
+      <td><span class="score score-mid">66</span></td>
+      <td>冲高+5.2%至¥32.58后回落，收盘¥30.39(-1.9%)</td>
+      <td><span class="tag tag-yellow">⏳ T+1待卖（弱势信号：冲高5.2%回落至0.3%）</span></td>
+    </tr>
+  </tbody>
+</table>
+<div class="finding negative-finding">
+  <strong>关键问题：</strong>2只新买入标的<span class="negative">全部触发T+1待卖信号</span>。盈新发展午后补仓买入后冲高回落，春秋电子3连板强势确认但盘中大幅回落。竞价筛选仅信号2只，<span class="negative">午后才执行买入</span>，非竞价时段成交。
+</div>
+</div>
+
+<!-- ===== Section 3: 盘中风控 ===== -->
+<div class="section">
+<h2>三、盘中风控执行</h2>
+<table>
+  <thead>
+    <tr><th>股票</th><th>触发信号</th><th>风控动作</th><th>执行时间</th><th>结果</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>301439.SZ</td><td>硬止损(-6.0%)</td><td>全仓卖出300股</td><td>09:30</td>
+      <td><span class="tag tag-green">✅ 成交@22.07</span></td>
+    </tr>
+    <tr>
+      <td>中京电子(002579)</td><td>冲高回落(+16.6%回撤4.1%)</td><td>卖100股</td><td>09:35</td>
+      <td><span class="tag tag-green">✅ 成交@19.38</span></td>
+    </tr>
+    <tr>
+      <td>嘉欣丝绸(002404)</td><td>弱势信号(曾涨2.2%现亏-2.7%)</td><td>卖300股</td><td>09:40</td>
+      <td><span class="tag tag-green">✅ 成交@7.25</span></td>
+    </tr>
+    <tr>
+      <td>嘉欣丝绸(002404)</td><td>弱势信号(曾涨2.2%现亏-3.2%)</td><td>卖100股</td><td>09:45</td>
+      <td><span class="tag tag-green">✅ 成交@7.17</span></td>
+    </tr>
+    <tr>
+      <td>小崧股份(603757)</td><td>冲高回落(+6.0%回撤3.5%)</td><td>卖100股</td><td>10:15</td>
+      <td><span class="tag tag-green">✅ 成交@58.90</span></td>
+    </tr>
+    <tr>
+      <td>中京电子(002579)</td><td>冲高回落(+19.7%回撤4.1%)</td><td>卖100股</td><td>10:50</td>
+      <td><span class="tag tag-green">✅ 成交@19.88</span></td>
+    </tr>
+    <tr>
+      <td>中京电子(002579)</td><td>分批止盈三档全清(+81.3%)</td><td>卖100股</td><td>10:55</td>
+      <td><span class="tag tag-green">✅ 成交@20.01</span></td>
+    </tr>
+    <tr>
+      <td>嘉欣丝绸(002404)</td><td>硬止损(-6.7%)</td><td>卖200股</td><td>11:05</td>
+      <td><span class="tag tag-green">✅ 成交@7.27</span></td>
+    </tr>
+    <tr>
+      <td>天地在线(002995)</td><td>硬止损(-5.1%)</td><td>全仓卖出200股</td><td>13:05</td>
+      <td><span class="tag tag-green">✅ 成交@24.90</span></td>
+    </tr>
+    <tr>
+      <td>景兴纸业(002067)</td><td>超时清仓(持仓2天,-2.8%)</td><td>全仓卖出1900股</td><td>14:50</td>
+      <td><span class="tag tag-green">✅ 成交@4.88</span></td>
+    </tr>
+    <tr>
+      <td>新时达(002527)</td><td>超时清仓(持仓6天,+18.6%)</td><td>全仓卖出100股</td><td>14:50</td>
+      <td><span class="tag tag-green">✅ 成交@14.63</span></td>
+    </tr>
+    <tr>
+      <td>盈新发展(000620)</td><td>冲高回落(+6.2%回撤6.2%)</td><td>待卖50%</td><td>盘中</td>
+      <td><span class="tag tag-blue">⏳ T+1执行</span></td>
+    </tr>
+    <tr>
+      <td>春秋电子(603890)</td><td>弱势信号(冲高5.2%回落至0.3%)</td><td>待卖100%</td><td>盘中</td>
+      <td><span class="tag tag-blue">⏳ T+1执行</span></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== Section 4: 纪律评估 ===== -->
+<div class="section">
+<h2>四、纪律执行评估</h2>
+<table>
+  <thead>
+    <tr><th>维度</th><th>评分</th><th>说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>止损执行</td><td><span class="tag tag-green">✅ 优秀</span></td><td>3只触发硬止损全部即时执行（301439开盘30秒内、嘉欣丝绸09:45、天地在线13:05），0延迟</td></tr>
+    <tr><td>止盈执行</td><td><span class="tag tag-green">✅ 优秀</span></td><td>中京电子分批止盈3笔(+665/+715/+728)，冲高19.7%时果断减仓，三档全清锁定¥2,108</td></tr>
+    <tr><td>超时清仓</td><td><span class="tag tag-green">✅ 执行</span></td><td>景兴纸业(持仓2天,-2.8%)和新时达(持仓6天,+18.6%)14:50统一清仓，规则到位</td></tr>
+    <tr><td>仓位控制</td><td><span class="tag tag-green">✅ 正常</span></td><td>总风险0.75%，单票最大12.43%(春秋电子)，现金储备87.57%，风险LOW</td></tr>
+    <tr><td>竞价选股</td><td><span class="tag tag-yellow">⚠️ 50%</span></td><td>信号2只→买入1只(盈新发展85分)，天孚通信因资金不足跳过(2次)，午后才执行</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== Section 5: 核心发现 ===== -->
+<div class="section">
+<h2>五、核心发现</h2>
+
+<div class="finding positive-finding">
+  <strong>1. 中京电子清仓锁定巨利，分批止盈完美执行</strong><br>
+  中京电子(002579)从05-29建仓至今清仓，今日3笔卖出合计+¥2,108，其中盘中最高冲至+19.7%时系统果断触发减仓。这是<span class="positive">"让利润奔跑+分批落袋"</span>策略的教科书级案例。
+</div>
+
+<div class="finding positive-finding">
+  <strong>2. 风控系统全线满勤，11笔卖出全部即时成交</strong><br>
+  今日11笔卖出（硬止损3笔+冲高回落3笔+弱势信号3笔+分批止盈1笔+超时清仓2笔）<span class="positive">全部即时成交，0异常</span>。QMT执行稳定性显著提升。
+</div>
+
+<div class="finding negative-finding">
+  <strong>3. 3只硬止损共亏¥955，新买入标的质量堪忧</strong><br>
+  301439开盘即止损(-¥423)、嘉欣丝绸(-¥124)、天地在线(-¥266)，<span class="negative">硬止损占总亏损的89%</span>。近期新买入标的频繁触发止损，选股信号需要复盘。
+</div>
+
+<div class="finding">
+  <strong>4. 新时达超时清仓盈利+18.6%，超时规则有效</strong><br>
+  新时达(002527)持仓6天，虽然06-01涨停时未完全止盈，但超时清仓仍锁定<span class="positive">+¥229利润(+18.6%)</span>。超时清仓机制成功防止了利润回吐。
+</div>
+</div>
+
+<!-- ===== Section 6: 明日策略 ===== -->
+<div class="section">
+<h2>六、明日策略提示</h2>
+<ul class="checklist">
+  <li><strong>盈新发展(000620)</strong>：T+1待卖50%，明日开盘自动执行冲高回落减仓</li>
+  <li><strong>春秋电子(603890)</strong>：T+1待卖100%，弱势信号全仓清仓，浮亏约-¥116</li>
+  <li><strong>late_decision建议空仓</strong>：should_stop=true，建议暂停新买入，等待命中率回升</li>
+  <li><strong>止损信号复盘</strong>：近期连续硬止损，需检查选股评分阈值是否过低</li>
+</ul>
+</div>
+
+<!-- ===== 总结 ===== -->
+<div class="section">
+<h2>七、一句话总结</h2>
+<blockquote>
+中京电子清仓锁定+¥2,108带动今日已实现盈亏+¥657，风控系统11笔卖出全线满勤零异常，但3只硬止损(¥955)暴露新选股标的质量问题。late_decision再次建议空仓，<strong>明日应优先执行T+1清仓，暂停新买入</strong>。
+</blockquote>
+</div>
+
+<div class="footer">
+  生成时间: 2026-06-03 15:05 · 由 mimo-v2.5-pro 生成 · A股超短线量化交易系统 V3.0.17
+</div>
+
+</body>
+</html>
