@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交易分析总结 · 2026-06-08</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #e6edf3; --text2: #8b949e; --text3: #6e7681;
+    --green: #3fb950; --red: #f85149; --yellow: #d29922;
+    --blue: #58a6ff; --purple: #bc8cff; --cyan: #39d353;
+    --orange: #f0883e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', monospace; font-size: 14px; line-height: 1.6; padding: 20px; max-width: 1000px; margin: 0 auto; }
+  h1 { font-size: 20px; color: var(--blue); border-bottom: 1px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; }
+  h2 { font-size: 16px; color: var(--cyan); margin: 24px 0 12px; padding-left: 8px; border-left: 3px solid var(--cyan); }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: 13px; }
+  th { background: var(--surface); color: var(--text2); text-align: left; padding: 8px 10px; border-bottom: 2px solid var(--border); font-weight: 600; }
+  td { padding: 7px 10px; border-bottom: 1px solid var(--border); }
+  tr:hover td { background: rgba(88,166,255,0.05); }
+  .positive { color: var(--red); font-weight: 600; }
+  .negative { color: var(--green); font-weight: 600; }
+  .warn { color: var(--yellow); }
+  .ok { color: var(--green); }
+  .info { color: var(--blue); }
+  .summary-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
+  .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 12px 0; }
+  .metric { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 12px; }
+  .metric .label { font-size: 12px; color: var(--text3); margin-bottom: 4px; }
+  .metric .value { font-size: 18px; font-weight: 700; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+  .tag-red { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-yellow { background: rgba(210,153,34,0.15); color: var(--yellow); }
+  .tag-blue { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .score { display: inline-block; min-width: 36px; text-align: center; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 12px; }
+  .score-high { background: rgba(63,185,80,0.2); color: var(--green); }
+  .score-mid { background: rgba(210,153,34,0.2); color: var(--yellow); }
+  .score-low { background: rgba(248,81,73,0.2); color: var(--red); }
+  .bar { height: 6px; border-radius: 3px; background: var(--border); margin-top: 4px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .finding { background: var(--surface); border-left: 3px solid var(--yellow); padding: 10px 14px; margin: 8px 0; border-radius: 0 6px 6px 0; }
+  .finding.positive-finding { border-left-color: var(--green); }
+  .finding.negative-finding { border-left-color: var(--red); }
+  .finding strong { color: var(--text); }
+  .footer { margin-top: 30px; padding-top: 10px; border-top: 1px solid var(--border); color: var(--text3); font-size: 12px; text-align: center; }
+  .section { page-break-inside: avoid; }
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 4px 0; }
+  .checklist li::before { content: '▸ '; color: var(--text3); }
+  blockquote { border-left: 3px solid var(--blue); padding: 10px 16px; margin: 12px 0; background: rgba(88,166,255,0.05); border-radius: 0 6px 6px 0; font-style: italic; }
+  @media (max-width: 600px) { body { padding: 12px; font-size: 13px; } .metrics { grid-template-columns: 1fr 1fr; } table { font-size: 12px; } }
+</style>
+</head>
+<body>
+
+<h1>📊 交易分析总结 · 2026-06-08（周一）</h1>
+
+
+<div class="metrics">
+  <div class="metric">
+    <div class="label">今日已实现盈亏</div>
+    <div class="value positive">+¥162</div>
+  </div>
+  <div class="metric">
+    <div class="label">卖出笔数</div>
+    <div class="value">4笔</div>
+  </div>
+  <div class="metric">
+    <div class="label">买入笔数</div>
+    <div class="value">2笔</div>
+  </div>
+  <div class="metric">
+    <div class="label">竞价成功率</div>
+    <div class="value negative">0%</div>
+    <div class="bar"><div class="bar-fill" style="width:0%;background:var(--red)"></div></div>
+  </div>
+</div>
+
+<div class="section">
+<h2>一、今日已实现盈亏</h2>
+<table>
+  <tr><th>股票</th><th>方向</th><th>数量</th><th>成交价</th><th>成本</th><th>盈亏</th><th>盈亏%</th><th>原因</th></tr>
+  <tr>
+    <td>600458.SH(600458)</td><td>卖</td><td>500股</td>
+    <td>¥13.35</td><td>¥14.64</td>
+    <td class="negative">¥-646</td>
+    <td class="negative">-8.8%</td>
+    <td><span class="tag tag-red">硬止损</span></td>
+  </tr>
+  <tr>
+    <td>603859.SH(603859)</td><td>卖</td><td>100股</td>
+    <td>¥48.31</td><td>¥44.48</td>
+    <td class="positive">+¥383</td>
+    <td class="positive">+8.6%</td>
+    <td><span class="tag tag-green">止盈</span></td>
+  </tr>
+  <tr>
+    <td>301303.SZ(301303)</td><td>卖</td><td>100股</td>
+    <td>¥17.35</td><td>¥15.23</td>
+    <td class="positive">+¥212</td>
+    <td class="positive">+13.9%</td>
+    <td><span class="tag tag-yellow">冲高回落</span></td>
+  </tr>
+  <tr>
+    <td>301303.SZ(301303)</td><td>卖</td><td>100股</td>
+    <td>¥17.35</td><td>¥15.23</td>
+    <td class="positive">+¥212</td>
+    <td class="positive">+13.9%</td>
+    <td><span class="tag tag-yellow">冲高回落</span></td>
+  </tr>
+</table>
+</div>
+
+<div class="section">
+<h2>二、买入复盘</h2>
+<table>
+  <tr><th>股票</th><th>数量</th><th>买入价</th><th>评分</th><th>盘中表现</th><th>信号</th><th>当前状态</th></tr>
+  <tr>
+    <td>家联科技(301193)</td>
+    <td>400股</td><td>¥23.47</td>
+    <td><span class="score score-low">42.39</span></td>
+    <td class="positive">+0.7%</td>
+    <td>afternoon_buy</td>
+    <td><span class="tag tag-blue">⏳ 持有中</span></td>
+  </tr>
+  <tr>
+    <td>上海亚虹(603159)</td>
+    <td>300股</td><td>¥27.43</td>
+    <td><span class="score score-low">38.56</span></td>
+    <td class="positive">+1.5%</td>
+    <td>afternoon_buy</td>
+    <td><span class="tag tag-blue">⏳ 持有中</span></td>
+  </tr>
+</table>
+</div>
+
+<div class="section">
+<h2>三、盘中风控执行</h2>
+<table>
+  <tr><th>股票</th><th>触发信号</th><th>风控动作</th><th>成交价</th><th>状态</th></tr>
+  <tr>
+    <td>600458.SH(600458)</td>
+    <td>硬止损</td>
+    <td>卖出500股</td>
+    <td>¥13.35</td>
+    <td><span class="tag tag-green">✅ executed</span></td>
+  </tr>
+  <tr>
+    <td>603859.SH(603859)</td>
+    <td>止盈</td>
+    <td>卖出100股</td>
+    <td>¥48.31</td>
+    <td><span class="tag tag-green">✅ executed</span></td>
+  </tr>
+  <tr>
+    <td>301303.SZ(301303)</td>
+    <td>冲高回落</td>
+    <td>卖出100股</td>
+    <td>¥17.35</td>
+    <td><span class="tag tag-green">✅ executed</span></td>
+  </tr>
+  <tr>
+    <td>301303.SZ(301303)</td>
+    <td>冲高回落</td>
+    <td>卖出100股</td>
+    <td>¥17.35</td>
+    <td><span class="tag tag-green">✅ executed</span></td>
+  </tr>
+  <tr>
+    <td>603500.SH(603500)</td>
+    <td>持有观察</td>
+    <td>继续持有</td>
+    <td>—</td>
+    <td><span class="tag tag-green">✅ holding</span></td>
+  </tr>
+  <tr>
+    <td>300420.SZ(300420)</td>
+    <td>持有观察</td>
+    <td>继续持有</td>
+    <td>—</td>
+    <td><span class="tag tag-green">✅ holding</span></td>
+  </tr>
+  <tr>
+    <td>301303.SZ(301303)</td>
+    <td>持有观察</td>
+    <td>继续持有</td>
+    <td>—</td>
+    <td><span class="tag tag-green">✅ holding</span></td>
+  </tr>
+  <tr>
+    <td>301193.SZ(301193)</td>
+    <td>弱势信号: 冲高4.0%回落至0.7%[moderate]</td>
+    <td>待卖50%</td>
+    <td>—</td>
+    <td><span class="tag tag-blue">⏳ pending</span></td>
+  </tr>
+  <tr>
+    <td>603159.SH(603159)</td>
+    <td>持有观察</td>
+    <td>继续持有</td>
+    <td>—</td>
+    <td><span class="tag tag-green">✅ holding</span></td>
+  </tr>
+</table>
+</div>
+
+<div class="section">
+<h2>四、纪律执行评估</h2>
+<table>
+  <tr><th>维度</th><th>评分</th><th>说明</th></tr>
+  <tr><td>止损执行</td><td><span class="tag tag-green">✅ 优秀</span></td><td>1次止损触发，1次执行</td></tr>
+  <tr><td>止盈执行</td><td><span class="tag tag-green">✅ 优秀</span></td><td>1次止盈，锁定利润</td></tr>
+  <tr><td>超时清仓</td><td><span class="tag tag-blue">— 无触发</span></td><td>当日无超时清仓</td></tr>
+  <tr><td>仓位控制</td><td><span class="tag tag-green">✅ 正常</span></td><td>买入2只</td></tr>
+  <tr><td>竞价选股</td><td><span class="tag tag-blue">无竞价</span></td><td>当日无竞价买入</td></tr>
+</table>
+</div>
+
+<div class="section">
+<h2>五、核心发现</h2>
+<div class="finding negative-finding">
+  <strong>竞价选股质量待提升</strong><br>
+  竞价成功率为0%，当日无竞价买入，需优化选股策略或市场环境判断。
+</div>
+<div class="finding positive-finding">
+  <strong>风控执行优秀</strong><br>
+  止损触发1次并执行，止盈1次锁定利润，无超时清仓，纪律性强。
+</div>
+<div class="finding ">
+  <strong>仓位控制正常</strong><br>
+  买入2只股票，仓位适中，未过度集中或分散。
+</div>
+<div class="finding positive-finding">
+  <strong>亮点：301303.SZ冲高回落止盈</strong><br>
+  持仓4天获利+13.9%，两次卖出均在高点，体现良好止盈时机把握。
+</div>
+</div>
+
+<div class="section">
+<h2>六、明日策略提示</h2>
+<ul class="checklist">
+  <li>复盘竞价选股失败原因，调整筛选参数或市场情绪指标</li>
+  <li>继续严格执行止损止盈，避免情绪化交易</li>
+  <li>关注持仓股家联科技和上海亚虹的次日表现，设定明确止盈止损位</li>
+  <li>控制单日买入数量不超过3只，保持仓位灵活性</li>
+</ul>
+</div>
+
+<div class="section">
+<h2>七、一句话总结</h2>
+<blockquote>风控优秀，竞价待改进，净赚162元</blockquote>
+</div>
+
+<div class="footer">
+  生成时间: 2026-06-08 11:55 · A股超短线量化交易系统 V3.0 · LLM分析
+</div>
+
+</body>
+</html>

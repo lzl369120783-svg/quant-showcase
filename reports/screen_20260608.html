@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>竞价筛选报告 - 2026-06-08</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            color: #e8e8e8;
+            font-family: 'Noto Sans', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header {
+            text-align: center; padding: 30px 0 20px;
+            border-bottom: 2px solid #0f3460;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 28px; font-weight: 700;
+            background: linear-gradient(135deg, #ff4757, #3742fa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .header .date { color: #a0a0b0; font-size: 14px; margin-top: 8px; }
+        .section {
+            background: #16213e;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #2a2a4a;
+        }
+        .section-title {
+            font-size: 20px; font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #2a2a4a;
+        }
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+        .footer {
+            text-align: center; padding: 30px 0;
+            color: #a0a0b0; font-size: 12px;
+            border-top: 1px solid #2a2a4a; margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 竞价筛选报告 V2.9</h1>
+            <div class="date">2026-06-08 盘中筛选 | 基于 2026-06-05 复盘 | 生成时间: 09:53</div>
+            
+            
+            <div style="background:rgba(55,66,250,0.12);border:1px solid #3742fa44;border-radius:8px;padding:10px 16px;margin:8px 0;font-size:13px;color:#8b8bff;">📊 数据来源：daily_open(20260605)（stk_auction为空时的回退方案）</div>
+            <div style="background:rgba(0,150,255,0.10);border:1px solid #0096ff44;
+                 border-radius:8px;padding:10px 16px;margin:8px 0;font-size:12px;color:#6ab7ff;">
+                📊 V2.9 竞价评分体系：竞价强度41% + 资金认可8% + 题材热度23% + 连板动能21% + 基本面1% + 异动风险6%
+                <span style="color:#ffa502;">| 竞价强度替代封板强度（基于当日竞价数据），资金认可降权（昨日数据仅参考）</span>
+            </div>
+
+        </div>
+
+        <!-- V1.1: 核心选股结论（最优5/最烂5前置） -->
+        <div class="section">
+            <div class="section-title">🎯 核心选股结论</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <div style="font-size: 16px; font-weight: 700; color: #ff4757; margin-bottom: 12px;">🏆 今日最优5只</div>
+                    
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #ff4757; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 18px;">🥇</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">祥和实业</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">603500</span>
+                    <span style="background: rgba(255,71,87,0.15);
+                                 color: #ff4757;
+                                 padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价+9.98%
+                    </span>
+                    <span style="background:rgba(255,165,2,0.2);color:#ffa502;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:4px;">⚠️ 很难买入</span>
+                </div>
+                <div style="color: #ffa502; font-size: 16px; font-weight: 700;">
+                    51分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[可能转强] | 竞价+9.98% | 评分51 | 2连板</div>
+        </div>
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #ff4757; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 18px;">🥈</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">天娱数科</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">002354</span>
+                    <span style="background: rgba(255,71,87,0.15);
+                                 color: #ff4757;
+                                 padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价+10.08%
+                    </span>
+                    <span style="background:rgba(255,165,2,0.2);color:#ffa502;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:4px;">⚠️ 极难买入</span>
+                </div>
+                <div style="color: #ffa502; font-size: 16px; font-weight: 700;">
+                    50分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[可能转强] | 竞价+10.08% | 评分50</div>
+        </div>
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #ff4757; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 18px;">🥉</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">能科科技</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">603859</span>
+                    <span style="background: rgba(255,71,87,0.15);
+                                 color: #ff4757;
+                                 padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价+7.23%
+                    </span>
+                    
+                </div>
+                <div style="color: #ffa502; font-size: 16px; font-weight: 700;">
+                    46分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[可能转强] | 竞价+7.23% | 评分46</div>
+        </div>
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #ff4757; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 18px;">4️⃣</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">中重科技</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">603135</span>
+                    <span style="background: rgba(255,71,87,0.15);
+                                 color: #ff4757;
+                                 padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价+6.27%
+                    </span>
+                    <span style="background:rgba(255,165,2,0.2);color:#ffa502;padding:2px 6px;border-radius:4px;font-size:11px;margin-left:4px;">⚠️ 很难买入</span>
+                </div>
+                <div style="color: #ffa502; font-size: 16px; font-weight: 700;">
+                    46分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[可能转强] | 竞价+6.27% | 评分46 | 3连板</div>
+        </div>
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #ff4757; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 18px;">5️⃣</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">家联科技</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">301193</span>
+                    <span style="background: rgba(255,71,87,0.15);
+                                 color: #ff4757;
+                                 padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价+5.00%
+                    </span>
+                    
+                </div>
+                <div style="color: #ffa502; font-size: 16px; font-weight: 700;">
+                    42分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[可能转强] | 竞价+5.00% | 评分42</div>
+        </div>
+                </div>
+                <div>
+                    <div style="font-size: 16px; font-weight: 700; color: #00d4aa; margin-bottom: 12px;">⚠️ 今日最烂5只</div>
+                    
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #00d4aa; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 14px; color: #00d4aa;">⚠️</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">雷曼光电</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">300162</span>
+                    <span style="background:rgba(255,165,2,0.2);color:#ffa502;padding:1px 5px;border-radius:3px;font-size:10px;margin-left:4px;">昨日首板</span>
+                    <span style="background: rgba(0,212,170,0.15); color: #00d4aa; padding: 2px 8px;
+                                 border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价-1.03%
+                    </span>
+                </div>
+                <div style="color: #00d4aa; font-size: 16px; font-weight: 700;">
+                    27分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[转弱预警] | 低开-1.03% | 缩量(量比0.0) | 弱评27分</div>
+            <div style="margin-top: 2px; font-size: 11px; color: #ffa502;">昨日1连板今日竞价走弱，存在冲高回落/低开风险</div>
+        </div>
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #00d4aa; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 14px; color: #00d4aa;">⚠️</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">中大力德</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">002896</span>
+                    <span style="background:rgba(255,165,2,0.2);color:#ffa502;padding:1px 5px;border-radius:3px;font-size:10px;margin-left:4px;">昨日首板</span>
+                    <span style="background: rgba(0,212,170,0.15); color: #00d4aa; padding: 2px 8px;
+                                 border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价-1.12%
+                    </span>
+                </div>
+                <div style="color: #00d4aa; font-size: 16px; font-weight: 700;">
+                    27分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[转弱预警] | 低开-1.12% | 缩量(量比0.0) | 弱评27分</div>
+            <div style="margin-top: 2px; font-size: 11px; color: #ffa502;">昨日1连板今日竞价走弱，存在冲高回落/低开风险</div>
+        </div>
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #00d4aa; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 14px; color: #00d4aa;">⚠️</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">江化微</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">603078</span>
+                    <span style="background:rgba(255,165,2,0.2);color:#ffa502;padding:1px 5px;border-radius:3px;font-size:10px;margin-left:4px;">昨日首板</span>
+                    <span style="background: rgba(0,212,170,0.15); color: #00d4aa; padding: 2px 8px;
+                                 border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价-2.06%
+                    </span>
+                </div>
+                <div style="color: #00d4aa; font-size: 16px; font-weight: 700;">
+                    27分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[转弱预警] | 低开-2.06% | 缩量(量比0.0) | 弱评27分</div>
+            <div style="margin-top: 2px; font-size: 11px; color: #ffa502;">昨日1连板今日竞价走弱，存在冲高回落/低开风险</div>
+        </div>
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #00d4aa; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 14px; color: #00d4aa;">⚠️</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">皖维高新</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">600063</span>
+                    <span style="background:rgba(255,165,2,0.2);color:#ffa502;padding:1px 5px;border-radius:3px;font-size:10px;margin-left:4px;">昨日首板</span>
+                    <span style="background: rgba(0,212,170,0.15); color: #00d4aa; padding: 2px 8px;
+                                 border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价-1.20%
+                    </span>
+                </div>
+                <div style="color: #00d4aa; font-size: 16px; font-weight: 700;">
+                    27分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[转弱预警] | 低开-1.20% | 缩量(量比0.0) | 弱评27分</div>
+            <div style="margin-top: 2px; font-size: 11px; color: #ffa502;">昨日1连板今日竞价走弱，存在冲高回落/低开风险</div>
+        </div>
+        <div style="background: #0f3460; border-radius: 12px; padding: 14px;
+                     border-left: 4px solid #00d4aa; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <span style="font-size: 14px; color: #00d4aa;">⚠️</span>
+                    <span style="color: #e8e8e8; font-size: 15px; font-weight: 700; margin-left: 6px;">泰和新材</span>
+                    <span style="color: #a0a0b0; font-size: 12px; margin-left: 4px;">002254</span>
+                    <span style="background:rgba(255,165,2,0.2);color:#ffa502;padding:1px 5px;border-radius:3px;font-size:10px;margin-left:4px;">昨日首板</span>
+                    <span style="background: rgba(0,212,170,0.15); color: #00d4aa; padding: 2px 8px;
+                                 border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                        竞价-1.98%
+                    </span>
+                </div>
+                <div style="color: #00d4aa; font-size: 16px; font-weight: 700;">
+                    27分
+                </div>
+            </div>
+            <div style="margin-top: 4px; font-size: 12px; color: #a0a0b0;">[转弱预警] | 低开-1.98% | 缩量(量比0.0) | 弱评27分</div>
+            <div style="margin-top: 2px; font-size: 11px; color: #ffa502;">昨日1连板今日竞价走弱，存在冲高回落/低开风险</div>
+        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- V1.6: 可买入池 -->
+        
+    <div class="section" style="border:2px solid #00ff8833;">
+        <div class="section-title" style="color:#00ff88;">💡 可买入池（V2.7：成交概率≥50%的标的）</div>
+        <div style="color:#a0a0b0;font-size:12px;margin-bottom:12px;">
+            ⚠️ 涨停股封板强则买不到，以下为筛选后成交概率较高的标的，优先关注
+            <span style="color:#ffa502;">| V2.7: 评分采用竞价专用权重（竞价强度替代封板强度，资金认可降权，连板动能加权）</span>
+            <span style="color:#ffa502;">| 融合模式：按融合分数排序</span>
+        </div>
+        <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                <thead>
+                    <tr style="background:#0f3460;border-bottom:2px solid #00ff88;">
+                        <th style="padding:8px 10px;text-align:left;">名称</th>
+                        <th style="padding:8px 10px;text-align:left;">代码</th>
+                        <th style="padding:8px 10px;text-align:left;">竞价涨幅</th>
+                        <th style="padding:8px 10px;text-align:left;">量比</th>
+                        <th style="padding:8px 10px;text-align:left;">竞价强度</th>
+                        <th style="padding:8px 10px;text-align:left;">竞价评分</th>
+                        <th style="padding:8px 10px;text-align:left;">ML分数</th>
+                        <th style="padding:8px 10px;text-align:left;">融合分数</th>
+                        <th style="padding:8px 10px;text-align:left;">成交概率</th>
+                        <th style="padding:8px 10px;text-align:left;">连板</th>
+                        <th style="padding:8px 10px;text-align:left;">题材</th>
+                    </tr>
+                </thead>
+                <tbody>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">能科科技</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">603859</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+7.23%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">45</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">46</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.231</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.394</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">⚠️ 可能买入(60%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="IT服务Ⅱ">IT服务Ⅱ</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">三峡新材</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">600293</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+3.06%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">27</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">39</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.352</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.379</td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">🔒 难买入(30%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">2</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="玻璃玻纤">玻璃玻纤</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">中重科技</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">603135</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+6.27%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">37</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">46</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.153</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.366</td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">🔒 难买入(30%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">3</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="专用设备">专用设备</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">阳光股份</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">000608</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+3.59%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">27</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">39</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.239</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.342</td>
+            <td style="padding:8px 10px;color:#00ff88;font-weight:600;">✅ 可买入(85%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="房地产开">房地产开</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">大有能源</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">600403</td>
+            <td style="padding:8px 10px;color:#00d4aa;font-weight:600;">+0.00%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">5</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">32</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.387</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.339</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">⚠️ 可能买入(60%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">5</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="煤炭开采">煤炭开采</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">家联科技</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">301193</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+5.00%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">37</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">42</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.126</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.335</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">⚠️ 可能买入(60%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="家居用品">家居用品</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">上海亚虹</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">603159</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+4.10%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">27</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">39</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.200</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.330</td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">🔒 难买入(30%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="专用设备">专用设备</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">泰坦股份</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">003036</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+4.19%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">27</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">40</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.166</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.327</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">⚠️ 可能买入(60%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">2</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="专用设备">专用设备</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">维信诺</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">002387</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+1.19%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">15</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">34</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.268</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.316</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">⚠️ 可能买入(60%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="光学光电">光学光电</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">宇环数控</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">002903</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+3.38%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">27</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">39</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.138</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.311</td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">🔒 难买入(30%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="通用设备">通用设备</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">凤凰航运</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">000520</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+1.91%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">15</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">36</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.209</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.311</td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">🔒 难买入(30%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">2</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="航运港口">航运港口</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">达实智能</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">002421</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+2.53%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">15</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">34</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.240</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.311</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">⚠️ 可能买入(60%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="IT服务Ⅱ">IT服务Ⅱ</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">凯盛科技</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">600552</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+1.01%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">15</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">34</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.210</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.298</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">⚠️ 可能买入(60%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="光学光电">光学光电</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">广东明珠</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">600382</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+1.48%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">15</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">34</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.192</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.293</td>
+            <td style="padding:8px 10px;color:#00ff88;font-weight:600;">✅ 可买入(85%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="冶钢原料">冶钢原料</td>
+        </tr>
+        <tr style="border-bottom:1px solid #2a2a4a;">
+            <td style="padding:8px 10px;color:#e8e8e8;font-weight:600;">顺络电子</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">002138</td>
+            <td style="padding:8px 10px;color:#ff4757;font-weight:600;">+1.29%</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">0.0</td>
+            <td style="padding:8px 10px;color:#ffa502;">15</td>
+            <td style="padding:8px 10px;color:#ffa502;"><span title="竞价专用权重评分">34</span></td>
+            <td style="padding:8px 10px;color:#ff6b6b;font-weight:600;">0.110</td>
+            <td style="padding:8px 10px;color:#ffa502;font-weight:600;">0.268</td>
+            <td style="padding:8px 10px;color:#00ff88;font-weight:600;">✅ 可买入(85%)</td>
+            <td style="padding:8px 10px;color:#a0a0b0;">1</td>
+            <td style="padding:8px 10px;color:#a0a0b0;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="元件">元件</td>
+        </tr></tbody>
+            </table>
+        </div>
+    </div>
+
+        <!-- 统计栏 -->
+        <div class="stats-bar">
+            <div style="background: #16213e; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #ff475733;">
+                <div style="color: #a0a0b0; font-size: 12px;">强势确认</div>
+                <div style="color: #ff4757; font-size: 24px; font-weight: 700;">0</div>
+            </div>
+            <div style="background: #16213e; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #ffa50233;">
+                <div style="color: #a0a0b0; font-size: 12px;">可能转强</div>
+                <div style="color: #ffa502; font-size: 24px; font-weight: 700;">26</div>
+            </div>
+            <div style="background: #16213e; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #3742fa33;">
+                <div style="color: #a0a0b0; font-size: 12px;">新热点</div>
+                <div style="color: #3742fa; font-size: 24px; font-weight: 700;">0</div>
+            </div>
+            <div style="background: #16213e; border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #00d4aa33;">
+                <div style="color: #a0a0b0; font-size: 12px;">转弱预警</div>
+                <div style="color: #00d4aa; font-size: 24px; font-weight: 700;">25</div>
+            </div>
+        </div>
+
+        <!-- 强势确认 -->
+        <div class="section">
+            <div class="section-title" style="color: #ff4757;">🟢 强势确认池</div>
+            <div style="font-size: 12px; color: #a0a0b0; margin-bottom: 16px;">
+                前日涨停 + 竞价涨幅>5.0% + 量比>1.5
+            </div>
+            <div style="color: #a0a0b0; padding: 20px; text-align: center;">暂无数据</div>
+        </div>
+
+        <!-- 可能转强 -->
+        <div class="section">
+            <div class="section-title" style="color: #ffa502;">🟡 可能转强池</div>
+            <div style="font-size: 12px; color: #a0a0b0; margin-bottom: 16px;">
+                前日涨停 + 竞价涨幅>0.0% + 量比>1.0
+            </div>
+            
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">祥和实业</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603500</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+9.98%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度50替代封板)">50.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘61)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">2</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">50</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="轨交设备">题材: 轨交设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">天娱数科</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002354</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+10.08%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度50替代封板)">50.1分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘52)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">50</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="广告营销">题材: 广告营销</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">能科科技</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603859</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+7.23%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度45替代封板)">46.4分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘48)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">45</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="IT服务Ⅱ">题材: IT服务Ⅱ</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">中重科技</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603135</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+6.27%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度37替代封板)">45.7分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘55)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">3</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">37</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="专用设备">题材: 专用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">家联科技</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">301193</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+5.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度37替代封板)">42.4分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘48)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">37</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="家居用品">题材: 家居用品</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">泰坦股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">003036</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+4.19%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度27替代封板)">39.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘49)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">2</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">27</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="专用设备">题材: 专用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">三峡新材</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600293</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+3.06%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度27替代封板)">39.0分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘56)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">2</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">27</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="玻璃玻纤">题材: 玻璃玻纤</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">宇环数控</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002903</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+3.38%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度27替代封板)">38.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘59)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">27</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="通用设备">题材: 通用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">上海亚虹</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603159</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+4.10%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度27替代封板)">38.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘53)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">27</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="专用设备">题材: 专用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">阳光股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">000608</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+3.59%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度27替代封板)">38.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘42)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">27</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="房地产开">题材: 房地产开</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">凤凰航运</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">000520</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+1.91%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">35.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘61)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">2</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="航运港口">题材: 航运港口</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">达实智能</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002421</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+2.53%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">34.1分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘48)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="IT服务Ⅱ">题材: IT服务Ⅱ</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">方大炭素</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600516</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+2.64%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">33.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘58)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="冶钢原料">题材: 冶钢原料</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">怡 亚 通</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002183</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+2.35%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">33.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘53)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="贸易Ⅱ">题材: 贸易Ⅱ</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">神剑股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002361</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+1.11%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">33.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘52)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="塑料">题材: 塑料</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">维信诺</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002387</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+1.19%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">33.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘47)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="光学光电">题材: 光学光电</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">凯盛科技</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600552</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+1.01%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">33.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘46)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="光学光电">题材: 光学光电</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">广东明珠</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600382</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+1.48%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">33.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘42)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="冶钢原料">题材: 冶钢原料</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">顺络电子</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002138</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+1.29%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度15替代封板)">33.6分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘37)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">15</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="元件">题材: 元件</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">东方通信</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600776</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.28%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘58)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="通信设备">题材: 通信设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">步步高</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002251</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.90%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘58)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="一般零售">题材: 一般零售</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">江南新材</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603124</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.83%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘52)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="金属新材">题材: 金属新材</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">万控智造</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603070</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.26%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘52)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="电网设备">题材: 电网设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">中天火箭</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">003009</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.85%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘48)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="航天装备">题材: 航天装备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">贵广网络</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600996</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.12%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘39)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="电视广播">题材: 电视广播</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #ffa502; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">东土科技</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">300353</span>
+                        <span style="background: rgba(255,71,87,0.15);
+                                     color: #ff4757;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.93%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.3分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘37)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="通信设备">题材: 通信设备</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新热点 -->
+        <div class="section">
+            <div class="section-title" style="color: #3742fa;">🔵 新热点扫描</div>
+            <div style="font-size: 12px; color: #a0a0b0; margin-bottom: 16px;">
+                非前日涨停 + 竞价涨幅>3.0% + 量比>3.0
+            </div>
+            <div style="color: #a0a0b0; padding: 20px; text-align: center;">暂无数据</div>
+        </div>
+
+        <!-- 转弱预警 -->
+        <div class="section">
+            <div class="section-title" style="color: #00d4aa;">🔴 转弱预警池</div>
+            <div style="font-size: 12px; color: #a0a0b0; margin-bottom: 16px;">
+                前日涨停 + 竞价低开
+            </div>
+            
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">津膜科技</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">300334</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-0.27%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">25.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘47)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="环境治理">题材: 环境治理</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">雷曼光电</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">300162</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-1.03%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.2分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘52)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="光学光电">题材: 光学光电</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">中大力德</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002896</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-1.12%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘37)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="通用设备">题材: 通用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">银宝山新</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002786</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-0.37%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘37)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="专用设备">题材: 专用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">光洋股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002708</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-0.97%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘37)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="汽车零部">题材: 汽车零部</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">江化微</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603078</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-2.06%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘42)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="电子化学">题材: 电子化学</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">皖维高新</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600063</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-1.20%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘42)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="化学纤维">题材: 化学纤维</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">泰和新材</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002254</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-1.98%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘42)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="化学纤维">题材: 化学纤维</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">天安新材</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603725</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-0.94%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘46)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="家居用品">题材: 家居用品</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">炜冈科技</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">001256</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-0.58%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘46)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="专用设备">题材: 专用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">XD百合花</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603823</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-0.97%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘47)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="化学制品">题材: 化学制品</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">三孚股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603938</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-2.54%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘47)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="化学原料">题材: 化学原料</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">金帝股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">603270</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-1.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘47)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="通用设备">题材: 通用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">曙光股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600303</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-0.63%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘48)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="商用车">题材: 商用车</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">安彩高科</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600207</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-1.38%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘51)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="光伏设备">题材: 光伏设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">金瑞矿业</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600714</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-1.37%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘51)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="化学原料">题材: 化学原料</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">中百集团</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">000759</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-2.32%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">27.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘58)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="一般零售">题材: 一般零售</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">荣丰控股</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">000668</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价-0.69%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度0替代封板)">28.9分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘59)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">0</b><span style="font-size:10px;color:#a0a0b0;">(低开缩量)</span></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="房地产开">题材: 房地产开</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">华瑞股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">300626</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.3分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘53)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="电机Ⅱ">题材: 电机Ⅱ</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">冠龙节能</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">301151</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.4分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘48)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="通用设备">题材: 通用设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">亚泰集团</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600881</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘44)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="综合Ⅱ">题材: 综合Ⅱ</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">宝胜股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600973</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘52)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="电网设备">题材: 电网设备</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">北玻股份</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">002613</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘56)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="玻璃玻纤">题材: 玻璃玻纤</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">荣安地产</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">000517</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">29.5分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘58)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">1</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="房地产开">题材: 房地产开</span>
+                </div>
+            </div>
+            <div style="background: #0f3460; border-radius: 12px; padding: 16px;
+                         border-left: 4px solid #00d4aa; margin-bottom: 12px;
+                         transition: all 0.2s ease;"
+                 onmouseover="this.style.transform='translateX(4px)'"
+                 onmouseout="this.style.transform='translateX(0)'">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="color: #e8e8e8; font-size: 16px; font-weight: 700;">大有能源</span>
+                        <span style="color: #a0a0b0; font-size: 12px; margin-left: 8px;">600403</span>
+                        <span style="background: rgba(0,212,170,0.15);
+                                     color: #00d4aa;
+                                     padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px;">
+                            竞价+0.00%
+                        </span>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="color: #ffa502; font-size: 18px; font-weight: 700;" title="竞价专用权重(竞价强度5替代封板)">31.9分<span style="color: #a0a0b0; font-size: 10px; margin-left: 4px;" title="前日复盘评分">(复盘49)</span></div>
+                        <div style="color: #a0a0b0; font-size: 10px;">竞价评分</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 16px; margin-top: 8px; font-size: 12px; color: #a0a0b0;">
+                    <span>量比: <b style="color: #e8e8e8">None</b></span>
+                    <span>换手: <b style="color: #e8e8e8">None%</b></span>
+                    <span>连板: <b style="color: #3742fa">5</b></span>
+                    <span>竞价强度: <b style="color: #ffa502">5</b></span>
+                    <span style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="煤炭开采">题材: 煤炭开采</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            ⚠️ 本报告仅供参考，不构成投资建议。市场有风险，投资需谨慎。<br>
+            数据来源：NeoData API | 报告生成：A股超短线分析工具 V2.9
+        </div>
+    </div>
+</body>
+</html>
