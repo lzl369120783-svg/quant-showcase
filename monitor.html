@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="60">
-    <title>盘中监控 - 2026-06-10</title>
+    <title>盘中监控 - 2026-06-12</title>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -71,7 +71,7 @@
         <div class="header">
             <h1>📡 盘中实时监控 V2.3</h1>
             <div class="meta">
-                2026-06-10 | 更新: 14:59:03 |
+                2026-06-12 | 更新: 17:46:18 |
                 <span class="pulse" style="color: #ff4757;">● LIVE</span> |
                 每60秒自动刷新
             </div>
@@ -80,33 +80,33 @@
         <!-- 统计概览 -->
         <div class="stats-grid">
             <div class="stat-card" style="border: 1px solid #00d4aa33;">
-                <div style="color: #a0a0b0; font-size: 11px;">监控数</div>
-                <div style="color: #e8e8e8; font-size: 22px; font-weight: 700;">26</div>
+                <div style="color: #a0a0b0; font-size: 11px;">池总数/行情</div>
+                <div style="color: #e8e8e8; font-size: 22px; font-weight: 700;">23/22</div>
                 <div style="color: #a0a0b0; font-size: 9px; margin-top: 2px;">全市场</div>
             </div>
             <div class="stat-card" style="border: 1px solid #ff475733;">
-                <div style="color: #a0a0b0; font-size: 11px;">上涨 </div>
-                <div style="color: #ff4757; font-size: 22px; font-weight: 700;">1561</div>
+                <div style="color: #a0a0b0; font-size: 11px;">上涨 ▲+35</div>
+                <div style="color: #ff4757; font-size: 22px; font-weight: 700;">3708<span style='font-size:14px;color:#ff4757;'>+35</span></div>
             </div>
             <div class="stat-card" style="border: 1px solid #2ed57333;">
-                <div style="color: #a0a0b0; font-size: 11px;">下跌 </div>
-                <div style="color: #2ed573; font-size: 22px; font-weight: 700;">3620</div>
+                <div style="color: #a0a0b0; font-size: 11px;">下跌 ▼-34</div>
+                <div style="color: #2ed573; font-size: 22px; font-weight: 700;">1413<span style='font-size:14px;color:#2ed573;'>-34</span></div>
             </div>
             <div class="stat-card" style="border: 1px solid #ff6b8133;">
-                <div style="color: #a0a0b0; font-size: 11px;">涨停 </div>
-                <div style="color: #ff6b81; font-size: 22px; font-weight: 700;">74</div>
+                <div style="color: #a0a0b0; font-size: 11px;">涨停 ▼-2</div>
+                <div style="color: #ff6b81; font-size: 22px; font-weight: 700;">104<span style='font-size:14px;color:#2ed573;'>-2</span></div>
             </div>
             <div class="stat-card" style="border: 1px solid #00b89433;">
-                <div style="color: #a0a0b0; font-size: 11px;">跌停 </div>
-                <div style="color: #00b894; font-size: 22px; font-weight: 700;">73</div>
+                <div style="color: #a0a0b0; font-size: 11px;">跌停 ▼-2</div>
+                <div style="color: #00b894; font-size: 22px; font-weight: 700;">23<span style='font-size:14px;color:#2ed573;'>-2</span></div>
             </div>
             <div class="stat-card" style="border: 1px solid #ffa50233;">
                 <div style="color: #a0a0b0; font-size: 11px;">炸板 </div>
-                <div style="color: #ffa502; font-size: 22px; font-weight: 700;">5</div>
+                <div style="color: #ffa502; font-size: 22px; font-weight: 700;">6</div>
             </div>
             <div class="stat-card" style="border: 1px solid #3742fa33;">
                 <div style="color: #a0a0b0; font-size: 11px;">异动</div>
-                <div style="color: #3742fa; font-size: 22px; font-weight: 700;">28</div>
+                <div style="color: #3742fa; font-size: 22px; font-weight: 700;">25</div>
             </div>
         </div>
 
@@ -125,26 +125,26 @@
         <!-- V1.9: 情绪仪表盘 -->
         
         <!-- V1.9: 情绪仪表盘 -->
-        <div class="section" style="border: 2px solid #ffa50244;">
+        <div class="section" style="border: 2px solid #ff6b8144;">
             <div class="section-title" style="display: flex; justify-content: space-between; align-items: center;">
                 <span>🧭 盘中情绪仪表盘</span>
-                <span style="font-size: 12px; color: #a0a0b0;">更新: 14:59:03</span>
+                <span style="font-size: 12px; color: #a0a0b0;">更新: 17:46:18</span>
             </div>
 
             <!-- 核心情绪展示 -->
             <div style="display: grid; grid-template-columns: 200px 1fr; gap: 20px; margin-bottom: 16px;">
                 <!-- 左：情绪等级大仪表 -->
-                <div style="background: linear-gradient(135deg, #ffa50222, #ffa50211); border-radius: 16px; padding: 20px; text-align: center; border: 2px solid #ffa50266;">
-                    <div style="font-size: 48px; font-weight: 900; color: #ffa502; line-height: 1;">L3</div>
-                    <div style="font-size: 16px; font-weight: 700; color: #ffa502; margin-top: 4px;">情绪中性</div>
+                <div style="background: linear-gradient(135deg, #ff6b8122, #ff6b8111); border-radius: 16px; padding: 20px; text-align: center; border: 2px solid #ff6b8166;">
+                    <div style="font-size: 48px; font-weight: 900; color: #ff6b81; line-height: 1;">L4</div>
+                    <div style="font-size: 16px; font-weight: 700; color: #ff6b81; margin-top: 4px;">情绪偏强</div>
                     <div style="margin-top: 10px;">
                         <div style="background: #1a1a2e; border-radius: 10px; height: 8px; overflow: hidden;">
-                            <div style="background: #ffa502; height: 100%; width: 58%; border-radius: 10px;"></div>
+                            <div style="background: #ff6b81; height: 100%; width: 67%; border-radius: 10px;"></div>
                         </div>
-                        <div style="font-size: 11px; color: #a0a0b0; margin-top: 4px;">情绪得分 58/100</div>
+                        <div style="font-size: 11px; color: #a0a0b0; margin-top: 4px;">情绪得分 67/100</div>
                     </div>
-                    <div style="margin-top: 10px; font-size: 12px; color: #e8e8e8; line-height: 1.6;">谨慎参与，只做最强标的，控制仓位</div>
-                    <div style="margin-top: 6px; font-size: 11px; color: #ff4757; background: #ff475722; border-radius: 4px; padding: 4px 8px;">⚠️ 背离信号：大盘偏弱(L2) + 题材亢奋(L5)，警惕市场分化</div>
+                    <div style="margin-top: 10px; font-size: 12px; color: #e8e8e8; line-height: 1.6;">可以参与，优选前排核心标的</div>
+                    
                 </div>
 
                 <!-- 右：指数行情 + 信号 -->
@@ -152,30 +152,30 @@
                     <!-- 指数行情 -->
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px;">
                         
-            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 16px; text-align: center; border: 1px solid #2ed57333;">
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 16px; text-align: center; border: 1px solid #ff475733;">
                 <div style="color: #a0a0b0; font-size: 11px;">上证</div>
-                <div style="color: #2ed573; font-size: 18px; font-weight: 700;">-0.42%</div>
+                <div style="color: #ff4757; font-size: 18px; font-weight: 700;">+1.12%</div>
             </div>
-            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 16px; text-align: center; border: 1px solid #2ed57333;">
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 16px; text-align: center; border: 1px solid #ff475733;">
                 <div style="color: #a0a0b0; font-size: 11px;">深成指</div>
-                <div style="color: #2ed573; font-size: 18px; font-weight: 700;">-2.05%</div>
+                <div style="color: #ff4757; font-size: 18px; font-weight: 700;">+0.75%</div>
             </div>
-            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 16px; text-align: center; border: 1px solid #2ed57333;">
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 16px; text-align: center; border: 1px solid #ff475733;">
                 <div style="color: #a0a0b0; font-size: 11px;">创业板</div>
-                <div style="color: #2ed573; font-size: 18px; font-weight: 700;">-2.71%</div>
+                <div style="color: #ff4757; font-size: 18px; font-weight: 700;">+0.50%</div>
             </div>
                     </div>
 
                     <!-- 大盘情绪 -->
                     <div style="background: #1e1e3a; border-radius: 10px; padding: 12px; margin-bottom: 10px;">
-                        <div style="color: #a0a0b0; font-size: 11px; margin-bottom: 6px;">📊 大盘情绪 L2（权重60%）</div>
-                        <div style="line-height: 2;"><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">6因子评分: 9.9+0+18.7+6.2+6=41分</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">涨跌比1561:3620(胜率30%)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">涨停74/跌停73</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">炸板5只(率6%)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">大面股100只(跌>=7%)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">最高连板4板</span></div>
+                        <div style="color: #a0a0b0; font-size: 11px; margin-bottom: 6px;">📊 大盘情绪 L3（权重60%）</div>
+                        <div style="line-height: 2;"><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">6因子评分: 28.1+2+18.9+6.2+6=61分</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">涨跌比3708:1413(胜率71%)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">涨停104/跌停23</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">炸板6只(率5%)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">大面股100只(跌>=7%)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">最高连板4板</span></div>
                     </div>
 
                     <!-- 题材情绪 -->
                     <div style="background: #1e1e3a; border-radius: 10px; padding: 12px;">
-                        <div style="color: #a0a0b0; font-size: 11px; margin-bottom: 6px;">🔥 题材情绪 L5（权重40%）| 封板率100% | 封板11 炸板0 | 最高3连板</div>
-                        <div style="line-height: 2;"><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">封板率100%(封板极好)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">主线[化学制品]3只涨停(主线极强)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">最高3连板(中位)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">高分股占比90%(赚钱效应强)</span></div>
+                        <div style="color: #a0a0b0; font-size: 11px; margin-bottom: 6px;">🔥 题材情绪 L5（权重40%）| 封板率100% | 封板8 炸板0 | 最高4连板</div>
+                        <div style="line-height: 2;"><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">封板率100%(封板极好)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">主线[化学制品]3只涨停(主线极强)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">最高4连板(中位)</span><span style="background: #2a2a4a; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 11px; color: #e8e8e8; display: inline-block;">高分股占比低(赚钱效应差)</span></div>
                     </div>
                 </div>
             </div>
@@ -189,15 +189,7 @@
                 <span style="color: #ff4757; font-size: 12px; font-weight: 600;">3只</span>
             </div>
             <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #2a2a4a;">
-                <span style="color: #3742fa; font-size: 12px;">玻璃玻纤</span>
-                <span style="color: #ff4757; font-size: 12px; font-weight: 600;">1只</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #2a2a4a;">
-                <span style="color: #3742fa; font-size: 12px;">元件</span>
-                <span style="color: #ff4757; font-size: 12px; font-weight: 600;">1只</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #2a2a4a;">
-                <span style="color: #3742fa; font-size: 12px;">塑料</span>
+                <span style="color: #3742fa; font-size: 12px;">工业金属</span>
                 <span style="color: #ff4757; font-size: 12px; font-weight: 600;">1只</span>
             </div>
             </div>
@@ -210,7 +202,7 @@
         <div class="section" style="border: 1px solid #3742fa33;">
             <div class="section-title" style="display: flex; justify-content: space-between; align-items: center;">
                 <span>🔥 盘中热点扫描</span>
-                <span style="font-size: 12px; color: #a0a0b0;">扫描: 14:58:57</span>
+                <span style="font-size: 12px; color: #a0a0b0;">扫描: 17:46:12</span>
             </div>
 
             <!-- 热点板块 -->
@@ -219,13 +211,76 @@
                 <div style="color: #a0a0b0; font-size: 12px; margin-bottom: 8px;">📊 异动板块（涨幅≥3%）</div>
                 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
                     
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 14px; border: 1px solid #ff475744;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #e8e8e8; font-size: 13px; font-weight: 600;">工业金属 ⭐</span>
+                    <span style="color: #ff4757; font-size: 16px; font-weight: 700;">+5.28%</span>
+                </div>
+                <div style="color: #a0a0b0; font-size: 11px; margin-top: 4px;">
+                    涨52/跌3 | 涨停0只
+                </div>
+            </div>
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 14px; border: 1px solid #ffa50244;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #e8e8e8; font-size: 13px; font-weight: 600;">贵金属 ⭐</span>
+                    <span style="color: #ffa502; font-size: 16px; font-weight: 700;">+4.93%</span>
+                </div>
+                <div style="color: #a0a0b0; font-size: 11px; margin-top: 4px;">
+                    涨13/跌0 | 涨停0只
+                </div>
+            </div>
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 14px; border: 1px solid #ffa50244;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #e8e8e8; font-size: 13px; font-weight: 600;">机场航运 ⭐</span>
+                    <span style="color: #ffa502; font-size: 16px; font-weight: 700;">+4.59%</span>
+                </div>
+                <div style="color: #a0a0b0; font-size: 11px; margin-top: 4px;">
+                    涨13/跌0 | 涨停0只
+                </div>
+            </div>
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 14px; border: 1px solid #ffa50244;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #e8e8e8; font-size: 13px; font-weight: 600;">军工装备 ⭐</span>
+                    <span style="color: #ffa502; font-size: 16px; font-weight: 700;">+4.44%</span>
+                </div>
+                <div style="color: #a0a0b0; font-size: 11px; margin-top: 4px;">
+                    涨73/跌8 | 涨停0只
+                </div>
+            </div>
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 14px; border: 1px solid #ffa50244;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #e8e8e8; font-size: 13px; font-weight: 600;">证券 ⭐</span>
+                    <span style="color: #ffa502; font-size: 16px; font-weight: 700;">+3.88%</span>
+                </div>
+                <div style="color: #a0a0b0; font-size: 11px; margin-top: 4px;">
+                    涨50/跌0 | 涨停0只
+                </div>
+            </div>
             <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 14px; border: 1px solid #ffa50244;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span style="color: #e8e8e8; font-size: 13px; font-weight: 600;">保险 ⭐</span>
-                    <span style="color: #ffa502; font-size: 16px; font-weight: 700;">+3.21%</span>
+                    <span style="color: #ffa502; font-size: 16px; font-weight: 700;">+3.50%</span>
                 </div>
                 <div style="color: #a0a0b0; font-size: 11px; margin-top: 4px;">
                     涨5/跌0 | 涨停0只
+                </div>
+            </div>
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 14px; border: 1px solid #ffa50244;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #e8e8e8; font-size: 13px; font-weight: 600;">能源金属 ⭐</span>
+                    <span style="color: #ffa502; font-size: 16px; font-weight: 700;">+3.26%</span>
+                </div>
+                <div style="color: #a0a0b0; font-size: 11px; margin-top: 4px;">
+                    涨10/跌2 | 涨停0只
+                </div>
+            </div>
+            <div style="background: #1e1e3a; border-radius: 8px; padding: 10px 14px; border: 1px solid #ffa50244;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="color: #e8e8e8; font-size: 13px; font-weight: 600;">小金属 ⭐</span>
+                    <span style="color: #ffa502; font-size: 16px; font-weight: 700;">+3.17%</span>
+                </div>
+                <div style="color: #a0a0b0; font-size: 11px; margin-top: 4px;">
+                    涨24/跌5 | 涨停0只
                 </div>
             </div>
                 </div>
@@ -249,108 +304,108 @@
                         </thead>
                         <tbody>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">佳创视讯</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">300264</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+20.05%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">3.98亿</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">新威凌</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">920634</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+29.95%</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">1.35亿</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">气派科技</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">688216</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">赛伦生物</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">688163</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+20.01%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">3.88亿</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">2.32亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">富信科技</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">688662</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">新莱福</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">301323</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+20.00%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">11.36亿</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">7.09亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">有研粉材</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">688456</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">赢时胜</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">300377</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+20.00%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">19.39亿</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">12.14亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">九州一轨</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">688485</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+20.00%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">6.74亿</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">怡达股份</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">300721</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">逸豪新材</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">301176</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+19.99%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">9.73亿</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">8.14亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">苏豪汇鸿</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600981</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.16%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">1.54亿</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">福光股份</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">688010</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+19.99%</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">10.78亿</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #2a2a4a;">
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">蓝箭电子</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">301348</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+19.98%</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">5.99亿</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #2a2a4a;">
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">晨曦航空</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">300581</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+19.96%</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">5.56亿</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(20%板)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #2a2a4a;">
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">冠城新材</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600067</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.13%</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">3.81亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">天地源</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600665</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.12%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">2.22亿</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">中化国际</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600500</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">财达证券</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600906</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.08%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">2.05亿</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">11.12亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">兆新股份</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002256</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">铜陵有色</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">000630</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.08%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">2.51亿</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">43.56亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">城市传媒</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600229</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.05%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">1.13亿</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">爱普股份</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">603020</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.04%</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">3.04亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">天娱数科</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002354</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.05%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">29.89亿</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">万丰奥威</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002085</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.04%</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">10.82亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">爱旭股份</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600732</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">潮宏基</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002345</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.03%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">7.22亿</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">3.24亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">山东玻纤</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">605006</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">狮头股份</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600539</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.03%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">19.43亿</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">上工申贝</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600843</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 13px;">+10.03%</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">1.30亿</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">2.74亿</td>
                 <td style="padding: 4px 8px; color: #ff4757; font-size: 11px;">涨停(10%板)</td>
             </tr></tbody>
                     </table>
@@ -374,10 +429,16 @@
                         </thead>
                         <tbody>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">大有能源</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600403</td>
-                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 14px;">6连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">煤炭开采</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">宿迁联盛</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">603065</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 14px;">5连板</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">化学制品</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #2a2a4a;">
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">和远气体</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002971</td>
+                <td style="padding: 4px 8px; color: #ff4757; font-weight: 700; font-size: 14px;">5连板</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">化学制品</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
                 <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">天娱数科</td>
@@ -386,52 +447,46 @@
                 <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">广告营销</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">中重科技</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">603135</td>
-                <td style="padding: 4px 8px; color: #ffa502; font-weight: 700; font-size: 14px;">4连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">专用设备</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">金安国纪</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002636</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">金钼股份</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">601958</td>
                 <td style="padding: 4px 8px; color: #ffa502; font-weight: 700; font-size: 14px;">3连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">元件</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">小金属</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">泰和新材</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002254</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">盛龙股份</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">001257</td>
                 <td style="padding: 4px 8px; color: #ffa502; font-weight: 700; font-size: 14px;">3连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">化学纤维</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">小金属</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">祥和实业</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">603500</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">宗申动力</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">001696</td>
                 <td style="padding: 4px 8px; color: #ffa502; font-weight: 700; font-size: 14px;">3连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">轨交设备</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">通用设备</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">百合花</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">603823</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">海亮股份</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002203</td>
                 <td style="padding: 4px 8px; color: #ffa502; font-weight: 700; font-size: 14px;">3连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">化学制品</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">工业金属</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">韩建河山</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">603616</td>
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 700; font-size: 14px;">2连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">水泥</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">冠城新材</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">600067</td>
+                <td style="padding: 4px 8px; color: #ffa502; font-weight: 700; font-size: 14px;">3连板</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">电网设备</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">亚翔集成</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">603929</td>
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 700; font-size: 14px;">2连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">专业工程</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">新金路</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">000510</td>
+                <td style="padding: 4px 8px; color: #ffa502; font-weight: 700; font-size: 14px;">3连板</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">化学原料</td>
             </tr>
             <tr style="border-bottom: 1px solid #2a2a4a;">
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">埃斯顿</td>
-                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">002747</td>
-                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 700; font-size: 14px;">2连板</td>
-                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">自动化设</td>
+                <td style="padding: 4px 8px; color: #e8e8e8; font-weight: 600; font-size: 12px;">威高血净</td>
+                <td style="padding: 4px 8px; color: #a0a0b0; font-size: 12px;">603014</td>
+                <td style="padding: 4px 8px; color: #ffa502; font-weight: 700; font-size: 14px;">3连板</td>
+                <td style="padding: 4px 8px; color: #3742fa; font-size: 11px;">医疗器械</td>
             </tr></tbody>
                     </table>
                 </div>
@@ -445,28 +500,28 @@
                 
                 <div style="background: #0f3460; border-radius: 8px; padding: 8px 14px; margin-bottom: 6px; border-left: 4px solid #3742fa;">
                     <span style="color: #3742fa; font-weight: 700; font-size: 11px;">📥 [涨停雷达]</span>
-                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">佳创视讯(300264)</span>
-                    <span style="color: #a0a0b0; font-size: 11px; margin-left: 8px;">全市场涨停 +20.05%</span>
+                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">新威凌(920634)</span>
+                    <span style="color: #a0a0b0; font-size: 11px; margin-left: 8px;">全市场涨停 +29.95%</span>
                 </div>
                 <div style="background: #0f3460; border-radius: 8px; padding: 8px 14px; margin-bottom: 6px; border-left: 4px solid #3742fa;">
                     <span style="color: #3742fa; font-weight: 700; font-size: 11px;">📥 [涨停雷达]</span>
-                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">气派科技(688216)</span>
+                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">赛伦生物(688163)</span>
                     <span style="color: #a0a0b0; font-size: 11px; margin-left: 8px;">全市场涨停 +20.01%</span>
                 </div>
                 <div style="background: #0f3460; border-radius: 8px; padding: 8px 14px; margin-bottom: 6px; border-left: 4px solid #3742fa;">
                     <span style="color: #3742fa; font-weight: 700; font-size: 11px;">📥 [涨停雷达]</span>
-                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">富信科技(688662)</span>
+                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">新莱福(301323)</span>
                     <span style="color: #a0a0b0; font-size: 11px; margin-left: 8px;">全市场涨停 +20.00%</span>
                 </div>
                 <div style="background: #0f3460; border-radius: 8px; padding: 8px 14px; margin-bottom: 6px; border-left: 4px solid #3742fa;">
                     <span style="color: #3742fa; font-weight: 700; font-size: 11px;">📥 [涨停雷达]</span>
-                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">有研粉材(688456)</span>
+                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">赢时胜(300377)</span>
                     <span style="color: #a0a0b0; font-size: 11px; margin-left: 8px;">全市场涨停 +20.00%</span>
                 </div>
                 <div style="background: #0f3460; border-radius: 8px; padding: 8px 14px; margin-bottom: 6px; border-left: 4px solid #3742fa;">
                     <span style="color: #3742fa; font-weight: 700; font-size: 11px;">📥 [涨停雷达]</span>
-                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">九州一轨(688485)</span>
-                    <span style="color: #a0a0b0; font-size: 11px; margin-left: 8px;">全市场涨停 +20.00%</span>
+                    <span style="color: #e8e8e8; font-size: 13px; margin-left: 6px;">逸豪新材(301176)</span>
+                    <span style="color: #a0a0b0; font-size: 11px; margin-left: 8px;">全市场涨停 +19.99%</span>
                 </div>
             </div>
             
@@ -480,170 +535,152 @@
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 佳创视讯(300264) +20.05% [20%板] 首板</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 赛伦生物(688163) +20.01% [20%板] 首板</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 佳创视讯(300264) 振幅22.5%</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 赛伦生物(688163) 振幅22.1%</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 气派科技(688216) +20.01% [20%板] 首板</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 新莱福(301323) +20.00% [20%板] 首板</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 气派科技(688216) 振幅20.2%</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 新莱福(301323) 振幅19.7%</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 富信科技(688662) +20.00% [20%板] 首板</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 赢时胜(300377) +20.00% [20%板] 首板</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 富信科技(688662) 振幅23.8%</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 赢时胜(300377) 振幅19.3%</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 有研粉材(688456) +20.00% [20%板] 首板</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 逸豪新材(301176) +19.99% [20%板] 首板</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 有研粉材(688456) 振幅22.9%</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 逸豪新材(301176) 振幅19.6%</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 九州一轨(688485) +20.00% [20%板] 首板</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
-            </div>
-            <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
-                         margin-bottom: 8px; border-left: 4px solid #ffa502;">
-                <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 九州一轨(688485) 振幅25.4%</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 XD宿迁联(603065) +10.03% [10%板] 4连板 [化学制品]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 中化国际(600500) +10.08% [10%板] 2连板 [化学制品]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 和远气体(002971) +10.01% [10%板] 4连板 [化学制品]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 山东玻纤(605006) +10.03% [10%板] 2连板 [玻璃玻纤]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
-            </div>
-            <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
-                         margin-bottom: 8px; border-left: 4px solid #ffa502;">
-                <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 山东玻纤(605006) 振幅8.0% [玻璃玻纤]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 海亮股份(002203) +10.00% [10%板] 2连板 [工业金属]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 康达新材(002669) +10.01% [10%板] 2连板 [化学制品]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
-            </div>
-            <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
-                         margin-bottom: 8px; border-left: 4px solid #00d4aa;">
-                <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 宿迁联盛(603065) +10.00% [10%板] 2连板 [化学制品]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
-            </div>
-            <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
-                         margin-bottom: 8px; border-left: 4px solid #00d4aa;">
-                <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 金安国纪(002636) +10.00% [10%板] 3连板 [元件]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
-            </div>
-            <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
-                         margin-bottom: 8px; border-left: 4px solid #00d4aa;">
-                <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[涨停封板]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 圣泉集团(605589) +9.99% [10%板] 2连板 [塑料]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">涨停封板 中化国际(600500) +9.99% [10%板] 4连板 [化学制品]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 亚翔集成(603929) 振幅10.4% [专业工程]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 隆华科技(300263) 振幅10.4% [通用设备]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 沃顿科技(000920) 振幅9.6% [塑料]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 多氟多(002407) 振幅9.0% [化学制品]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 瑞玛精密(002976) 振幅8.9% [汽车零部]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 国城矿业(000688) 振幅10.4% [工业金属]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 韩建河山(603616) 振幅10.3% [水泥]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 章源钨业(002378) 振幅11.3% [小金属]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 圣晖集成(603163) 振幅9.1% [专业工程]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 康强电子(002119) 振幅9.9% [半导体]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 伟隆股份(002871) 振幅9.0% [通用设备]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 雅克科技(002409) 振幅9.4% [半导体]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 埃斯顿(002747) 振幅12.2% [自动化设]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 天地源(600665) 振幅10.6% [房地产开]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 浙江恒威(301222) 振幅9.6% [电池]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 京基智农(000048) 振幅11.6% [养殖业]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 正和生态(605069) 振幅8.6% [环境治理]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 江丰电子(300666) 振幅22.9% [半导体]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #00d4aa;">
                 <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[跌停]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">跌停 华塑控股(000509) -10.00% [光学光电]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">跌停 新亚强(603155) -9.99% [化学制品]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
             <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
                          margin-bottom: 8px; border-left: 4px solid #ffa502;">
                 <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
-                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 华塑控股(000509) 振幅14.6% [光学光电]</span>
-                <span style="color: #a0a0b0; font-size: 11px; float: right;">14:59:00</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 新亚强(603155) 振幅9.0% [化学制品]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
+            </div>
+            <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
+                         margin-bottom: 8px; border-left: 4px solid #00d4aa;">
+                <span style="color: #00d4aa; font-weight: 700; font-size: 12px;">[跌停]</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">跌停 昊华科技(600378) -10.00% [化学制品]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
+            </div>
+            <div style="background: #0f3460; border-radius: 8px; padding: 10px 16px;
+                         margin-bottom: 8px; border-left: 4px solid #ffa502;">
+                <span style="color: #ffa502; font-weight: 700; font-size: 12px;">[剧烈波动]</span>
+                <span style="color: #e8e8e8; font-size: 13px; margin-left: 8px;">剧烈波动 昊华科技(600378) 振幅9.6% [化学制品]</span>
+                <span style="color: #a0a0b0; font-size: 11px; float: right;">17:46:16</span>
             </div>
         </div>
 
@@ -676,368 +713,312 @@
                     </thead>
                     <tbody>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">佳创视讯</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">300264</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+20.05%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">9.34</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">9.34</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">7.59</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">3.98万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">22.5%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">0.0</td>
-            <td style="padding: 6px 10px; color: #3742fa; font-size: 11px;">涨停雷达</td>
-            <td style="padding: 6px 10px; color: #3742fa;">-</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title=""></td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">气派科技</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">688216</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">赛伦生物</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">688163</td>
             <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+20.01%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">38.32</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">38.32</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">31.88</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">3.88万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">20.2%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">45.04</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">45.04</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">36.75</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">2.32万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">22.1%</td>
             <td style="padding: 6px 10px; color: #ffa502;">0.0</td>
             <td style="padding: 6px 10px; color: #3742fa; font-size: 11px;">涨停雷达</td>
             <td style="padding: 6px 10px; color: #3742fa;">-</td>
             <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title=""></td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">富信科技</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">688662</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">新莱福</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">301323</td>
             <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+20.00%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">112.24</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">112.24</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">90.03</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">11.36万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">23.8%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">103.78</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">103.78</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">86.75</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">7.09万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">19.7%</td>
             <td style="padding: 6px 10px; color: #ffa502;">0.0</td>
             <td style="padding: 6px 10px; color: #3742fa; font-size: 11px;">涨停雷达</td>
             <td style="padding: 6px 10px; color: #3742fa;">-</td>
             <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title=""></td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">有研粉材</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">688456</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">赢时胜</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">300377</td>
             <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+20.00%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">115.98</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">115.98</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">93.8</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">19.39万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">22.9%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">14.88</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">14.88</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">12.49</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">12.14万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">19.3%</td>
             <td style="padding: 6px 10px; color: #ffa502;">0.0</td>
             <td style="padding: 6px 10px; color: #3742fa; font-size: 11px;">涨停雷达</td>
             <td style="padding: 6px 10px; color: #3742fa;">-</td>
             <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title=""></td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">九州一轨</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">688485</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+20.00%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">56.83</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">56.83</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">44.78</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">6.74万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">25.4%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">逸豪新材</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">301176</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+19.99%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">56.6</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">56.6</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">47.36</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">8.14万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">19.6%</td>
             <td style="padding: 6px 10px; color: #ffa502;">0.0</td>
             <td style="padding: 6px 10px; color: #3742fa; font-size: 11px;">涨停雷达</td>
             <td style="padding: 6px 10px; color: #3742fa;">-</td>
             <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title=""></td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">XD宿迁联</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">603065</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+10.03%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">13.6</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">13.6</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">13.6</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">1.34万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">0.0%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">52.4</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">竞价TOP5</td>
+            <td style="padding: 6px 10px; color: #3742fa;">4</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">和远气体</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">002971</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+10.01%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">58.03</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">58.03</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">54.4</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">33.25万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">6.9%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">53.1</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">竞价TOP5</td>
+            <td style="padding: 6px 10px; color: #3742fa;">4</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">海亮股份</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">002203</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+10.00%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">23.44</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">23.44</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">22.62</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">23.99万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">3.9%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">50.0</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">竞价TOP5</td>
+            <td style="padding: 6px 10px; color: #3742fa;">2</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="工业金属">工业金属</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
             <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">中化国际</td>
             <td style="padding: 6px 10px; color: #a0a0b0;">600500</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+10.08%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">6.55</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">6.55</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">6.55</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">2.05万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">0.0%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">64.0</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">2</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">山东玻纤</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">605006</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+10.03%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">21.07</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">21.07</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">19.53</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">19.43万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">8.0%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.5</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">2</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="玻璃玻纤">玻璃玻纤</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">康达新材</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">002669</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+10.01%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">19.13</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">19.13</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">17.85</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">14.21万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">7.4%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">59.9</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">竞价TOP5</td>
-            <td style="padding: 6px 10px; color: #3742fa;">2</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">宿迁联盛</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">603065</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+10.00%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">11.44</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">11.44</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">11.44</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">4186.44</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">0.0%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">64.9</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">2</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">金安国纪</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">002636</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+10.00%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">77.42</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">77.42</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">74.46</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">29.47万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">4.2%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">64.8</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">3</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="元件">元件</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">圣泉集团</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">605589</td>
             <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+9.99%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">60.1</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">60.1</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">60.1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">10.65万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">0.0%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">64.9</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">2</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="塑料">塑料</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">贤丰控股</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">002141</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+8.71%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">3.62</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">3.66</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">3.4</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">4.41万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">7.8%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.3</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="动物保健">动物保健</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">亚翔集成</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">603929</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+8.06%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">222.39</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">226.39</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">205.0</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">39.51万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">10.4%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.7</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">2</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="专业工程">专业工程</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">沃顿科技</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">000920</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+6.70%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">13.85</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">13.88</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">12.64</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">5.44万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">9.6%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.5</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="塑料">塑料</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">诺德股份</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">600110</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+3.90%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">12.27</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">12.58</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">11.8</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">27.04万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">6.6%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">62.7</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="电池">电池</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">亨通光电</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">600487</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+1.47%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">106.56</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">109.99</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">104.42</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">225.31万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">5.3%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">40.2</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">7.93</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">7.93</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">7.48</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">45.67万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">6.2%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">52.4</td>
             <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">竞价TOP5</td>
-            <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="通信设备">通信设备</td>
+            <td style="padding: 6px 10px; color: #3742fa;">4</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">瑞玛精密</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">002976</td>
-            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+0.67%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">31.48</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">33.02</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">30.23</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">2.89万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">8.9%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.6</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="汽车零部">汽车零部</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">韩建河山</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">603616</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; font-weight: 700; font-size: 14px;">+0.00%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">7.29</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">8.02</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">7.27</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">9.39万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">10.3%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">65.0</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">2</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="水泥">水泥</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">大唐电信</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">600198</td>
-            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-0.21%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">9.32</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">9.7</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">9.22</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">9.25万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">5.1%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.5</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="通信设备">通信设备</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">圣晖集成</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">603163</td>
-            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-0.40%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">106.11</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">115.7</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">106.0</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">7.76万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">9.1%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.3</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
-            <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="专业工程">专业工程</td>
-        </tr>
-        <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">伟隆股份</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">002871</td>
-            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-0.65%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">21.44</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">23.2</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">21.25</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">3.35万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">9.0%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.6</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">隆华科技</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">300263</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+8.89%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">15.44</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">16.57</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">15.1</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">40.84万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">10.4%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">33.3</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
             <td style="padding: 6px 10px; color: #3742fa;">1</td>
             <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="通用设备">通用设备</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">顺威股份</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">002676</td>
-            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-1.72%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">5.71</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">5.94</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">5.58</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">1.83万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">6.2%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">62.5</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">云南锗业</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">002428</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+4.56%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">92.26</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">93.39</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">87.0</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">118.55万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">7.2%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">33.6</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
             <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="家电零部">家电零部</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="小金属">小金属</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">埃斯顿</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">002747</td>
-            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-4.72%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">35.76</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">39.9</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">35.31</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">71.67万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">12.2%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.2</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">多氟多</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">002407</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+3.88%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">39.67</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">40.1</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">36.67</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">104.30万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">9.0%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">33.6</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
+            <td style="padding: 6px 10px; color: #3742fa;">1</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">国城矿业</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">000688</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+3.51%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">46.91</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">49.5</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">44.8</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">23.57万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">10.4%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">33.6</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
+            <td style="padding: 6px 10px; color: #3742fa;">1</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="工业金属">工业金属</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">章源钨业</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">002378</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+3.00%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">34.64</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">36.66</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">32.87</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">70.13万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">11.3%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">33.6</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
+            <td style="padding: 6px 10px; color: #3742fa;">1</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="小金属">小金属</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">康强电子</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">002119</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+2.44%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">31.96</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">34.32</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">31.22</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">47.46万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">9.9%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">34.7</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
             <td style="padding: 6px 10px; color: #3742fa;">2</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="自动化设">自动化设</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="半导体">半导体</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">浙江恒威</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">301222</td>
-            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-5.30%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">34.5</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">37.27</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">33.76</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">4.21万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">9.6%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">63.3</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">领先股份</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">603991</td>
+            <td style="padding: 6px 10px; color: #ff4757; font-weight: 700; font-size: 14px;">+1.95%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">122.55</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">125.5</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">120.03</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">7.13万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">4.5%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">33.6</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
             <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="电池">电池</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="半导体">半导体</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">正和生态</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">605069</td>
-            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-5.56%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">10.71</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">11.23</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">10.26</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">1.69万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">8.6%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">62.7</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">雅克科技</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">002409</td>
+            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-1.35%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">132.99</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">144.5</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">131.81</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">91.33万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">9.4%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">34.7</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
+            <td style="padding: 6px 10px; color: #3742fa;">2</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="半导体">半导体</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">福鞍股份</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">603315</td>
+            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-1.52%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">16.25</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">17.14</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">16.01</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">3.88万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">6.8%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">38.5</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
             <td style="padding: 6px 10px; color: #3742fa;">1</td>
             <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="环境治理">环境治理</td>
         </tr>
         <tr style="border-bottom: 1px solid #2a2a4a;">
-            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">华塑控股</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">000509</td>
-            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-10.00%</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">4.32</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">5.02</td>
-            <td style="padding: 6px 10px; color: #e8e8e8;">4.32</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">7.07万</td>
-            <td style="padding: 6px 10px; color: #a0a0b0;">14.6%</td>
-            <td style="padding: 6px 10px; color: #ffa502;">64.9</td>
-            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">复盘TOP</td>
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">天地源</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">600665</td>
+            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-1.97%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">3.99</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">4.18</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">3.75</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">3.83万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">10.6%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">43.5</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
+            <td style="padding: 6px 10px; color: #3742fa;">2</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="房地产开">房地产开</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">京基智农</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">000048</td>
+            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-3.57%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">18.91</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">21.18</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">18.9</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">16.53万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">11.6%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">44.9</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
+            <td style="padding: 6px 10px; color: #3742fa;">3</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="养殖业">养殖业</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">江丰电子</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">300666</td>
+            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-6.27%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">274.08</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">338.88</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">271.93</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">141.48万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">22.9%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">38.4</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
             <td style="padding: 6px 10px; color: #3742fa;">1</td>
-            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="光学光电">光学光电</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="半导体">半导体</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">新亚强</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">603155</td>
+            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-9.99%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">22.61</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">24.88</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">22.61</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">7.29万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">9.0%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">34.7</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">可买入池</td>
+            <td style="padding: 6px 10px; color: #3742fa;">2</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #2a2a4a;">
+            <td style="padding: 6px 10px; color: #e8e8e8; font-weight: 600;">昊华科技</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">600378</td>
+            <td style="padding: 6px 10px; color: #00d4aa; font-weight: 700; font-size: 14px;">-10.00%</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">57.15</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">63.25</td>
+            <td style="padding: 6px 10px; color: #e8e8e8;">57.15</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">67.24万</td>
+            <td style="padding: 6px 10px; color: #a0a0b0;">9.6%</td>
+            <td style="padding: 6px 10px; color: #ffa502;">49.5</td>
+            <td style="padding: 6px 10px; color: #ffa502; font-size: 11px;">竞价TOP5</td>
+            <td style="padding: 6px 10px; color: #3742fa;">2</td>
+            <td style="padding: 6px 10px; color: #a0a0b0; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px;" title="化学制品">化学制品</td>
         </tr></tbody>
                 </table>
             </div>
@@ -1054,9 +1035,9 @@
             data: [{
                 type: 'bar',
                 x: ["涨停(>9.8%)", "大涨(5-9.8%)", "上涨(0-5%)", "下跌(0--5%)", "大跌(-5--9.8%)", "跌停(<-9.8%)"],
-                y: [11, 3, 4, 5, 2, 1],
+                y: [8, 1, 6, 4, 1, 2],
                 marker: {color: ["#ff4757", "#ff6b81", "#ffa502", "#00d4aa", "#2ed573", "#00b894"]},
-                text: [11, 3, 4, 5, 2, 1],
+                text: [8, 1, 6, 4, 1, 2],
                 textposition: 'outside',
                 textfont: {color: '#e8e8e8'}
             }],
@@ -1077,13 +1058,13 @@
             var trendEl = document.getElementById('trend-chart-emotion');
             if (!trendEl || 224 < 2) return;
 
-            var times = ["09:25", "09:26", "09:27", "09:28", "09:29", "09:30", "09:32", "09:33", "09:34", "09:35", "09:36", "09:37", "09:38", "09:39", "09:40", "09:41", "09:42", "09:44", "09:45", "09:46", "09:47", "09:48", "09:49", "09:50", "09:51", "09:52", "09:53", "09:54", "09:55", "09:57", "09:58", "09:59", "10:00", "10:01", "10:02", "10:03", "10:04", "10:05", "10:06", "10:08", "10:09", "10:10", "10:11", "10:12", "10:13", "10:14", "10:15", "10:16", "10:17", "10:18", "10:19", "10:21", "10:22", "10:23", "10:24", "10:25", "10:26", "10:27", "10:28", "10:29", "10:30", "10:32", "10:33", "10:34", "10:35", "10:36", "10:37", "10:38", "10:39", "10:40", "10:41", "10:43", "10:44", "10:45", "10:46", "10:47", "10:48", "10:49", "10:50", "10:51", "10:52", "10:54", "10:55", "10:56", "10:57", "10:58", "10:59", "11:00", "11:01", "11:02", "11:03", "11:04", "11:06", "11:07", "11:08", "11:09", "11:10", "11:11", "11:12", "11:13", "11:14", "11:15", "11:16", "11:18", "11:19", "11:20", "11:21", "11:22", "11:23", "11:24", "11:25", "11:26", "11:27", "11:29", "11:30", "13:00", "13:01", "13:02", "13:03", "13:04", "13:06", "13:07", "13:08", "13:09", "13:10", "13:11", "13:12", "13:13", "13:14", "13:15", "13:17", "13:18", "13:19", "13:20", "13:21", "13:22", "13:23", "13:24", "13:25", "13:26", "13:28", "13:29", "13:30", "13:31", "13:32", "13:33", "13:34", "13:35", "13:36", "13:37", "13:39", "13:40", "13:41", "13:42", "13:43", "13:44", "13:45", "13:46", "13:47", "13:48", "13:50", "13:51", "13:52", "13:53", "13:54", "13:55", "13:56", "13:57", "13:58", "14:00", "14:01", "14:02", "14:03", "14:04", "14:05", "14:06", "14:07", "14:08", "14:09", "14:10", "14:12", "14:13", "14:14", "14:15", "14:16", "14:17", "14:18", "14:19", "14:20", "14:21", "14:22", "14:24", "14:25", "14:26", "14:27", "14:28", "14:29", "14:30", "14:31", "14:32", "14:33", "14:35", "14:36", "14:37", "14:38", "14:39", "14:40", "14:41", "14:42", "14:43", "14:44", "14:45", "14:46", "14:48", "14:49", "14:50", "14:51", "14:52", "14:53", "14:54", "14:55", "14:56", "14:57", "14:59"];
-            var upData = [620, 620, 620, 620, 620, 965, 1228, 1466, 1853, 1887, 1453, 1344, 1460, 1361, 1543, 1394, 1256, 1209, 1207, 1424, 1378, 1409, 1468, 1506, 1574, 1602, 1591, 1517, 1596, 1649, 1570, 1633, 1554, 1542, 1451, 1495, 1391, 1389, 1403, 1272, 1212, 1195, 1145, 1149, 1159, 1147, 1185, 1103, 1096, 1048, 986, 988, 1012, 1057, 1041, 1055, 1044, 1005, 1002, 988, 1013, 1008, 997, 988, 986, 955, 957, 941, 888, 882, 916, 953, 970, 984, 1006, 972, 960, 997, 1016, 1067, 1045, 990, 959, 920, 913, 957, 934, 942, 993, 991, 961, 924, 932, 944, 893, 917, 907, 877, 881, 892, 948, 996, 1038, 1008, 1006, 960, 946, 930, 940, 939, 1015, 1042, 1049, 1070, 1084, 892, 921, 953, 966, 968, 1004, 1003, 981, 955, 931, 963, 964, 947, 954, 949, 957, 968, 983, 1006, 943, 976, 1081, 1094, 1046, 1090, 1081, 1081, 1084, 1045, 1102, 1061, 1064, 1119, 1128, 1174, 1104, 1115, 1145, 1173, 1178, 1123, 1130, 1107, 1068, 1025, 1016, 985, 1015, 1093, 1144, 1168, 1280, 1358, 1329, 1354, 1404, 1370, 1276, 1242, 1211, 1175, 1203, 1263, 1254, 1257, 1301, 1345, 1324, 1249, 1258, 1264, 1325, 1368, 1473, 1443, 1433, 1350, 1335, 1308, 1357, 1333, 1343, 1365, 1416, 1442, 1419, 1371, 1359, 1353, 1373, 1364, 1341, 1348, 1369, 1361, 1421, 1451, 1438, 1438, 1441, 1516, 1543, 1550, 1555, 1549, 1539, 1562, 1561, 1561];
-            var downData = [4214, 4214, 4214, 4214, 4214, 3997, 3764, 3538, 3157, 3117, 3597, 3755, 3640, 3761, 3560, 3720, 3888, 3938, 3947, 3704, 3767, 3749, 3674, 3624, 3546, 3518, 3554, 3624, 3551, 3480, 3530, 3494, 3584, 3596, 3691, 3658, 3766, 3758, 3743, 3884, 3954, 3983, 4037, 4028, 4021, 4037, 4005, 4083, 4110, 4149, 4219, 4229, 4209, 4167, 4164, 4158, 4164, 4199, 4203, 4212, 4199, 4192, 4202, 4208, 4222, 4247, 4260, 4280, 4340, 4336, 4309, 4277, 4253, 4240, 4218, 4252, 4273, 4225, 4202, 4148, 4181, 4233, 4259, 4290, 4303, 4261, 4279, 4292, 4234, 4229, 4264, 4314, 4295, 4285, 4329, 4305, 4326, 4352, 4346, 4337, 4286, 4229, 4175, 4199, 4207, 4254, 4274, 4293, 4287, 4278, 4196, 4174, 4159, 4136, 4127, 4333, 4300, 4274, 4257, 4250, 4219, 4212, 4249, 4270, 4284, 4250, 4248, 4278, 4263, 4278, 4261, 4257, 4240, 4215, 4279, 4231, 4133, 4117, 4169, 4121, 4136, 4114, 4126, 4170, 4112, 4156, 4152, 4086, 4079, 4043, 4120, 4093, 4077, 4058, 4036, 4087, 4077, 4108, 4147, 4183, 4194, 4235, 4199, 4120, 4076, 4036, 3933, 3846, 3868, 3841, 3793, 3830, 3941, 3969, 3997, 4029, 4003, 3950, 3957, 3946, 3906, 3857, 3879, 3943, 3948, 3951, 3894, 3844, 3726, 3751, 3769, 3861, 3865, 3892, 3848, 3866, 3851, 3839, 3804, 3760, 3781, 3828, 3844, 3844, 3841, 3839, 3871, 3861, 3837, 3821, 3773, 3751, 3762, 3759, 3759, 3687, 3646, 3637, 3632, 3631, 3641, 3630, 3620, 3620];
-            var limitUpData = [142, 142, 142, 142, 142, 6, 6, 6, 6, 19, 19, 19, 19, 19, 34, 34, 34, 34, 34, 34, 34, 34, 34, 38, 38, 38, 38, 38, 43, 43, 43, 43, 45, 45, 45, 45, 45, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 46, 46, 46, 46, 47, 47, 47, 47, 47, 46, 46, 46, 46, 46, 46, 46, 46, 46, 48, 48, 48, 48, 48, 48, 48, 48, 48, 51, 51, 51, 51, 53, 53, 53, 53, 53, 53, 53, 53, 53, 53, 54, 54, 54, 54, 53, 53, 53, 53, 53, 55, 55, 55, 55, 54, 54, 54, 54, 54, 54, 54, 54, 54, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 56, 56, 56, 56, 56, 58, 58, 58, 58, 57, 57, 57, 57, 57, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 59, 60, 60, 60, 60, 60, 59, 59, 59, 59, 59, 59, 59, 59, 59, 61, 61, 61, 61, 61, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 63, 65, 65, 65, 65, 65, 67, 67, 67, 67, 68, 68, 68, 68, 68, 68, 68, 68, 68, 68, 70, 70, 70, 70, 69, 69, 69, 69, 69, 68, 68, 68, 68, 70, 70, 70, 70, 70, 74, 74, 74, 74];
-            var limitDownData = [19, 19, 19, 19, 19, 6, 6, 6, 6, 7, 7, 7, 7, 7, 11, 11, 11, 11, 11, 16, 16, 16, 16, 15, 15, 15, 15, 15, 14, 14, 14, 14, 16, 16, 16, 16, 16, 18, 18, 18, 18, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 31, 31, 31, 31, 35, 35, 35, 35, 35, 37, 37, 37, 37, 46, 46, 46, 46, 46, 40, 40, 40, 40, 38, 38, 38, 38, 38, 39, 39, 39, 39, 35, 35, 35, 35, 35, 43, 43, 43, 43, 43, 38, 38, 38, 38, 40, 40, 40, 40, 40, 42, 42, 42, 42, 45, 45, 45, 45, 45, 52, 52, 52, 52, 42, 42, 42, 42, 42, 42, 60, 60, 60, 60, 60, 60, 60, 60, 60, 62, 62, 62, 62, 62, 62, 62, 62, 62, 57, 57, 57, 57, 62, 62, 62, 62, 62, 68, 68, 68, 68, 67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 72, 72, 72, 72, 73, 73, 73, 73, 73, 62, 62, 62, 62, 59, 59, 59, 59, 59, 63, 63, 63, 63, 61, 61, 61, 61, 61, 63, 63, 63, 63, 61, 61, 61, 61, 61, 62, 62, 62, 62, 62, 61, 61, 61, 61, 68, 68, 68, 68, 68, 73, 73, 73, 73, 70, 70, 70, 70, 70, 73, 73, 73, 73];
-            var brokenData = [8, 8, 8, 8, 8, 4, 6, 6, 8, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
-            var alertData = [4, 4, 4, 4, 4, 33, 21, 13, 14, 12, 14, 15, 16, 18, 17, 17, 16, 16, 16, 17, 17, 19, 19, 19, 19, 19, 19, 19, 20, 20, 20, 20, 20, 20, 19, 20, 19, 18, 18, 19, 19, 20, 20, 19, 20, 19, 19, 19, 19, 19, 20, 21, 21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 23, 22, 22, 23, 23, 23, 23, 25, 25, 24, 24, 24, 24, 24, 25, 24, 24, 25, 24, 24, 24, 24, 25, 25, 25, 25, 25, 25, 26, 25, 26, 26, 26, 24, 25, 26, 24, 26, 26, 26, 25, 25, 26, 28, 27, 27, 27, 26, 26, 26, 26, 26, 26, 27, 27, 26, 27, 26, 26, 26, 26, 27, 27, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 26, 26, 27, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 27, 26, 27, 27, 27, 27, 27, 27, 26, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 26, 28, 28, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 27, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 28, 26, 28, 28, 28, 28, 28];
+            var times = ["09:25", "09:26", "09:27", "09:28", "09:29", "09:31", "09:32", "09:33", "09:34", "09:35", "09:37", "09:38", "09:39", "09:40", "09:41", "09:42", "09:43", "09:44", "09:45", "09:46", "09:48", "09:49", "09:50", "09:51", "09:52", "09:53", "09:54", "09:55", "09:56", "09:57", "09:58", "10:00", "10:01", "10:02", "10:03", "10:04", "10:05", "10:06", "10:08", "10:09", "10:10", "10:11", "10:12", "10:13", "10:14", "10:15", "10:16", "10:17", "10:19", "10:20", "10:21", "10:22", "10:23", "10:24", "10:25", "10:26", "10:27", "10:28", "10:30", "10:31", "10:32", "10:33", "10:34", "10:35", "10:36", "10:37", "10:38", "10:40", "10:41", "10:42", "10:43", "10:44", "10:45", "10:46", "10:47", "10:48", "10:50", "10:51", "10:52", "10:53", "10:54", "10:55", "10:56", "10:57", "10:58", "11:00", "11:01", "11:02", "11:03", "11:04", "11:05", "11:06", "11:07", "11:08", "11:09", "11:11", "11:12", "11:13", "11:14", "11:15", "11:16", "11:17", "11:18", "11:19", "11:20", "11:22", "11:23", "11:24", "11:25", "11:26", "11:27", "11:28", "11:29", "11:30", "13:00", "13:01", "13:02", "13:03", "13:04", "13:05", "13:06", "13:08", "13:09", "13:10", "13:11", "13:12", "13:13", "13:14", "13:15", "13:16", "13:17", "13:19", "13:20", "13:21", "13:22", "13:23", "13:24", "13:25", "13:26", "13:27", "13:28", "13:30", "13:31", "13:32", "13:33", "13:34", "13:35", "13:36", "13:37", "13:38", "13:39", "13:41", "13:42", "13:43", "13:44", "13:45", "13:46", "13:47", "13:48", "13:49", "13:50", "13:51", "13:53", "13:54", "13:55", "13:56", "13:57", "13:58", "13:59", "14:00", "14:01", "14:02", "14:04", "14:05", "14:06", "14:07", "14:08", "14:09", "14:10", "14:11", "14:12", "14:13", "14:14", "14:16", "14:17", "14:18", "14:19", "14:20", "14:21", "14:22", "14:23", "14:24", "14:25", "14:27", "14:28", "14:29", "14:30", "14:31", "14:32", "14:33", "14:34", "14:35", "14:36", "14:38", "14:39", "14:40", "14:41", "14:42", "14:43", "14:44", "14:45", "14:46", "14:47", "14:49", "14:50", "14:51", "14:52", "14:53", "14:54", "14:55", "14:56", "14:57", "14:59", "17:46"];
+            var upData = [1348, 1348, 1348, 1348, 1348, 4254, 4254, 4254, 4254, 4074, 4074, 4074, 4074, 3694, 3694, 3694, 3694, 3694, 3506, 3506, 3506, 3506, 2706, 2706, 2706, 2706, 2706, 3147, 3147, 3147, 3147, 3594, 3594, 3594, 3594, 3594, 4297, 4297, 4297, 4297, 4372, 4372, 4372, 4372, 4372, 4427, 4427, 4427, 4427, 4427, 4342, 4342, 4342, 4342, 4380, 4380, 4380, 4380, 4380, 4159, 4159, 4159, 4159, 4203, 4203, 4203, 4203, 4203, 4154, 4154, 4154, 4154, 4297, 4297, 4297, 4297, 4297, 4274, 4274, 4274, 4274, 4325, 4325, 4325, 4325, 4325, 4384, 4384, 4384, 4384, 4459, 4459, 4459, 4459, 4459, 4343, 4343, 4343, 4343, 4296, 4296, 4296, 4296, 4296, 4355, 4355, 4355, 4355, 4300, 4300, 4300, 4300, 4300, 4255, 4255, 4255, 4255, 4255, 4255, 4124, 4124, 4124, 4124, 4059, 4059, 4059, 4059, 4059, 4173, 4173, 4173, 4173, 4173, 4072, 4072, 4072, 4072, 4089, 4089, 4089, 4089, 4089, 4079, 4079, 4079, 4079, 3971, 3971, 3971, 3971, 3971, 3985, 3985, 3985, 3985, 3997, 3997, 3997, 3997, 3997, 4011, 4011, 4011, 4011, 3843, 3843, 3843, 3843, 3843, 3634, 3634, 3634, 3634, 3634, 3736, 3736, 3736, 3736, 3607, 3607, 3607, 3607, 3607, 3660, 3660, 3660, 3660, 3726, 3726, 3726, 3726, 3726, 3771, 3771, 3771, 3771, 3643, 3643, 3643, 3643, 3643, 3667, 3667, 3667, 3667, 3653, 3653, 3653, 3653, 3653, 3540, 3540, 3540, 3540, 3575, 3575, 3575, 3575, 3575, 3673, 3673, 3673, 3673, 3708];
+            var downData = [3773, 3773, 3773, 3773, 3773, 641, 641, 641, 641, 954, 954, 954, 954, 1296, 1296, 1296, 1296, 1296, 1488, 1488, 1488, 1488, 2283, 2283, 2283, 2283, 2283, 1847, 1847, 1847, 1847, 1405, 1405, 1405, 1405, 1405, 806, 806, 806, 806, 743, 743, 743, 743, 743, 704, 704, 704, 704, 704, 773, 773, 773, 773, 741, 741, 741, 741, 741, 945, 945, 945, 945, 896, 896, 896, 896, 896, 941, 941, 941, 941, 811, 811, 811, 811, 811, 847, 847, 847, 847, 815, 815, 815, 815, 815, 758, 758, 758, 758, 686, 686, 686, 686, 686, 803, 803, 803, 803, 838, 838, 838, 838, 838, 791, 791, 791, 791, 841, 841, 841, 841, 841, 892, 892, 892, 892, 892, 892, 1008, 1008, 1008, 1008, 1076, 1076, 1076, 1076, 1076, 966, 966, 966, 966, 966, 1075, 1075, 1075, 1075, 1049, 1049, 1049, 1049, 1049, 1060, 1060, 1060, 1060, 1161, 1161, 1161, 1161, 1161, 1146, 1146, 1146, 1146, 1141, 1141, 1141, 1141, 1141, 1128, 1128, 1128, 1128, 1279, 1279, 1279, 1279, 1279, 1453, 1453, 1453, 1453, 1453, 1384, 1384, 1384, 1384, 1485, 1485, 1485, 1485, 1485, 1435, 1435, 1435, 1435, 1407, 1407, 1407, 1407, 1407, 1337, 1337, 1337, 1337, 1460, 1460, 1460, 1460, 1460, 1450, 1450, 1450, 1450, 1473, 1473, 1473, 1473, 1473, 1566, 1566, 1566, 1566, 1538, 1538, 1538, 1538, 1538, 1447, 1447, 1447, 1447, 1413];
+            var limitUpData = [79, 79, 79, 79, 79, 8, 8, 8, 8, 24, 24, 24, 24, 29, 29, 29, 29, 29, 35, 35, 35, 35, 34, 34, 34, 34, 34, 35, 35, 35, 35, 47, 47, 47, 47, 47, 50, 50, 50, 50, 56, 56, 56, 56, 56, 63, 63, 63, 63, 63, 66, 66, 66, 66, 70, 70, 70, 70, 70, 75, 75, 75, 75, 76, 76, 76, 76, 76, 79, 79, 79, 79, 84, 84, 84, 84, 84, 94, 94, 94, 94, 93, 93, 93, 93, 93, 95, 95, 95, 95, 100, 100, 100, 100, 100, 101, 101, 101, 101, 103, 103, 103, 103, 103, 104, 104, 104, 104, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 100, 100, 100, 100, 100, 104, 104, 104, 104, 104, 105, 105, 105, 105, 106, 106, 106, 106, 106, 109, 109, 109, 109, 107, 107, 107, 107, 107, 109, 109, 109, 109, 104, 104, 104, 104, 104, 109, 109, 109, 109, 108, 108, 108, 108, 108, 102, 102, 102, 102, 102, 99, 99, 99, 99, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 104, 106, 106, 106, 106, 106, 108, 108, 108, 108, 105, 105, 105, 105, 105, 106, 106, 106, 106, 104, 104, 104, 104, 104, 106, 106, 106, 106, 104];
+            var limitDownData = [55, 55, 55, 55, 55, 6, 6, 6, 6, 6, 6, 6, 6, 10, 10, 10, 10, 10, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 11, 11, 11, 11, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 10, 10, 10, 10, 10, 8, 8, 8, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11, 11, 9, 9, 9, 9, 9, 9, 16, 16, 16, 16, 17, 17, 17, 17, 17, 13, 13, 13, 13, 13, 14, 14, 14, 14, 15, 15, 15, 15, 15, 14, 14, 14, 14, 15, 15, 15, 15, 15, 14, 14, 14, 14, 15, 15, 15, 15, 15, 14, 14, 14, 14, 16, 16, 16, 16, 16, 18, 18, 18, 18, 18, 17, 17, 17, 17, 16, 16, 16, 16, 16, 18, 18, 18, 18, 18, 18, 18, 18, 18, 17, 17, 17, 17, 20, 20, 20, 20, 20, 18, 18, 18, 18, 21, 21, 21, 21, 21, 23, 23, 23, 23, 24, 24, 24, 24, 24, 25, 25, 25, 25, 23];
+            var brokenData = [9, 9, 9, 9, 9, 1, 2, 4, 2, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6];
+            var alertData = [4, 4, 4, 4, 4, 32, 27, 11, 13, 12, 15, 15, 13, 15, 15, 15, 14, 17, 18, 17, 17, 19, 19, 19, 19, 20, 19, 20, 20, 20, 20, 20, 17, 18, 24, 25, 25, 25, 25, 24, 24, 26, 25, 25, 25, 25, 25, 25, 25, 26, 26, 26, 26, 25, 25, 25, 26, 28, 25, 25, 25, 26, 26, 27, 28, 26, 26, 26, 25, 27, 26, 26, 26, 25, 27, 26, 26, 27, 26, 26, 18, 18, 19, 19, 18, 19, 21, 20, 20, 20, 21, 20, 20, 21, 21, 21, 22, 21, 21, 22, 22, 23, 23, 23, 22, 22, 22, 22, 22, 23, 22, 22, 23, 22, 23, 23, 23, 22, 23, 23, 23, 22, 22, 22, 23, 22, 21, 21, 23, 23, 21, 22, 21, 22, 23, 22, 23, 23, 24, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 23, 22, 23, 23, 23, 23, 23, 23, 23, 23, 22, 23, 23, 23, 22, 22, 24, 22, 22, 24, 24, 24, 25, 26, 25, 26, 25, 26, 26, 26, 25, 26, 24, 25, 26, 27, 27, 26, 26, 27, 27, 27, 27, 27, 27, 27, 27, 25, 24, 24, 27, 27, 27, 27, 27, 26, 26, 25, 26, 25, 26, 27, 26, 26, 27, 25, 25, 24, 25, 25, 25, 25, 25];
 
             // 涨跌比：波动比绝对值敏感得多
             var ratioData = upData.map(function(u, i) {
